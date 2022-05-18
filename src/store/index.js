@@ -5,14 +5,15 @@ import notificationMethods from './notification-methods'
 
 const state = reactive ({
     user: {},
+    establishment: {},
     isAuth: false,
     device: {
         id: null,
         token: null,
         platform: null
     },
-    uploadUrl: 'http://104.155.100.137:8080/',
-    apiUrl: 'http://104.155.100.137:8080/api/',
+    uploadUrl: 'http://104.155.100.137:4000/',
+    apiUrl: 'http://104.155.100.137:4000/api/',
     config: {
        
     }
