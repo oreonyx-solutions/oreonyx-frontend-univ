@@ -1,6 +1,6 @@
 <template>
   <div class="top-0 fixed sidebar h-full bg-white flex flex-col md:h-full border-r">
-    <div class="px-6 my-2 inline-flex">
+    <div class="px-6 my-3 inline-flex">
       <img class="h-8" :src="'public/assets/logo.png'" alt="" />
       <div class="pt-1 inline-flex">
         <span class="ml-3 text-gray-400">|</span>
@@ -170,9 +170,8 @@
           </div>
 
           <ul class="list-none mt-1">
-            <li title="Statistiques">
+            <li title="Groupe">
               <div class="
-                      hover:text-neutral-400
                       py-1.5
                       rounded-md
                       text-sm
@@ -193,7 +192,7 @@
                 </div>
                 <div class="ml-1 mt-1">
                       <h5 class="text-base">Math 100</h5>
-                      <h6 class="font-base text-xs -mt-0.5 text-gray-400 line-clamp-1">Vous: That's lit ️‍🔥</h6>
+                      <h6 class="font-base text-xs -mt-0.5 text-gray-700 line-clamp-1">Vous: That's lit ️‍🔥</h6>
                 </div>
                 
               </div>

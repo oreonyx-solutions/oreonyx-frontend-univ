@@ -1,7 +1,7 @@
 <template>
   <div class="w-4/5 2xl:w-10/12 px-6 py-6 h-full absolute right-0 top-0 ">
     <div class="h-full flex-grow inline-flex w-full relative">
-    <div class="absolute bg-red-600 top-0 h-full w-full z-10 inline-flex p-3">
+    <div class="absolute bg-gray-600 top-0 h-full w-full z-10 inline-flex p-3">
         <div class="w-4/12">
             <div class="w-full bg-white my-1 p-4 rounded-md">
             <div class="h-32 w-full relative mb-3">
@@ -18,8 +18,16 @@
               <h6 class="text-sm leading-tight text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Fugiat pariatur quis sequi eligendi quasi cum! Rem.</h6>
             </div>
-            <div class="mt-3">
-              <button class="bg-blue-600 text-white px-3 py-2 rounded-md text-sm">Détails supplementaires</button>
+            <hr class="my-3">
+            <div>
+              <div class="">   
+          <h6 class="font-bold text-blue-600">Spécialités</h6>
+              </div>
+              <ul class="space-y-1 mt-3">
+                <li>Spécialités 1</li>
+                <li>Spécialités 1</li>
+                <li>Spécialités 1</li>
+              </ul>
             </div>
           </div>
         </div>
