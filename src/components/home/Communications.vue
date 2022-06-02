@@ -16,14 +16,14 @@
     <div class="mt-3">
       <h6 class="text-sm text-blue-600 font-bold mb-1">Termes les plus recherchés</h6>
       <div class="w-full inline-flex space-x-2">
-        <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Fireboy</button>
-         <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Rema</button>
-          <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Victony</button>
-           <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">SpyceBoy</button>
-            <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Burna boy</button>
-             <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Lojay</button>
-              <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Wizkid</button>
-               <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Davido</button>
+        <button title="Cliquer pour rechercher" class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Fireboy</button>
+         <button title="Cliquer pour rechercher" class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Rema</button>
+          <button title="Cliquer pour rechercher" class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Victony</button>
+           <button title="Cliquer pour rechercher" class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">SpyceBoy</button>
+            <button title="Cliquer pour rechercher" class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Burna boy</button>
+             <button title="Cliquer pour rechercher" class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Lojay</button>
+              <button title="Cliquer pour rechercher" class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Wizkid</button>
+               <button title="Cliquer pour rechercher" class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Davido</button>
     </div>
     </div>
      <div class="mt-6 mb-5 relative">
@@ -60,56 +60,47 @@
                 <h6 class="-mt-1 text-sm text-gray-400">Ouvert, Il y'a 15 min</h6>
               </div>
             </div>
-            <div class="cursor-pointer transform hover:-translate-y-1">
-              <div class="bg-white rounded-lg h-52 w-full shadow">
-                <img class="object-cover h-full w-full rounded-lg" :src="'public/assets/816274862.jpg'"
-                  alt="Image de article récent">
+            <div class="transform hover:-translate-y-1">
+              <div class="bg-gray-100 rounded-lg h-52 w-full">
               </div>
               <div class="mt-2">
-                <h6 class="line-clamp-1">Thinkers Notes</h6>
-                <h6 class="-mt-1 text-sm text-gray-400">Ouvert, Il y'a 15 min</h6>
+                <div class="h-4 w-10/12 bg-gray-100 rounded-full mt-3"></div>
+                <div class="h-3 w-11/12 bg-gray-100 rounded-full mt-1"></div>
               </div>
             </div>
-            <div class="cursor-pointer transform hover:-translate-y-1">
-              <div class="bg-white rounded-lg h-52 w-full shadow">
-                <img class="object-cover h-full w-full rounded-lg" :src="'public/assets/816274862.jpg'"
-                  alt="Image de article récent">
+             <div class="transform hover:-translate-y-1">
+              <div class="bg-gray-100 rounded-lg h-52 w-full">
               </div>
               <div class="mt-2">
-                <h6 class="line-clamp-1">Thinkers Notes</h6>
-                <h6 class="-mt-1 text-sm text-gray-400">Ouvert, Il y'a 15 min</h6>
+                <div class="h-4 w-10/12 bg-gray-100 rounded-full mt-3"></div>
+                <div class="h-3 w-11/12 bg-gray-100 rounded-full mt-1"></div>
               </div>
             </div>
-            <div class="cursor-pointer transform hover:-translate-y-1">
-              <div class="bg-white rounded-lg h-52 w-full shadow">
-                <img class="object-cover h-full w-full rounded-lg" :src="'public/assets/816274862.jpg'"
-                  alt="Image de article récent">
+             <div class="transform hover:-translate-y-1">
+              <div class="bg-gray-100 rounded-lg h-52 w-full">
               </div>
               <div class="mt-2">
-                <h6 class="line-clamp-1">Thinkers Notes</h6>
-                <h6 class="-mt-1 text-sm text-gray-400">Ouvert, Il y'a 15 min</h6>
+                <div class="h-4 w-10/12 bg-gray-100 rounded-full mt-3"></div>
+                <div class="h-3 w-11/12 bg-gray-100 rounded-full mt-1"></div>
               </div>
             </div>
-            <div class="cursor-pointer transform hover:-translate-y-1">
-              <div class="bg-white rounded-lg h-52 w-full shadow">
-                <img class="object-cover h-full w-full rounded-lg" :src="'public/assets/816274862.jpg'"
-                  alt="Image de article récent">
+             <div class="transform hover:-translate-y-1">
+              <div class="bg-gray-100 rounded-lg h-52 w-full">
               </div>
               <div class="mt-2">
-                <h6 class="line-clamp-1">Thinkers Notes</h6>
-                <h6 class="-mt-1 text-sm text-gray-400">Ouvert, Il y'a 15 min</h6>
+                <div class="h-4 w-10/12 bg-gray-100 rounded-full mt-3"></div>
+                <div class="h-3 w-11/12 bg-gray-100 rounded-full mt-1"></div>
               </div>
             </div>
-            <div class="cursor-pointer transform hover:-translate-y-1">
-              <div class="bg-white rounded-lg h-52 w-full shadow">
-                <img class="object-cover h-full w-full rounded-lg" :src="'public/assets/816274862.jpg'"
-                  alt="Image de article récent">
+            <div class="transform hover:-translate-y-1">
+              <div class="bg-gray-100 rounded-lg h-52 w-full">
               </div>
               <div class="mt-2">
-                <h6 class="line-clamp-1">Thinkers Notes</h6>
-                <h6 class="-mt-1 text-sm text-gray-400">Ouvert, Il y'a 15 min</h6>
+                <div class="h-4 w-10/12 bg-gray-100 rounded-full mt-3"></div>
+                <div class="h-3 w-11/12 bg-gray-100 rounded-full mt-1"></div>
               </div>
             </div>
+            
           </div>
         </div>
       
@@ -136,7 +127,7 @@
         <div class="bg-white rounded-xl py-3 space-y-3">
           <!-- write communication-->
           <div v-if="showCommunicationForm"
-            class="border space-y-3 rounded-md pb-2 absolute -top-16 right-0 z-10 bg-white w-full">
+            class="border space-y-3 rounded-md pb-2 absolute -top-32 right-0 z-10 bg-white w-full">
             <div class="bg-blue-600 text-white px-4 py-2 rounded-t-md">
               <div class="flex items-start justify-between">
                 <div class="flex justify-start">

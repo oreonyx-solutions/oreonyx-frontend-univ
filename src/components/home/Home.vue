@@ -21,7 +21,7 @@
         <div class="grid grid-cols-3 gap-3">
           <div class="rounded-xl flex flex-col">
             <div class="flex-grow">
-              <div class="h-32 w-full rounded-xl bg-red-600">
+              <div class="h-32 w-full rounded-xl bg-blue-400">
                  <img class="shadow-xl rounded-xl h-full w-full object-cover" src="../../../public/assets/illustrations/summer-illustrations-3.jpg" alt="Photo de profil">
               </div>
             </div>
@@ -31,7 +31,7 @@
           </div>
            <div class="rounded-xl flex flex-col">
             <div class="flex-grow">
-              <div class="h-32 w-full rounded-xl bg-red-600">
+              <div class="h-32 w-full rounded-xl bg-blue-400">
                  <img class="shadow-xl rounded-xl h-full w-full object-cover" src="../../../public/assets/illustrations/summer-illustrations-6.jpg" alt="Photo de profil">
               </div>
             </div>
@@ -41,7 +41,7 @@
           </div>
            <div class="rounded-xl flex flex-col">
             <div class="flex-grow">
-              <div class="h-32 w-full rounded-xl bg-red-600">
+              <div class="h-32 w-full rounded-xl bg-blue-400">
                  <img class="shadow-xl rounded-xl h-full w-full object-cover" src="../../../public/assets/illustrations/summer-illustrations-7.jpg" alt="Photo de profil">
               </div>
             </div>
@@ -144,23 +144,7 @@
             </div>
           </div>
         </div>
-        <div class="w-full inline-flex space-x-1">
-            <span class="text-yellow-500 material-symbols-rounded">
-star
-</span>
-<span class="text-yellow-500 material-symbols-rounded">
-star
-</span>
-<span class="text-yellow-500 material-symbols-rounded">
-star
-</span>
-<span class="text-yellow-500 material-symbols-rounded">
-star
-</span>
-<span class="text-yellow-500 material-symbols-outlined">
-star_half
-</span>
-        </div>
+   
         <div class="bg-white pb-6 rounded-md">
           <div class="inline-flex pb-1">
             <div class="text-neutral-500">Communiqués</div>
