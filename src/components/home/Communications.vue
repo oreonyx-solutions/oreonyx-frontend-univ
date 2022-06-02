@@ -13,6 +13,19 @@
       <button type="submit"
         class="ml-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Rechercher</button>
     </div>
+    <div class="mt-3">
+      <h6 class="text-sm text-blue-600 font-bold mb-1">Termes les plus recherchés</h6>
+      <div class="w-full inline-flex space-x-2">
+        <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Fireboy</button>
+         <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Rema</button>
+          <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Victony</button>
+           <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">SpyceBoy</button>
+            <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Burna boy</button>
+             <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Lojay</button>
+              <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Wizkid</button>
+               <button class="bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5">Davido</button>
+    </div>
+    </div>
      <div class="mt-6 mb-5 relative">
     <div class="h-full flex-grow inline-flex w-full">
       <div class="w-full h-full">

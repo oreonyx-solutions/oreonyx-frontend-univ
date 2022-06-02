@@ -7,6 +7,7 @@ const state = reactive ({
     user: {},
     establishment: {},
     isAuth: false,
+    toggleWorkSpace:false,
     device: {
         id: null,
         token: null,

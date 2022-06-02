@@ -178,7 +178,7 @@
         </div>
         <div class="mt-6 mb-5">
            <!-- write communication-->
-          <div v-if="!showEditor"
+          <div v-if="showEditor"
             class="border space-y-3 rounded-md pb-2 absolute -top-16 right-0 z-10 bg-white w-full">
             <div class="bg-blue-600 text-white px-4 py-2 rounded-t-md">
               <div class="flex items-start justify-between ">

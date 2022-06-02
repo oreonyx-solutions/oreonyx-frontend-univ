@@ -82,7 +82,7 @@
 
       <div class="bg-gray-100 rounded-2xl p-3 my-4">
         <div>
-          <div class="inline-flex text-neutral-500  font-medium">
+          <div title="Quelques chiffres" class="cursor-pointer inline-flex text-neutral-500  font-medium">
             <span class="mr-2 material-symbols-outlined">
               expand_more
             </span>
@@ -159,17 +159,17 @@
 
       <div class="bg-gray-100 rounded-2xl p-3 my-4">
         <div>
-          <div class="flex items-start justify-between ">
+          <div title="Espaces de travail" class="cursor-pointer flex items-start justify-between ">
             <div class="flex justify-start text-neutral-500  font-medium">
               <span class="mr-2 material-symbols-outlined">
                 expand_more
               </span>
-              <h6>Groupes</h6>
+              <h6>Espaces</h6>
             </div>
             <div class="items-center inline-flex relative"></div>
           </div>
 
-          <ul class="list-none mt-1">
+          <ul class="list-none mt-1 ">
             <li title="Groupe">
               <div class="
                       py-1.5
@@ -181,28 +181,55 @@
                     ">
                 <div class="p-0.5 rounded-md">
                   <div class="w-full rounded-xl relative">
-                    <div
-                      class="text-white absolute -top-1 -left-2 h-6 w-6 bg-red-600 rounded-full flex justify-center items-center">
-                      <h6 class="text-xs">30</h6>
-                    </div>
-                    <img class="h-10 w-10 object-cover rounded-xl"
+                   <div
+                    class="text-white absolute -top-2 -left-2 px-1.5 bg-red-600 rounded-full flex justify-center items-center">
+                    <h6 style="font-size:12px">100</h6>
+                  </div>
+                  <button @click="getWorkSpace()" class="h-8 w-8">
+                    <img class="h-8 w-8 object-cover rounded-full ring ring-blue-500 ring-offset-2"
                       src="https://images.pexels.com/photos/11438396/pexels-photo-11438396.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                       alt="">
+                  </button>
                   </div>
                 </div>
-                <div class="ml-1 mt-1">
-                      <h5 class="text-base">Math 100</h5>
-                      <h6 class="font-base text-xs -mt-0.5 text-gray-700 line-clamp-1">Vous: That's lit ️‍🔥</h6>
+                <div class="ml-2">
+                  <h5 class="text-base">Mathématiques</h5>
+                  <h6 class="font-base text-xs -mt-0.5 text-gray-700 line-clamp-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h6>
                 </div>
-                
+
+              </div>
+            </li>
+            <li title="Groupe">
+              <div class="
+                      py-1.5
+                      rounded-md
+                      text-sm
+                      font-medium
+                      inline-flex
+                      w-full
+                    ">
+                <div class="p-0.5 rounded-md">
+                  <div class="w-full rounded-xl relative">
+                   <div
+                    class="text-white absolute -top-2 -left-2 px-1.5 bg-red-600 rounded-full flex justify-center items-center">
+                    <h6 style="font-size:12px">100</h6>
+                  </div>
+                  <button @click="getWorkSpace()" class="h-8 w-8">
+                    <img class="h-8 w-8 object-cover rounded-full ring ring-blue-500 ring-offset-2"
+                      src="https://images.pexels.com/photos/11438396/pexels-photo-11438396.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                      alt="">
+                  </button>
+                  </div>
+                </div>
+                <div class="ml-2">
+                  <h5 class="text-base">Anglais</h5>
+                  <h6 class="font-base text-xs -mt-0.5 text-gray-700 line-clamp-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h6>
+                </div>
               </div>
             </li>
           </ul>
         </div>
       </div>
-
-
-
     </div>
     <div class="">
       <!-- <router-link :to="{ name: 'profile' }"> -->
@@ -278,6 +305,7 @@
 
   import router from "../../router";
   import store from "../../store";
+
   export default {
     name: "Sidebar",
 
@@ -285,9 +313,13 @@
       const open = ref(false);
       const openMessageForm = ref(false);
 
-      const toggleSettings = () => {
-        open.value = !open.value;
-      };
+      const getWorkSpace = (workSpaceId) => {
+        // request to get it
+        //then if res.data show it
+        if(store.state.toggleWorkSpace == false){
+          store.state.toggleWorkSpace = true
+        }
+      }
 
       let messageFormData = reactive({
         title: null,
@@ -325,13 +357,9 @@
       };
 
       return {
-        open,
-        openMessageForm,
-        toggleSettings,
+        getWorkSpace,
         logout,
         store,
-        messageFormData,
-        submitMessageForm,
       };
     },
   };
