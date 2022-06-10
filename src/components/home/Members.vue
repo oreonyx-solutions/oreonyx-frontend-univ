@@ -1,5 +1,5 @@
 <template>
-    <div class="w-4/5 2xl:w-10/12 px-6 py-6 h-full absolute right-0 top-0 ">
+    <div class="w-4/5 2xl:w-10/12 px-6 py-6 h-full absolute right-0 top-0 bg-gray-50">
         <div class="h-full flex-grow inline-flex w-full">
           <div class="w-4/6 h-full mr-6">
              <div class="inline-flex">
@@ -43,8 +43,8 @@
                 <img class="h-full w-full rounded-xl object-cover" src="https://images.pexels.com/photos/12172012/pexels-photo-12172012.jpeg?cs=srgb&dl=pexels-%D1%82%D0%B0%D0%BD%D1%8F-%D0%BF%D0%BE%D1%82%D0%B0%D1%88%D0%B5%D0%B2%D0%B0-12172012.jpg&fm=jpg"
                   alt="Photo de profil">
               </div>
-              <hr class="my-3">
-              <div class="relative mt-1">
+             
+              <div class="relative mt-3">
                 <h2 class="text-gray-700 font-bold text-base leading-tight">
                   Bonsoa Ayén
                 </h2>

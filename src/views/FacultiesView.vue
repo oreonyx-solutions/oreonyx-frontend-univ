@@ -1,6 +1,6 @@
 <template>
-    <div class="faculties bg-gray-50">
-        <div class="inline-flex content-flow w-full">
+    <div class="faculties">
+        <div class="inline-flex w-full">
             <sidebar class="w-1/5 2xl:w-2/12'" />
             <faculties />
         </div>

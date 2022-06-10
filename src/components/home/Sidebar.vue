@@ -105,6 +105,38 @@
                 </div>
               </li>
             </router-link>
+            <router-link :to="{ name: 'faculties' }">
+              <li title="Spécialités">
+                <div class="
+                      hover:text-neutral-400
+                      py-1.5
+                      rounded-md
+                      text-sm
+                      font-medium
+                      inline-flex
+                      w-full
+                    ">
+                  <img class="h-6 mr-2 -mt-1" :src="'public/assets/icons/four-leaf-clover.png'" alt="" />
+                  <h5 class="text-base -mt-0.5">Spécialités</h5>
+                </div>
+              </li>
+            </router-link>
+            <router-link :to="{ name: 'faculties' }">
+              <li title="Unités d'Enseignements">
+                <div class="
+                      hover:text-neutral-400
+                      py-1.5
+                      rounded-md
+                      text-sm
+                      font-medium
+                      inline-flex
+                      w-full
+                    ">
+                  <img class="h-6 mr-2 -mt-1" :src="'public/assets/icons/sparkles_2728.png'" alt="" />
+                  <h5 class="text-base -mt-0.5 line-clamp-1">U.E</h5>
+                </div>
+              </li>
+            </router-link>
             <li title="Membres">
               <router-link :to="{ name: 'members' }">
                 <div class="
@@ -164,7 +196,7 @@
               <span class="mr-2 material-symbols-outlined">
                 expand_more
               </span>
-              <h6>Espaces</h6>
+              <h6>Matières</h6>
             </div>
             <div class="items-center inline-flex relative"></div>
           </div>
@@ -183,7 +215,7 @@
                   <div class="w-full rounded-xl relative">
                    <div
                     class="text-white absolute -top-2 -left-2 px-1.5 bg-red-600 rounded-full flex justify-center items-center">
-                    <h6 style="font-size:12px">100</h6>
+                    <h6 style="font-size:12px">10+</h6>
                   </div>
                   <button @click="getWorkSpace()" class="h-8 w-8">
                     <img class="h-8 w-8 object-cover rounded-full ring ring-blue-500 ring-offset-2"
@@ -212,7 +244,7 @@
                   <div class="w-full rounded-xl relative">
                    <div
                     class="text-white absolute -top-2 -left-2 px-1.5 bg-red-600 rounded-full flex justify-center items-center">
-                    <h6 style="font-size:12px">100</h6>
+                    <h6 style="font-size:12px">10+</h6>
                   </div>
                   <button @click="getWorkSpace()" class="h-8 w-8">
                     <img class="h-8 w-8 object-cover rounded-full ring ring-blue-500 ring-offset-2"

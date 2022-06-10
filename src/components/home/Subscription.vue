@@ -1,5 +1,5 @@
 <template>
-  <div class="w-4/5 2xl:w-10/12 px-6 py-6 h-full absolute right-0 top-0">
+  <div class="w-4/5 2xl:w-10/12 px-6 py-6 h-full absolute right-0 top-0 bg-gray-50">
     <div class="h-full flex-grow inline-flex w-full">
       <div class="w-4/6 h-full mr-6">
          <div class="inline-flex">
