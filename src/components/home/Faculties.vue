@@ -267,7 +267,7 @@
             (res) => {
               if (res) {
                 console.log('response', res.data)
-                showFacultyForm = false
+                showFacultyForm.value = false
               }
             })
         } else {
@@ -289,7 +289,7 @@
             (res) => {
               if (res) {
                 console.log('response', res.data)
-                showSpecialityForm = false
+                showSpecialityForm.value = false
               }
             })
         } else {
@@ -311,7 +311,7 @@
             (res) => {
               if (res) {
                 console.log('response', res.data)
-                showMatterForm = false
+                showMatterForm.value = false
               }
             })
         } else {
@@ -333,7 +333,7 @@
             (res) => {
               if (res) {
                 console.log('response', res.data)
-                showSpecialityForm = false
+                showSpecialityForm.value = false
               }
             })
         } else {

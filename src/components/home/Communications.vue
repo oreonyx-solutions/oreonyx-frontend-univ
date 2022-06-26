@@ -397,8 +397,8 @@
       </div>
     </div>
 
-    <div class="absolute z-30 h-full w-full bg-white">
-      <!-- v-if="showCommunicationOverview"  write communication  v-if="showCommunicationForm" -->
+    <div v-if="showCommunicationOverview" class="absolute z-30 h-full w-full bg-white">
+      <!--  write communication  v-if="showCommunicationForm" -->
       <div class="relative h-full top-0 left-0 z-10 w-full">
         <div class="w-full absolute top-0 bg-blue-600 line-clamp text-white px-4 py-2">
           <div class="flex items-start justify-between">
@@ -882,9 +882,7 @@
       const showSenderInformationsForm = ref(false)
       const showCountryInformationsForm = ref(false)
       const showCommunicationContentForm = ref(false)
-
-      
-
+     const query = ref("")
 
       const tabs = ref({
         upcoming: true,
@@ -1057,6 +1055,7 @@
       })
 
       return {
+        query,
         tabs,
         currentTab,
         swithBetweenTabs,

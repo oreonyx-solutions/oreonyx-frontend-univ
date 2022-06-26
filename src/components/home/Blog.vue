@@ -1,5 +1,66 @@
 <template>
-  <div class="w-4/5 2xl:w-10/12 px-6 pb-6 h-full absolute right-0 top-0 mt-5">
+
+  <div class="w-4/5 2xl:w-10/12 px-6 pb-6 h-full absolute right-0 top-0 pt-5">
+    <div v-if="!showEditor"
+            class="z-30 rounded-md pb-2  right-0 h-100 bg-white w-full">
+            <div class="mb-6">
+              <div class="flex items-start justify-between ">
+                <div class="flex justify-start">
+                  <div class="inline-flex">
+                    <h6 class="font-bold text-sm text-blue text-xl">Titre de l'article</h6>
+                  </div>
+                </div>
+                <div class="items-center inline-flex">
+                  <button title="Annuler" @click="showEditor = false"
+                    class="rounded-full text-xs text-white font-medium flex justify-center items-center">
+                    <span class="material-symbols-rounded">
+                      cancel
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <QuillEditor ref="quill" theme="snow" toolbar="#custom-toolbar">
+              <template class="bg-blue-600 text-white" #toolbar>
+                <div id="custom-toolbar">
+                  <select class="ql-size">
+                    <option value="small"></option>
+                    <option selected></option>
+                    <option value="large"></option>
+                    <option value="huge"></option>
+                  </select>
+                  <select class="ql-header">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option>
+                    <option value="6"></option>
+                    <option selected></option>
+                  </select>
+                  <button class="ql-bold"></button>
+                  <button class="ql-italic"></button>
+                  <button class="ql-underline"></button>
+                  <button class="ql-strike"></button>
+                  <button class="ql-script" value="sub"></button>
+                  <button class="ql-script" value="super"></button>
+                  <select class="ql-align">
+                    <option selected></option>
+                    <option value="center"></option>
+                    <option value="right"></option>
+                    <option value="justify"></option>
+                  </select>
+                  <button class="ql-list" value="ordered"></button>
+                  <button class="ql-list" value="bullet"></button>
+                  <button class="ql-blockquote"></button>
+                  <button class="ql-code-block"></button>
+                  <button class="ql-link"></button>
+                  <button class="ql-image"></button>
+                </div>
+              </template>
+            </QuillEditor>
+          </div>
+    <div class="hidden">
     <div class="inline-flex w-full">
       <Search />
     </div>
@@ -167,423 +228,7 @@
           </div>
         </div>
         <div class="mt-6 mb-5">
-           <!-- write communication v-if="showEditor" -->
-          <div 
-            class="z-30 border space-y-3 rounded-md pb-2 absolute -top-16 right-0 h-100 bg-white w-full">
-            <div class="bg-blue-600 text-white px-4 py-2 rounded-t-md">
-              <div class="flex items-start justify-between ">
-                <div class="flex justify-start">
-                  <div class="inline-flex">
-                    <h6 class="font-bold text-sm">Créer un article</h6>
-                  </div>
-                </div>
-                <div class="items-center inline-flex">
-                  <button title="Annuler" @click="showEditor = false"
-                    class="rounded-full text-xs text-white font-medium flex justify-center items-center">
-                    <span class="material-symbols-rounded">
-                      cancel
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-           <editor />
-          </div>
-           <div v-if="showEditor" class="absolute z-10  h-full w-full">
-      <!-- write communication  v-if="showCommunicationForm" -->
-      <div class="relative h-full top-0 left-0 z-10 w-full">
-        <div class="z-20 w-full absolute top-0 bg-blue-600 line-clamp text-white px-4 py-2">
-          <div class="flex items-start justify-between">
-            <div class="flex justify-start">
-              <div class="inline-flex mt-1 ">
-                <h6 class="font-bold text-sm">Création du communiqué</h6>
-              </div>
-            </div>
-            <div class="items-center inline-flex">
-              <div class="space-x-2 inline-flex mr-12 ">
-                <button title="Publier cet communiqué" @click="sendStatement()"
-                  class="shadow-xl mt-0.5 bg-white px-3 py-2 rounded-md text-xs text-blue-600 font-medium flex justify-center items-center">
-                  <h6 class="-mt-0.5">Publier</h6>
-                </button>
-                <div class="space-x-0.5 inline-flex">
-                  <button title="Afficher un aperçu" @click="showCommunicationOverview = false"
-                    class="mt-0.5 hover:bg-blue-500 px-2 py-1 rounded-full text-xs text-white font-medium flex justify-center items-center">
-                    <span class="text-sm material-icons-outlined">visibility</span>
-                  </button>
-                  <button title="Options supplémentaires" @click="showCommunicationOverview = false"
-                    class="mt-0.5 hover:bg-blue-500 px-2 py-1 rounded-full text-xs text-white font-medium flex justify-center items-center">
-                    <span class="text-sm material-icons-outlined">more_vert</span>
-                  </button>
-                </div>
-              </div>
-              <button title="Retour" @click="showCommunicationForm = false"
-                class="mt-0.5 hover:bg-blue-500 px-2 py-1 rounded-full text-xs text-white font-medium flex justify-center items-center">
-                <span class="text-sm material-icons-outlined">close</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="h-full w-full inline-flex px-8">
-          <div style="font-family: 'times New Roman'"
-            class="relative w-full px-4 py-24 h-full shadow overflow-hidden overflow-y-auto">
-            <div class="w-full inline-flex">
-              <div class="w-1/2 relative">
-                <div>
-                  <div class="text-center">
-                    <div class="">
-                      <h6 v-if="!communications.ministerOfficeState"
-                        class="w-2/3 uppercase text-sm leading-tight inline-flex">
-                        {{ communications.communicationFormBody.senderInformations.ministerOffice }}
-                      </h6>
-                      <div class="w-full space-x-2 flex justify-center">
-                        <div v-if="communications.ministerOfficeState" class="inline-flex w-2/3 space-x-1">
-                          <div class="w-10/12">
-                            <input v-model="communications.communicationFormBody.senderInformations.ministerOffice"
-                              name="ministerOffice"
-                              class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
-                          </div>
-                          <button title="valider" @click="communications.ministerOfficeState = false"
-                            class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
-                            <span class="material-symbols-outlined">
-                              check
-                            </span>
-                          </button>
-                          <button title="Annuler" @click="communications.ministerOfficeState = false"
-                            class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
-                            <span class="material-symbols-outlined">
-                              close
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-                      <div v-if="!communications.ministerOfficeState" class="flex justify-center">
-                        <button @click="communications.ministerOfficeState = true"
-                          class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
-                          <span class="text-xs material-symbols-rounded">
-                            edit
-                          </span>
-                        </button>
-                      </div>
-                      <div>
-                        <span class="font-bold text-sm">---------</span>
-                        <div class="">
-                          <h6 v-if="!communications.communicationFormBody.senderInformations.department"
-                            class="uppercase text-sm">
-                            DEPARTEMENT ?
-                          </h6>
-                          <h6 v-if="!communications.departmentState"
-                            class="text-center uppercase text-sm leading-tight inline-flex">
-                            {{ communications.communicationFormBody.senderInformations.department }}
-                          </h6>
-                          <div class="w-full space-x-2 flex justify-center">
-                            <div v-if="communications.departmentState" class="inline-flex w-2/3 space-x-1">
-                              <div class="w-10/12">
-                                <input v-model="communications.communicationFormBody.senderInformations.department"
-                                  name="ministerOffice"
-                                  class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
-                              </div>
-                              <button title="valider" @click="communications.departmentState = false"
-                                class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
-                                <span class="material-symbols-outlined">
-                                  check
-                                </span>
-                              </button>
-                              <button title="Annuler" @click="communications.departmentState = false"
-                                class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
-                                <span class="material-symbols-outlined">
-                                  close
-                                </span>
-                              </button>
-                            </div>
-                          </div>
-                          <div v-if="!communications.departmentState" class="flex justify-center">
-                            <button @click="communications.departmentState = true"
-                              class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
-                              <span class="text-xs material-symbols-rounded">
-                                edit
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-                        <span class="font-bold text-sm">---------</span>
-                        <div>
-                          <h6 v-if="!communications.communicationFormBody.senderInformations.subdepartment"
-                            class="text-bold uppercase text-sm">
-                            SOUS-DEPARTEMENT ?
-                          </h6>
-                          <h6 v-if="!communications.subdepartmentState"
-                            class="text-center uppercase text-sm leading-tight inline-flex font-bold">
-                            {{ communications.communicationFormBody.senderInformations.subdepartment }}
-                          </h6>
-                          <div class="w-full space-x-2 flex justify-center">
-                            <div v-if="communications.subdepartmentState" class="inline-flex w-2/3 space-x-1">
-                              <div class="w-10/12">
-                                <input v-model="communications.communicationFormBody.senderInformations.subdepartment"
-                                  name="ministerOffice"
-                                  class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
-                              </div>
-                              <button title="valider" @click="communications.subdepartmentState = false"
-                                class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
-                                <span class="material-symbols-outlined">
-                                  check
-                                </span>
-                              </button>
-                              <button title="Annuler" @click="communications.subdepartmentState = false"
-                                class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
-                                <span class="material-symbols-outlined">
-                                  close
-                                </span>
-                              </button>
-                            </div>
-                          </div>
-                          <div v-if="!communications.subdepartmentState" class="flex justify-center">
-
-                            <button @click="communications.subdepartmentState = true"
-                              class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
-                              <span class="text-xs material-symbols-rounded">
-                                edit
-                              </span>
-                            </button>
-
-                          </div>
-                        </div>
-
-                        <div>
-                          <h6 v-if="!communications.referenceState" class="text-md">
-                            N<sup>o</sup>
-                            <span>{{ communications.communicationFormBody.senderInformations.reference }}</span>
-                          </h6>
-                          <div class="w-full space-x-2 flex justify-center">
-                            <div v-if="communications.referenceState" class="inline-flex w-2/3 space-x-1">
-                              <div class="w-10/12">
-                                <input v-model="communications.communicationFormBody.senderInformations.reference"
-                                  name="ministerOffice"
-                                  class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
-                              </div>
-                              <button title="valider" @click="communications.referenceState = false"
-                                class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
-                                <span class="material-symbols-outlined">
-                                  check
-                                </span>
-                              </button>
-                              <button title="Annuler" @click="communications.referenceState = false"
-                                class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
-                                <span class="material-symbols-outlined">
-                                  close
-                                </span>
-                              </button>
-                            </div>
-                          </div>
-                          <div v-if="!communications.referenceState" class="flex justify-center">
-                            <button @click="communications.referenceState = true"
-                              class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
-                              <span class="text-xs material-symbols-rounded">
-                                edit
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="w-1/2 relative">
-                <div>
-                  <div class="text-center ">
-                    <!-- country -->
-                    <div>
-                      <h6 v-if="!communications.republicState" class="uppercase text-sm leading-tight inline-flex">
-                        {{ communications.communicationFormBody.countryInformations.republic }}
-                      </h6>
-                      <div class="w-full space-x-2 flex justify-center">
-                        <div v-if="communications.republicState" class="inline-flex w-2/3 space-x-1">
-                          <div class="w-10/12">
-                            <input v-model="communications.communicationFormBody.countryInformations.republic"
-                              name="ministerOffice"
-                              class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
-                          </div>
-                          <button title="valider" @click="communications.republicState = false"
-                            class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
-                            <span class="material-symbols-outlined">
-                              check
-                            </span>
-                          </button>
-                          <button title="Annuler" @click="communications.republicState = false"
-                            class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
-                            <span class="material-symbols-outlined">
-                              close
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-                      <div v-if="!communications.republicState" class="flex justify-center">
-                        <button @click="communications.republicState = true"
-                          class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
-                          <span class="text-xs material-symbols-rounded">
-                            edit
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h6 v-if="!communications.mottoState" class="uppercase text-sm leading-tight inline-flex">
-                        {{ communications.communicationFormBody.countryInformations.motto }}
-                      </h6>
-                      <div class="w-full space-x-2 flex justify-center">
-                        <div v-if="communications.mottoState" class="inline-flex w-2/3 space-x-1">
-                          <div class="w-10/12">
-                            <input v-model="communications.communicationFormBody.countryInformations.motto"
-                              name="ministerOffice"
-                              class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
-                          </div>
-                          <button title="valider" @click="communications.mottoState = false"
-                            class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
-                            <span class="material-symbols-outlined">
-                              check
-                            </span>
-                          </button>
-                          <button title="Annuler" @click="communications.mottoState = false"
-                            class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
-                            <span class="material-symbols-outlined">
-                              close
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-                      <div v-if="!communications.mottoState" class="flex justify-center">
-                        <button @click="communications.mottoState = true"
-                          class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
-                          <span class="text-xs material-symbols-rounded">
-                            edit
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-
-                    <span class="font-bold text-sm">---------</span>
-                    <div>
-                      <h6 v-if="!communications.cityState"
-                        class="uppercase text-sm leading-tight inline-flex space-x-2">
-                        <div class="mt-2">
-                          {{ communications.communicationFormBody.countryInformations.city }}, le
-                        </div>
-                        <div class="flex justify-center">
-                          <button @click="communications.cityState = true"
-                            class="ml-1 w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
-                            <span class="text-xs material-symbols-rounded">
-                              edit
-                            </span>
-                          </button>
-                        </div>
-                        <code class=" text-red-600 text-xl uppercase">
-                          {{ communications.communicationFormBody.countryInformations.date }}</code>
-                        <div class="flex justify-center">
-                          <button @click="communications.dateState = true"
-                            class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
-                            <span class="text-xs material-symbols-rounded">
-                              edit
-                            </span>
-                          </button>
-                        </div>
-                      </h6>
-                      <div class="w-full space-x-2 flex justify-center">
-                        <div v-if="communications.cityState" class="inline-flex w-2/3 space-x-1">
-                          <div class="w-10/12">
-                            <input v-model="communications.communicationFormBody.countryInformations.city"
-                              name="ministerOffice"
-                              class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
-                          </div>
-                          <button title="valider" @click="communications.cityState = false"
-                            class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
-                            <span class="material-symbols-outlined">
-                              check
-                            </span>
-                          </button>
-                          <button title="Annuler" @click="communications.cityState = false"
-                            class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
-                            <span class="material-symbols-outlined">
-                              close
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="w-full space-x-2 flex justify-center">
-                        <div v-if="communications.dateState" class="inline-flex w-2/3 space-x-1">
-                          <div class="w-10/12">
-                            <input v-model="communications.communicationFormBody.countryInformations.date"
-                              name="ministerOffice"
-                              class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
-                          </div>
-                          <button title="valider" @click="communications.dateState = false"
-                            class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
-                            <span class="material-symbols-outlined">
-                              check
-                            </span>
-                          </button>
-                          <button title="Annuler" @click="communications.dateState = false"
-                            class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
-                            <span class="material-symbols-outlined">
-                              close
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="pt-24 relative">
-              <h6 class="text-center uppercase text-2xl font-bold">COMMUNIQUE</h6>
-              <div class="mt-10 mx-24">
-                <QuillEditor ref="quill" theme="snow" toolbar="#custom-toolbar">
-                  <template #toolbar>
-                    <div id="custom-toolbar">
-                      <select class="ql-size">
-                        <option value="small"></option>
-                        <option selected></option>
-                        <option value="large"></option>
-                        <option value="huge"></option>
-                      </select>
-                      <select class="ql-header">
-                        <option value="1"></option>
-                        <option value="2"></option>
-                        <option value="3"></option>
-                        <option value="4"></option>
-                        <option value="5"></option>
-                        <option value="6"></option>
-                        <option selected></option>
-                      </select>
-                      <button class="ql-bold"></button>
-                      <button class="ql-italic"></button>
-                      <button class="ql-underline"></button>
-                      <button class="ql-strike"></button>
-                      <button class="ql-script" value="sub"></button>
-                      <button class="ql-script" value="super"></button>
-                      <select class="ql-align">
-                        <option selected></option>
-                        <option value="center"></option>
-                        <option value="right"></option>
-                        <option value="justify"></option>
-                      </select>
-                      <button class="ql-list" value="ordered"></button>
-                      <button class="ql-list" value="bullet"></button>
-                      <button class="ql-blockquote"></button>
-                      <button class="ql-code-block"></button>
-                      <button class="ql-link"></button>
-                      <button class="ql-image"></button>
-                    </div>
-                  </template>
-                </QuillEditor>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          <!-- write communication  zaza -->
           <div class="flex items-start justify-between">
             <div class="flex justify-start">
               <div class="mb-3">
@@ -603,36 +248,16 @@
             </div>
           </div>
           <div class="grid grid-cols-3 gap-3">
-            <div
-              class="rounded-xl pt-3 pb-3 cursor-pointer hover:shadow-md w-full border bg-white px-2">
+            <div class="rounded-xl pt-3 pb-3 cursor-pointer hover:shadow-md w-full border bg-white px-2">
               <div class="h-auto w-full relative mb-3">
                 <div class="absolute rounded-full bg-red-600 text-white text-xs top-2 pb-0.5 right-2 px-3">
                   Nouveau
                 </div>
                 <div class="w-full">
                   <div class="inline-flex w-full space-x-2">
-                    <div class="w-1/3">
-                      <img class="h-16 w-full object-cover rounded-xl"
-                        src="https://images.pexels.com/photos/12203460/pexels-photo-12203460.jpeg?cs=srgb&dl=pexels-ekaterina-12203460.jpg&fm=jpg"
-                        alt="Image de la fac">
-                    </div>
-                    <div class="w-2/3">
-                      <img class="h-16 w-full object-cover rounded-xl"
-                        src="https://images.pexels.com/photos/12203460/pexels-photo-12203460.jpeg?cs=srgb&dl=pexels-ekaterina-12203460.jpg&fm=jpg"
-                        alt="Image de la fac">
-                    </div>
-                  </div>
-                  <div class="inline-flex w-full space-x-2">
-                    <div class="w-2/3">
-                      <img class="h-16 w-full object-cover rounded-xl"
-                        src="https://images.pexels.com/photos/12203460/pexels-photo-12203460.jpeg?cs=srgb&dl=pexels-ekaterina-12203460.jpg&fm=jpg"
-                        alt="Image de la fac">
-                    </div>
-                    <div class="w-1/3">
-                      <img class="h-16 w-full object-cover rounded-xl"
-                        src="https://images.pexels.com/photos/12203460/pexels-photo-12203460.jpeg?cs=srgb&dl=pexels-ekaterina-12203460.jpg&fm=jpg"
-                        alt="Image de la fac">
-                    </div>
+                    <img class="h-32 w-full object-cover rounded-xl"
+                      src="https://images.pexels.com/photos/12203460/pexels-photo-12203460.jpeg?cs=srgb&dl=pexels-ekaterina-12203460.jpg&fm=jpg"
+                      alt="Image de la fac">
                   </div>
                 </div>
               </div>
@@ -653,23 +278,24 @@
                     lecture <span>5min</span></h6>
                 </div>
               </div>
-               <hr class="my-2">
-            <div class="mt-2 flex items-start justify-between">
-              <div class="flex justify-start space-x-1">
-                <button @click="showArticle(article)" title="Afficher les détails de cette faculté"
-                  class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 text-xs rounded-md">Lire l'article</button>
-                <button @click="getArticle(article)" title="Editer cet article"
-                  class="group h-6 w-6 text-gray-400 hover:text-blue-600 rounded-md hover:bg-blue-100 flex justify-center items-center">
-                  <span class="text-sm material-icons-outlined">edit</span>
-                </button>
-                <button title="Supprimer cet article"  @click="deleteArticle(article)"
-                  class="group h-6 w-6 text-gray-400 hover:text-blue-600 rounded-md hover:bg-blue-100 flex justify-center items-center">
-                  <span class="text-sm material-icons-outlined">delete</span>
-                </button>
+              <hr class="my-2">
+              <div class="mt-2 flex items-start justify-between">
+                <div class="flex justify-start space-x-1">
+                  <button @click="showArticle(article)" title="Afficher les détails de cette faculté"
+                    class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 text-xs rounded-md">Lire
+                    l'article</button>
+                  <button @click="getArticle(article)" title="Editer cet article"
+                    class="group h-6 w-6 text-gray-400 hover:text-blue-600 rounded-md hover:bg-blue-100 flex justify-center items-center">
+                    <span class="text-sm material-icons-outlined">edit</span>
+                  </button>
+                  <button title="Supprimer cet article" @click="deleteArticle(article)"
+                    class="group h-6 w-6 text-gray-400 hover:text-blue-600 rounded-md hover:bg-blue-100 flex justify-center items-center">
+                    <span class="text-sm material-icons-outlined">delete</span>
+                  </button>
+                </div>
+                <div class="items-center inline-flex">
+                </div>
               </div>
-              <div class="items-center inline-flex">
-              </div>
-            </div>
             </div>
           </div>
         </div>
@@ -739,6 +365,7 @@
 
       </div>
     </div>
+    </div>
   </div>
 </template>
 
@@ -749,12 +376,15 @@
 
   //import search component
   import Search from '@/components/utils/Search.vue'
-  import Editor from '@/components/vendors/Editor.vue'
+  import {
+    QuillEditor
+  } from '@vueup/vue-quill'
+  import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
   export default {
     name: "Blog",
     components: {
-      Editor,
+      QuillEditor,
       Search
     },
     setup() {
@@ -762,7 +392,7 @@
       const showEditor = ref(false)
 
 
-const submitArticle = () => {
+      const submitArticle = () => {
         store.apiCallMethods.post('/link', data).then(
           (res) => {
             if (res) {
@@ -772,7 +402,7 @@ const submitArticle = () => {
           })
       }
 
-      const deleteArticle= (statementId) => {
+      const deleteArticle = (statementId) => {
         store.apiCallMethods.delete('/link').then(
           (res) => {
             if (res) {

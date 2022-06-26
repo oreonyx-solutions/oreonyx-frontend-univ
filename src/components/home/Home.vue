@@ -58,10 +58,10 @@
         <div class="mt-6 flex items-start justify-between my-3">
           <div class="justify-start">
             <h2 class="text-lg font-bold -mt-1.5">{{  state.times.date }}</h2>
-            <h5 class="text-gray-400 text-lg -mt-2">06 tâches à venir</h5>
+            <h5 class="text-gray-400 text-base -mt-1">06 tâches à venir</h5>
           </div>
           <div class="items-center inline-flex space-x-2">
-             <button title="Boîte de réception" @click="swithBetweenTabs('today')"
+             <button title="Programme d'aujourd'hui" @click="swithBetweenTabs('today')"
                   :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'today', 'text-gray-400 hover:bg-gray-200' : currentTab != 'today'}"
                   class="text-sm rounded-full px-4 pb-0.5 inline-flex">
                   <span v-if="currentTab != 'today'" class="mr-1 text-base material-icons-outlined">
@@ -72,7 +72,7 @@
                   </span>
                   <h6 class="mt-0.5">Aujourd'hui</h6>
                 </button>
-                 <button title="Boîte de réception" @click="swithBetweenTabs('week')"
+                 <button title="Programme de la semaine" @click="swithBetweenTabs('week')"
                   :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'week', 'text-gray-400 hover:bg-gray-200' : currentTab != 'week'}"
                   class="text-sm rounded-full px-4 pb-0.5 inline-flex">
                   <span v-if="currentTab != 'week'" class="mr-1 text-base material-icons-outlined">
@@ -83,7 +83,7 @@
                   </span>
                   <h6 class="mt-0.5">Semaine</h6>
                 </button>
-                 <button title="Boîte de réception" @click="swithBetweenTabs('month')"
+                 <button title="Programme du mois" @click="swithBetweenTabs('month')"
                   :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'month', 'text-gray-400 hover:bg-gray-200' : currentTab != 'month'}"
                   class="text-sm rounded-full px-4 pb-0.5 inline-flex">
                   <span v-if="currentTab != 'month'" class="mr-1 text-base material-icons-outlined">
@@ -100,15 +100,15 @@
 
           <div class="tabs">
             <div v-if="tabs.today" class="p-3 hover:bg-gray-50 text-gray-400 rounded-lg ">
-              1
+              
               <todo />
             </div>
             <div v-if="tabs.week" class="pt-3 px-3 space-y-2">
-              2
+              
               <todo />
             </div>
             <div v-if="tabs.month" class="pt-3 px-3 space-y-2">
-              3
+              
               <todo />
             </div>
           </div>
@@ -119,6 +119,7 @@
           <div class="h-auto w-full relative">
             <img class="h-32 object-scale-down" src="../../../public/assets/default_establishment_pp.png"
               alt="Photo de profil">
+            
           </div>
           <hr class="my-2">
           <button title="Compte Business"
@@ -156,13 +157,6 @@
                 <div class="ml-2">0,003 personnes</div>
               </div>
             </div>
-            <div title="Site web officiel" class="text-gray-400 inline-flex w-full">
-              <div class="text-md inline-flex">
-                <span class="text-md font-base">Url:</span>
-                <a target="_blank" href="https://www.univ-lome.tg/universite/instituts/isica"
-                  class="text-base text-gray-400 hover:underline line-clamp-1 ml-2"> www.wikipedia.com</a>
-              </div>
-            </div>
             <div title="Addresse e-mail officiel, écrivez-nous!" class="text-gray-400 inline-flex w-full">
               <div class="text-md inline-flex">
                 <span class="text-md font-base">Email:</span>
@@ -173,8 +167,9 @@
             <div title="Addresse e-mail officiel, écrivez-nous!" class="text-gray-400 inline-flex w-full">
               <div class="text-md inline-flex">
                 <span class="text-md font-base">Pays:</span>
-                <a target="_blank" href="mailto:isica_ul@univ-lome.tg"
-                  class="ml-2 text-base text-gray-400 line-clamp-1">Togo</a>
+                <span 
+                  class="ml-2 text-base text-gray-400 line-clamp-1">Togo</span>
+                    <img src="../../../public/assets/icons/flag-togo_1f1f9-1f1ec.png" alt="" class="h-6 ml-1" />
               </div>
             </div>
             <div title="Addresse e-mail officiel, écrivez-nous!" class="text-gray-400 inline-flex w-full">
@@ -190,6 +185,23 @@
                 <a target="_blank" href="tel:22890318830" class="hover:underline ml-2 text-base text-gray-400">228
                   {{ state.establishment.phoneNumber}}</a>
               </div>
+            </div>
+            <div class="mt-3">
+              <a title="www.google.com" target="_blank" href="www.google.com" class="hover:bg-blue-600 hover:text-white text-base text-blue-600 bg-white rounded-full border border-blue-600 px-3 py-0.5 inline-flex">
+                <span class="material-symbols-outlined text-lg mr-2">language</span>
+                <span class="mt-0.5">Acceder au site web</span>
+              </a>
+            </div>
+            <div>
+              <div class="grid grid-cols-2 gap-3 mt-6 mb-2">
+                <div class="bg-gray-100 h-28 rounded-md">
+                  <img class="object-cover h-full w-full rounded-md" src="https://images.pexels.com/photos/459203/pexels-photo-459203.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+                </div>
+                <div class="bg-gray-100 h-28 rounded-md">
+                  <img class="object-cover h-full w-full rounded-md" src="https://images.pexels.com/photos/2171277/pexels-photo-2171277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+                </div>
+              </div>
+              <h6 class="text-gray-400 text-xs underline">Tout afficher</h6>
             </div>
           </div>
         </div>

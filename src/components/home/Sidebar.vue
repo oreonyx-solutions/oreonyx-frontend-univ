@@ -197,6 +197,9 @@
                 expand_more
               </span>
               <h6>Matières</h6>
+               <div class="text-white px-1.5 bg-gray-600 ml-2 rounded-full flex justify-center items-center">
+              <h6 style="font-size:12px">10</h6>
+            </div>
             </div>
             <div class="items-center inline-flex relative"></div>
           </div>
@@ -288,6 +291,26 @@
           </h6>
         </div>
       </div>
+      <div class="px-6 pb-3">
+        <div title="Aide">
+          <router-link :to="{ name: 'blog' }">
+            <div class="
+                  hover:text-neutral-300
+                  text-neutral-400
+                  py-1.5
+                  rounded-md
+                  text-sm
+                  font-medium
+                  inline-flex
+                  w-full
+                ">
+              <span style="font-size:23px;" class="mr-2 material-icons-outlined">face_retouching_natural</span>
+              <h5 class="text-base">Support client (Telegram)</h5>
+            </div>
+          </router-link>
+        </div>
+      </div>
+
       <!-- </router-link> -->
       <hr>
       <div class="w-full px-6 py-3">
