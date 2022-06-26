@@ -1,10 +1,10 @@
 <template>
     <div class="communications h-auto">
-    <div class="inline-flex w-full">
-      <sidebar class="w-1/5 2xl:w-2/12'" />
-      <communications /> 
+       <div class="inline-flex w-full">
+        <sidebar class="w-1/5 2xl:w-2/12 2xl:bg-red-600'" />
+        <communications />
+      </div>
     </div>
-  </div>
 </template>
 
 <script>

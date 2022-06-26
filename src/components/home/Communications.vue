@@ -8,19 +8,29 @@
           <div class="flex items-start justify-between">
             <div class="flex justify-start">
               <div class="inline-flex mt-1 ">
-                <span style="font-size:20px;" class="mr-2 material-symbols-outlined text-white">cell_tower</span>
-                <h6 class="font-bold text-sm">Créer un communiqué</h6>
+                <h6 class="font-bold text-sm">Création du communiqué</h6>
               </div>
             </div>
-            <div class="items-center inline-flex space-x-3">
-              <button title="Publier cet communiqué" @click="showCommunicationOverview = false"
-                class="mt-0.5 bg-white px-3 py-2 rounded-md text-xs text-blue-600 font-medium flex justify-center items-center">
-                <h6 class="-mt-0.5">Publier</h6>
-              </button>
+            <div class="items-center inline-flex">
+              <div class="space-x-2 inline-flex mr-12 ">
+                <button title="Publier cet communiqué" @click="sendStatement()"
+                  class="shadow-xl mt-0.5 bg-white px-3 py-2 rounded-md text-xs text-blue-600 font-medium flex justify-center items-center">
+                  <h6 class="-mt-0.5">Publier</h6>
+                </button>
+                <div class="space-x-0.5 inline-flex">
+                  <button title="Afficher un aperçu" @click="showCommunicationOverview = false"
+                    class="mt-0.5 hover:bg-blue-500 px-2 py-1 rounded-full text-xs text-white font-medium flex justify-center items-center">
+                    <span class="text-sm material-icons-outlined">visibility</span>
+                  </button>
+                  <button title="Options supplémentaires" @click="showCommunicationOverview = false"
+                    class="mt-0.5 hover:bg-blue-500 px-2 py-1 rounded-full text-xs text-white font-medium flex justify-center items-center">
+                    <span class="text-sm material-icons-outlined">more_vert</span>
+                  </button>
+                </div>
+              </div>
               <button title="Retour" @click="showCommunicationForm = false"
-                class="mt-0.5 hover:bg-blue-500 px-3  rounded-md text-xs text-white font-medium flex justify-center items-center">
-                <span class="mr-1 text-base material-symbols-outlined">keyboard_backspace</span>
-                <h6 class="-mt-0.5">Retour</h6>
+                class="mt-0.5 hover:bg-blue-500 px-2 py-1 rounded-full text-xs text-white font-medium flex justify-center items-center">
+                <span class="text-sm material-icons-outlined">close</span>
               </button>
             </div>
           </div>
@@ -31,186 +41,355 @@
             <div class="w-full inline-flex">
               <div class="w-1/2 relative">
                 <div>
-                  <div title="Cliquer pour editer" @click="showSenderInformationsForm = true"
-                      class="flex group absolute right-16 -top-5 h-6 w-6 shadow rounded-full flex justify-center items-center">
-                      <button class="w-full h-full text-white bg-blue-600 rounded-full text-xs font-medium flex justify-center items-center">
-                      <span :class="{ 'animate-ping': !showSenderInformationsForm, 'hidden': showSenderInformationsForm }" class="absolute inline-flex h-6 w-6 rounded-full bg-blue-400 opacity-75"></span>
-                      <span class="text-xs material-symbols-rounded">
-                          edit
-                        </span>
-                      </button>
-                  </div>
-                  <div v-if="showSenderInformationsForm" class="text-gray-400 left-0 top-40 bg-white shadow absolute rounded-md w-96 z-10">
-                    <div class="px-3 pt-3">
-                    <div class="inline-flex w-full">
-                      <span class="mr-1 mt-2  material-symbols-outlined">domain</span>
-                      <input v-model="communications.communicationFormBody.senderInformations.ministerOffice" name="ministerOffice"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
-                    </div>
-                    <div class="inline-flex w-full">
-                      <span class="mr-1 mt-2  material-symbols-outlined">contacts</span>
-                      <input v-model="communications.communicationFormBody.senderInformations.department" name="department"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
-                    </div>
-                    <div class="inline-flex w-full">
-                      <span class="mr-1 mt-2  material-symbols-outlined">monitor_heart</span>
-                      <input v-model="communications.communicationFormBody.senderInformations.subdepartment" name="subdepartment"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
-                    </div>
-                    <div class="inline-flex w-full">
-                      <span class="mr-1 mt-2  material-symbols-outlined">pin</span>
-                      <input v-model="communications.communicationFormBody.senderInformations.reference" name="reference"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
-                    </div>
-                    </div>
-                    <div class="w-full px-3 py-2 border-t mt-2">
-                      <div class="flex items-start justify-between">
-                        <div class="flex justify-start"></div>
-                        <div class="items-center inline-flex space-x-2">
-                          <button @click="showSenderInformationsForm = false"
-                            class="text-gray-500 hover:bg-gray-100 px-3 py-1 text-xs rounded-md">Annuler</button>
-                          <button @click="submitSenderInformations"
-                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 text-xs rounded-md">Valider</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
                   <div class="text-center">
                     <div class="">
-                     <div class="flex justify-center ">
-                         <h6 class="w-2/3  uppercase text-sm leading-tight">
-                          {{ communications.communicationFormBody.senderInformations.ministerOffice }} 
-                        </h6>
-                     </div>
-                    <div>
-                      <span class="font-bold text-sm">---------</span>
-                      <h6 v-if="!communications.communicationFormBody.senderInformations.department" class="uppercase text-sm">
-                        DEPARTEMENT ?
+                      <h6 v-if="!communications.ministerOfficeState"
+                        class="w-2/3 uppercase text-sm leading-tight inline-flex">
+                        {{ communications.communicationFormBody.senderInformations.ministerOffice }}
                       </h6>
-                       <h6 v-if="communications.communicationFormBody.senderInformations.department" class="uppercase text-sm">
-                        {{ communications.communicationFormBody.senderInformations.department }}
-                      </h6>
-                      <span class="font-bold text-sm">---------</span>
-                      <h6 v-if="!communications.communicationFormBody.senderInformations.subdepartment" class="font-bold uppercase text-sm">
-                        SOUS-DEPARTEMENT ?
-                      </h6>
-                      <h6 v-if="communications.communicationFormBody.senderInformations.subdepartment" class="font-bold uppercase text-sm">
-                        {{ communications.communicationFormBody.senderInformations.subdepartment }}
-                      </h6>
-                      <h6 class="text-md">
-                        N<sup>o</sup> <span>{{ communications.communicationFormBody.senderInformations.reference }}</span>
-                      </h6>
-                    </div>
+                      <div class="w-full space-x-2 flex justify-center">
+                        <div v-if="communications.ministerOfficeState" class="inline-flex w-2/3 space-x-1">
+                          <div class="w-10/12">
+                            <input v-model="communications.communicationFormBody.senderInformations.ministerOffice"
+                              name="ministerOffice"
+                              class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
+                          </div>
+                          <button title="valider" @click="communications.ministerOfficeState = false"
+                            class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
+                            <span class="material-symbols-outlined">
+                              check
+                            </span>
+                          </button>
+                          <button title="Annuler" @click="communications.ministerOfficeState = false"
+                            class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
+                            <span class="material-symbols-outlined">
+                              close
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                      <div v-if="!communications.ministerOfficeState" class="flex justify-center">
+                        <button @click="communications.ministerOfficeState = true"
+                          class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
+                          <span class="text-xs material-symbols-rounded">
+                            edit
+                          </span>
+                        </button>
+                      </div>
+                      <div>
+                        <span class="font-bold text-sm">---------</span>
+                        <div class="">
+                          <h6 v-if="!communications.communicationFormBody.senderInformations.department"
+                            class="uppercase text-sm">
+                            DEPARTEMENT ?
+                          </h6>
+                          <h6 v-if="!communications.departmentState"
+                            class="text-center uppercase text-sm leading-tight inline-flex">
+                            {{ communications.communicationFormBody.senderInformations.department }}
+                          </h6>
+                          <div class="w-full space-x-2 flex justify-center">
+                            <div v-if="communications.departmentState" class="inline-flex w-2/3 space-x-1">
+                              <div class="w-10/12">
+                                <input v-model="communications.communicationFormBody.senderInformations.department"
+                                  name="ministerOffice"
+                                  class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
+                              </div>
+                              <button title="valider" @click="communications.departmentState = false"
+                                class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
+                                <span class="material-symbols-outlined">
+                                  check
+                                </span>
+                              </button>
+                              <button title="Annuler" @click="communications.departmentState = false"
+                                class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
+                                <span class="material-symbols-outlined">
+                                  close
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                          <div v-if="!communications.departmentState" class="flex justify-center">
+                            <button @click="communications.departmentState = true"
+                              class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
+                              <span class="text-xs material-symbols-rounded">
+                                edit
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                        <span class="font-bold text-sm">---------</span>
+                        <div>
+                          <h6 v-if="!communications.communicationFormBody.senderInformations.subdepartment"
+                            class="text-bold uppercase text-sm">
+                            SOUS-DEPARTEMENT ?
+                          </h6>
+                          <h6 v-if="!communications.subdepartmentState"
+                            class="text-center uppercase text-sm leading-tight inline-flex font-bold">
+                            {{ communications.communicationFormBody.senderInformations.subdepartment }}
+                          </h6>
+                          <div class="w-full space-x-2 flex justify-center">
+                            <div v-if="communications.subdepartmentState" class="inline-flex w-2/3 space-x-1">
+                              <div class="w-10/12">
+                                <input v-model="communications.communicationFormBody.senderInformations.subdepartment"
+                                  name="ministerOffice"
+                                  class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
+                              </div>
+                              <button title="valider" @click="communications.subdepartmentState = false"
+                                class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
+                                <span class="material-symbols-outlined">
+                                  check
+                                </span>
+                              </button>
+                              <button title="Annuler" @click="communications.subdepartmentState = false"
+                                class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
+                                <span class="material-symbols-outlined">
+                                  close
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                          <div v-if="!communications.subdepartmentState" class="flex justify-center">
+
+                            <button @click="communications.subdepartmentState = true"
+                              class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
+                              <span class="text-xs material-symbols-rounded">
+                                edit
+                              </span>
+                            </button>
+
+                          </div>
+                        </div>
+
+                        <div>
+                          <h6 v-if="!communications.referenceState" class="text-md">
+                            N<sup>o</sup>
+                            <span>{{ communications.communicationFormBody.senderInformations.reference }}</span>
+                          </h6>
+                          <div class="w-full space-x-2 flex justify-center">
+                            <div v-if="communications.referenceState" class="inline-flex w-2/3 space-x-1">
+                              <div class="w-10/12">
+                                <input v-model="communications.communicationFormBody.senderInformations.reference"
+                                  name="ministerOffice"
+                                  class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
+                              </div>
+                              <button title="valider" @click="communications.referenceState = false"
+                                class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
+                                <span class="material-symbols-outlined">
+                                  check
+                                </span>
+                              </button>
+                              <button title="Annuler" @click="communications.referenceState = false"
+                                class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
+                                <span class="material-symbols-outlined">
+                                  close
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                          <div v-if="!communications.referenceState" class="flex justify-center">
+                            <button @click="communications.referenceState = true"
+                              class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
+                              <span class="text-xs material-symbols-rounded">
+                                edit
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="w-1/2 relative">
                 <div>
-                  <div title="Cliquer pour editer" @click="showCountryInformationsForm = true"
-                      class="flex group absolute right-28 -top-5 h-6 w-6 shadow rounded-full flex justify-center items-center">
-                      <button class="w-full h-full text-white bg-blue-600 rounded-full text-xs font-medium flex justify-center items-center">
-                      <span :class="{ 'animate-ping': !showCountryInformationsForm, 'hidden': showCountryInformationsForm }" class="absolute inline-flex h-6 w-6 rounded-full bg-blue-400 opacity-75"></span>
-                      <span class="text-xs material-symbols-rounded">
-                          edit
-                        </span>
-                      </button>
-                  </div>
-                  <div v-if="showCountryInformationsForm" class="text-gray-400 left-32 top-28 bg-white shadow absolute rounded-md w-80 z-10">
-                    <div class="px-3 pt-3">
-                    <div class="inline-flex w-full">
-                      <span class="mr-1 mt-2  material-symbols-outlined">flag</span>
-                      <input v-model="communications.communicationFormBody.countryInformations.republic" name="republic"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
+                  <div class="text-center ">
+                    <!-- country -->
+                    <div>
+                      <h6 v-if="!communications.republicState" class="uppercase text-sm leading-tight inline-flex">
+                        {{ communications.communicationFormBody.countryInformations.republic }}
+                      </h6>
+                      <div class="w-full space-x-2 flex justify-center">
+                        <div v-if="communications.republicState" class="inline-flex w-2/3 space-x-1">
+                          <div class="w-10/12">
+                            <input v-model="communications.communicationFormBody.countryInformations.republic"
+                              name="ministerOffice"
+                              class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
+                          </div>
+                          <button title="valider" @click="communications.republicState = false"
+                            class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
+                            <span class="material-symbols-outlined">
+                              check
+                            </span>
+                          </button>
+                          <button title="Annuler" @click="communications.republicState = false"
+                            class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
+                            <span class="material-symbols-outlined">
+                              close
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                      <div v-if="!communications.republicState" class="flex justify-center">
+                        <button @click="communications.republicState = true"
+                          class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
+                          <span class="text-xs material-symbols-rounded">
+                            edit
+                          </span>
+                        </button>
+                      </div>
                     </div>
-                    <div class="inline-flex w-full">
-                      <span class="mr-1 mt-2  material-symbols-outlined">handshake</span>
-                      <input v-model="communications.communicationFormBody.countryInformations.motto" name="motto"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
+
+                    <div>
+                      <h6 v-if="!communications.mottoState" class="uppercase text-sm leading-tight inline-flex">
+                        {{ communications.communicationFormBody.countryInformations.motto }}
+                      </h6>
+                      <div class="w-full space-x-2 flex justify-center">
+                        <div v-if="communications.mottoState" class="inline-flex w-2/3 space-x-1">
+                          <div class="w-10/12">
+                            <input v-model="communications.communicationFormBody.countryInformations.motto"
+                              name="ministerOffice"
+                              class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
+                          </div>
+                          <button title="valider" @click="communications.mottoState = false"
+                            class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
+                            <span class="material-symbols-outlined">
+                              check
+                            </span>
+                          </button>
+                          <button title="Annuler" @click="communications.mottoState = false"
+                            class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
+                            <span class="material-symbols-outlined">
+                              close
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                      <div v-if="!communications.mottoState" class="flex justify-center">
+                        <button @click="communications.mottoState = true"
+                          class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
+                          <span class="text-xs material-symbols-rounded">
+                            edit
+                          </span>
+                        </button>
+                      </div>
                     </div>
-                    <div class="inline-flex w-full">
-                      <span class="mr-1 mt-2  material-symbols-outlined">corporate_fare</span>
-                      <input v-model="communications.communicationFormBody.countryInformations.city" name="city"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
-                    </div>
-                    <div class="inline-flex w-full">
-                      <span class="mr-1 mt-2  material-symbols-outlined">today</span>
-                      <input v-model="communications.communicationFormBody.countryInformations.date" name="date"
-                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
-                    </div>
-                    </div>
-                    <div class="w-full px-3 py-2 border-t mt-2">
-                      <div class="flex items-start justify-between">
-                        <div class="flex justify-start"></div>
-                        <div class="items-center inline-flex space-x-2">
-                          <button @click="showCountryInformationsForm = false"
-                            class="text-gray-500 hover:bg-gray-100 px-3 py-1 text-xs rounded-md">Annuler</button>
-                          <button @click="showCountryInformationsForm = false"
-                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 text-xs rounded-md">Valider</button>
+
+                    <span class="font-bold text-sm">---------</span>
+                    <div>
+                      <h6 v-if="!communications.cityState"
+                        class="uppercase text-sm leading-tight inline-flex space-x-2">
+                        <div class="mt-2">
+                          {{ communications.communicationFormBody.countryInformations.city }}, le
+                        </div>
+                        <div class="flex justify-center">
+                          <button @click="communications.cityState = true"
+                            class="ml-1 w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
+                            <span class="text-xs material-symbols-rounded">
+                              edit
+                            </span>
+                          </button>
+                        </div>
+                        <code class=" text-red-600 text-xl uppercase">
+                          {{ communications.communicationFormBody.countryInformations.date }}</code>
+                        <div class="flex justify-center">
+                          <button @click="communications.dateState = true"
+                            class="w-6 h-6 text-gray-500 bg-gray-100 rounded-full text-xs font-medium flex justify-center items-center">
+                            <span class="text-xs material-symbols-rounded">
+                              edit
+                            </span>
+                          </button>
+                        </div>
+                      </h6>
+                      <div class="w-full space-x-2 flex justify-center">
+                        <div v-if="communications.cityState" class="inline-flex w-2/3 space-x-1">
+                          <div class="w-10/12">
+                            <input v-model="communications.communicationFormBody.countryInformations.city"
+                              name="ministerOffice"
+                              class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
+                          </div>
+                          <button title="valider" @click="communications.cityState = false"
+                            class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
+                            <span class="material-symbols-outlined">
+                              check
+                            </span>
+                          </button>
+                          <button title="Annuler" @click="communications.cityState = false"
+                            class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
+                            <span class="material-symbols-outlined">
+                              close
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="w-full space-x-2 flex justify-center">
+                        <div v-if="communications.dateState" class="inline-flex w-2/3 space-x-1">
+                          <div class="w-10/12">
+                            <input v-model="communications.communicationFormBody.countryInformations.date"
+                              name="ministerOffice"
+                              class="w-full block py-2 px-3 border border-gray-300 bg-white  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 " />
+                          </div>
+                          <button title="valider" @click="communications.dateState = false"
+                            class="text-white bg-teal-600 hover:bg-teal-700 h-10 w-10 flex justify-center items-center">
+                            <span class="material-symbols-outlined">
+                              check
+                            </span>
+                          </button>
+                          <button title="Annuler" @click="communications.dateState = false"
+                            class="text-gray-400 bg-gray-200 hover:bg-gray-300  h-10 w-10 flex justify-center items-center">
+                            <span class="material-symbols-outlined">
+                              close
+                            </span>
+                          </button>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div>
-                  <div class="text-center ">
-                    <h6 class="uppercase text-sm leading-tight">
-                      {{ communications.communicationFormBody.countryInformations.republic }}
-                    </h6>
-                    <h6 class="text-sm">
-                       {{ communications.communicationFormBody.countryInformations.motto }}
-                    </h6>
-                    <span class="font-bold text-sm">---------</span>
-                    <h6 class="text-sm mt-3">
-                       {{ communications.communicationFormBody.countryInformations.city }}, le <code class="m-3 text-red-600 text-xl uppercase"> {{ communications.communicationFormBody.countryInformations.date }}</code>
-                    </h6>
+
                   </div>
                 </div>
               </div>
             </div>
             <div class="pt-24 relative">
-              <div>
-                  <div title="Cliquer pour editer" @click="showCommunicationContentForm = true"
-                      class="flex group absolute left-80 top-32 h-6 w-6 shadow rounded-full flex justify-center items-center">
-                      <button class="w-full h-full text-white bg-blue-600 rounded-full text-xs font-medium flex justify-center items-center">
-                      <span :class="{ 'animate-ping': !showCommunicationContentForm, 'hidden': showCommunicationContentForm }" class="absolute inline-flex h-6 w-6 rounded-full bg-blue-400 opacity-75"></span>
-                      <span class="text-xs material-symbols-rounded">
-                          edit
-                        </span>
-                      </button>
-                  </div>
-                  <div v-if="showCommunicationContentForm" class="text-gray-400 left-0 top-40 bg-white shadow absolute rounded-md w-full z-10">
-                    <div class="px-3 pt-3">
-                      <div class="inline-flex w-full">
-                        <span class="mr-1 mt-2  material-symbols-outlined">title</span>
-                        <input v-model="communications.communicationFormBody.communicationContent.title" name="title"
-                          class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
-                      </div>
-                       <div class="inline-flex w-full">
-                        <span class="mr-1 mt-2  material-symbols-outlined">comment</span>
-                         <div class="mt-1 w-full">
-                          <textarea style="resize: none;" v-model="communications.communicationFormBody.communicationContent.content" id="about" name="about" rows="15" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
-                        </div>
-                      </div>
+              <h6 class="text-center uppercase text-2xl font-bold">COMMUNIQUE</h6>
+              <div class="mt-10 mx-24">
+                <QuillEditor ref="quill" theme="snow" toolbar="#custom-toolbar">
+                  <template #toolbar>
+                    <div id="custom-toolbar">
+                      <select class="ql-size">
+                        <option value="small"></option>
+                        <option selected></option>
+                        <option value="large"></option>
+                        <option value="huge"></option>
+                      </select>
+                      <select class="ql-header">
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5"></option>
+                        <option value="6"></option>
+                        <option selected></option>
+                      </select>
+                      <button class="ql-bold"></button>
+                      <button class="ql-italic"></button>
+                      <button class="ql-underline"></button>
+                      <button class="ql-strike"></button>
+                      <button class="ql-script" value="sub"></button>
+                      <button class="ql-script" value="super"></button>
+                      <select class="ql-align">
+                        <option selected></option>
+                        <option value="center"></option>
+                        <option value="right"></option>
+                        <option value="justify"></option>
+                      </select>
+                      <button class="ql-list" value="ordered"></button>
+                      <button class="ql-list" value="bullet"></button>
+                      <button class="ql-blockquote"></button>
+                      <button class="ql-code-block"></button>
+                      <button class="ql-link"></button>
+                      <button class="ql-image"></button>
                     </div>
-                    <div class="w-full px-3 py-2 border-t mt-2">
-                      <div class="flex items-start justify-between">
-                        <div class="flex justify-start"></div>
-                        <div class="items-center inline-flex space-x-2">
-                          <button @click="showCommunicationContentForm = false"
-                            class="text-gray-500 hover:bg-gray-100 px-3 py-1 text-xs rounded-md">Annuler</button>
-                          <button @click="showCommunicationContentForm"
-                            class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 text-xs rounded-md">Valider</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <h6 class="text-center uppercase text-2xl font-bold">{{ communications.communicationFormBody.communicationContent.title }}</h6>
-              <div class="mt-10 mx-24 text-xl">
-                {{ communications.communicationFormBody.communicationContent.content }}
+                  </template>
+                </QuillEditor>
               </div>
             </div>
           </div>
@@ -218,8 +397,8 @@
       </div>
     </div>
 
-    <div v-if="showCommunicationOverview" class="absolute z-10 h-full w-full bg-white">
-      <!-- write communication  v-if="showCommunicationForm" -->
+    <div class="absolute z-30 h-full w-full bg-white">
+      <!-- v-if="showCommunicationOverview"  write communication  v-if="showCommunicationForm" -->
       <div class="relative h-full top-0 left-0 z-10 w-full">
         <div class="w-full absolute top-0 bg-blue-600 line-clamp text-white px-4 py-2">
           <div class="flex items-start justify-between">
@@ -246,9 +425,8 @@
             </div>
             <div class="items-center inline-flex">
               <button title="Retour" @click="showCommunicationOverview = false"
-                class="mt-0.5 hover:bg-blue-500 px-3  rounded-md text-xs text-white font-medium flex justify-center items-center">
-                <span class="mr-1 text-base material-symbols-outlined">keyboard_backspace</span>
-                <h6 class="-mt-0.5">Retour</h6>
+                class="mt-0.5 hover:bg-blue-500 px-2 py-1 rounded-full text-xs text-white font-medium flex justify-center items-center">
+                <span class="text-sm material-symbols-outlined">close</span>
               </button>
             </div>
           </div>
@@ -433,40 +611,29 @@
       </div>
     </div>
 
-    <div v-if="!showCommunicationForm">
+    <div class="" v-if="!showCommunicationForm">
       <div class="inline-flex w-full">
-        <div class="flex rounded-md shadow-sm w-full">
-          <span
-            class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-white text-gray-500 text-sm">
-            <span class="material-symbols-outlined">search</span>
-          </span>
-          <input type="text" name="company-website" id="company-website"
-            class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-            placeholder="Rechercher des communiqués...">
-        </div>
-        <button type="submit"
-          class="ml-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Rechercher</button>
+        <search />
       </div>
       <div class="mt-3">
-        <h6 class="text-sm text-blue-600 font-bold mb-1">Termes les plus recherchés</h6>
+        <h6 class="text-sm text-blue-600 font-bold mb-1">Recherche par tags</h6>
         <div class="w-full inline-flex space-x-2">
-          <button title="Cliquer pour rechercher"
-            class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">Fireboy</button>
-          <button title="Cliquer pour rechercher"
-            class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">Rema</button>
-          <button title="Cliquer pour rechercher"
-            class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">Victony</button>
-          <button title="Cliquer pour rechercher"
-            class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">SpyceBoy</button>
-          <button title="Cliquer pour rechercher"
-            class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">Burna
-            boy</button>
-          <button title="Cliquer pour rechercher"
-            class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">Lojay</button>
-          <button title="Cliquer pour rechercher"
-            class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">Wizkid</button>
-          <button title="Cliquer pour rechercher"
-            class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">Davido</button>
+          <button title="Cliquer pour rechercher" @click="query = 'tag1'"
+            class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">tag 1</button>
+          <button title="Cliquer pour rechercher" @click="query = 'tag2'"
+            class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">tag 2</button>
+          <button title="Cliquer pour rechercher" class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">tag
+            3</button>
+          <button title="Cliquer pour rechercher" class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">tag
+            4</button>
+          <button title="Cliquer pour rechercher" class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">tag
+            5</button>
+          <button title="Cliquer pour rechercher" class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">tag
+            6</button>
+          <button title="Cliquer pour rechercher" class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">tag
+            7</button>
+          <button title="Cliquer pour rechercher" class="bg-gray-100 text-sm text-gray-400 rounded-full px-4 pb-0.5">tag
+            8</button>
         </div>
       </div>
       <hr class="my-6">
@@ -489,10 +656,10 @@
               <div class="grid grid-cols-6 gap-4">
                 <div class="cursor-pointer transform hover:-translate-y-1 relative">
                   <button
-                    class="flex justify-center items-center hover:bg-teal-100 h-8 w-8 rounded-md absolute top-2 right-2 transition-all"
+                    class="flex justify-center items-center hover:bg-red-100 h-8 w-8 rounded-full absolute top-2 right-2 transition-all"
                     title="Epinglé par l'administrateur principal">
-                    <span class="text-teal-600 material-symbols-rounded">
-                      stars
+                    <span class="text-lg text-red-500 material-icons-outlined">
+                      hotel_class
                     </span>
                   </button>
                   <div class="bg-white rounded-lg h-52 w-full shadow">
@@ -569,126 +736,117 @@
                 </div>
               </div>
               <div class="w-full inline-flex space-x-2 mb-3">
-                <button title="Boîte de réception"
-                  class="text-sm bg-blue-600 text-white rounded-full px-4 pb-0.5 inline-flex">
-                  <span class="mr-1 -mt-1 text-lg material-symbols-outlined">
+                <button title="Boîte de réception" @click="swithBetweenTabs('upcoming')"
+                  :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'upcoming', 'text-gray-400 hover:bg-gray-200' : currentTab != 'upcoming'}"
+                  class="text-sm rounded-full px-4 pb-0.5 inline-flex">
+                  <span v-if="currentTab != 'upcoming'" class="mr-1 -mt-1 text-lg material-icons-outlined">
+                    upcoming
+                  </span>
+                  <span v-if="currentTab == 'upcoming'" class="mr-1 -mt-1 text-lg material-icons-round">
                     upcoming
                   </span>
                   <h6 class="mt-0.5">Boîte de réception </h6>
                 </button>
-                <button title="Non lus" class="text-sm bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5 inline-flex">
+                <button title="Boîte de réception" @click="swithBetweenTabs('not_read')"
+                  :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'not_read', 'text-gray-400 hover:bg-gray-200' : currentTab != 'not_read'}"
+                  class="text-sm rounded-full px-4 pb-0.5 inline-flex">
+                  <span v-if="currentTab != 'not_read'" class="mr-1 text-base material-icons-outlined">
+                    mark_email_unread
+                  </span>
+                  <span v-if="currentTab == 'not_read'" class="mr-1 text-base material-icons-round">
+                    mark_email_unread
+                  </span>
                   <h6 class="mt-0.5">Non lus</h6>
                 </button>
-                <button title="Favoris" class="text-sm bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5 inline-flex">
+                <button title="Boîte de réception" @click="swithBetweenTabs('favorites')"
+                  :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'favorites', 'text-gray-400 hover:bg-gray-200' : currentTab != 'favorites'}"
+                  class="text-sm rounded-full px-4 pb-0.5 inline-flex">
+                  <span v-if="currentTab != 'favorites'" class="mr-1 text-base material-icons-outlined">
+                    favorite_border
+                  </span>
+                  <span v-if="currentTab == 'favorites'" class="mr-1 text-base material-icons-outlined">
+                    favorite
+                  </span>
                   <h6 class="mt-0.5">Favoris</h6>
                 </button>
-                <button title="Brouillons" class="text-sm bg-gray-100 text-gray-400 rounded-full px-4 pb-0.5 inline-flex">
+                <button title="Boîte de réception" @click="swithBetweenTabs('draft')"
+                  :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'draft', 'text-gray-400 hover:bg-gray-200' : currentTab != 'draft'}"
+                  class="text-sm rounded-full px-4 pb-0.5 inline-flex">
+                  <span v-if="currentTab != 'draft'" class="mr-1 text-base material-icons-outlined">
+                    draw
+                  </span>
+                  <span v-if="currentTab == 'draft'" class="mr-1 text-base material-icons-round">
+                    draw
+                  </span>
                   <h6 class="mt-0.5">Brouillons</h6>
                 </button>
               </div>
-              <div class="bg-white rounded-xl py-3">
-                <div class="px-3 inline-flex py-2 hover:shadow">
-                  <div @click="proceedShowCommunicationOverview" class="hidden cursor-pointer border-b">
-                    <div class="inline-flex w-full relative">
-                      <div class="h-2 w-2 absolute rounded-full bg-red-600 text-white text-xs right-0"></div>
-                      <div class="mr-2 h-6 w-6 bg-gray-100 rounded-full">
-                        <img class="h-full w-full rounded-full object-cover"
-                          :src="'https://images.pexels.com/photos/12082493/pexels-photo-12082493.jpeg?cs=srgb&dl=pexels-elena-rubtsova-12082493.jpg&fm=jpg'"
-                          alt="Photo de profil" />
+              <div class="tabs">
+                    <div v-if="tabs.upcoming" class="">
+                      <div class="px-3 inline-flex py-2 hover:shadow">
+                        <div @click="proceedShowCommunicationOverview" class="hidden cursor-pointer border-b">
+                          <div class="inline-flex w-full relative">
+                            <div class="h-2 w-2 absolute rounded-full bg-red-600 text-white text-xs right-0"></div>
+                            <div class="mr-2 h-6 w-6 bg-gray-100 rounded-full">
+                              <img class="h-full w-full rounded-full object-cover"
+                                :src="'https://images.pexels.com/photos/12082493/pexels-photo-12082493.jpeg?cs=srgb&dl=pexels-elena-rubtsova-12082493.jpg&fm=jpg'"
+                                alt="Photo de profil" />
+                            </div>
+                            <h5 class="text-sm line-clamp-1 mt-0.5">Da'Silvera Jeremie</h5>
+                            <span class="text-sm text-blue-600 ml-1 mt-0.5 material-symbols-rounded">verified</span>
+                            <span class="text-sm ml-2 mt-0.5">- Il y'a 3h</span>
+                          </div>
+                          <h5 class="text-gray-500 text-sm line-clamp-2 -mt-1 ">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et voluptates deleniti molestias
+                            similique pariatur cumque corporis maxime error aperiam totam! Libero blanditiis dolorum
+                            iste repudiandae accusantium totam ea aliquid obcaecati!.
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio modi neque, iusto
+                            libero quidem pariatur iure fugit nulla, nisi velit odit maxime veritatis rem, error saepe.
+                            Aspernatur modi tenetur quia?
+                          </h5>
+                        </div>
+                        <div class="inline-flex w-10/12 cursor-pointer space-x-4">
+                          <div class="inline-flex h-5 mt-0.5">
+                            <input id="comments" name="comments" type="checkbox"
+                              class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                          </div>
+                          <div class="">
+                            <h5 class="text-sm line-clamp-1 font-bold">John Doe</h5>
+                          </div>
+                          <div @click="proceedShowCommunicationOverview" class="inline-flex w-full relative">
+                            <h5 class="text-sm line-clamp-1 font-medium">Lorem ipsum dolor sit amet consectetur
+                              adipisicing
+                              elit. Quos vel aut, laboriosam dicta, repudiandae labore cumque nobis doloribus enim, et
+                              molestias delectus vitae odit? Deleniti consequatur voluptatem unde beatae ullam.</h5>
+                          </div>
+                        </div>
+                        <div class="inline-flex w-2/12 relative">
+                          <div class="absolute inline-flex space-x-2 right-0 ">
+                            <button
+                              class="-mt-0.5 flex justify-center items-center hover:bg-gray-100 h-6 w-6 rounded-md transition-all"
+                              title="Ajouter au favoris">
+                              <span class="text-sm material-icons-outlined">
+                                star_outline
+                              </span>
+                            </button>
+                            <h5 class="text-sm line-clamp-1">15 Juin</h5>
+                            <div class="h-2 w-2 rounded-full bg-red-600 text-white text-xs"></div>
+                          </div>
+                        </div>
                       </div>
-                      <h5 class="text-sm line-clamp-1 mt-0.5">Da'Silvera Jeremie</h5>
-                      <span class="text-sm text-blue-600 ml-1 mt-0.5 material-symbols-rounded">verified</span>
-                      <span class="text-sm ml-2 mt-0.5">- Il y'a 3h</span>
+                      <hr>
+
                     </div>
-                    <h5 class="text-gray-500 text-sm line-clamp-2 -mt-1 ">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et voluptates deleniti molestias
-                      similique pariatur cumque corporis maxime error aperiam totam! Libero blanditiis dolorum
-                      iste repudiandae accusantium totam ea aliquid obcaecati!.
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio modi neque, iusto
-                      libero quidem pariatur iure fugit nulla, nisi velit odit maxime veritatis rem, error saepe.
-                      Aspernatur modi tenetur quia?
-                    </h5>
-                  </div>
-                  <div class="inline-flex w-10/12 cursor-pointer space-x-4">
-                    <div class="inline-flex h-5 mt-0.5">
-                      <input id="comments" name="comments" type="checkbox"
-                        class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                    <div v-if="tabs.not_read" class="pt-3 px-3 space-y-2">
+                      contenu non lu
                     </div>
-                    <div class="">
-                      <h5 class="text-sm line-clamp-1 font-bold">John Doe</h5>
+                    <div v-if="tabs.favorites" class="pt-3 px-3 space-y-2">
+                      contenu en favoris
                     </div>
-                    <div @click="proceedShowCommunicationOverview" class="inline-flex w-full relative">
-                      <h5 class="text-sm line-clamp-1 font-medium">Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Quos vel aut, laboriosam dicta, repudiandae labore cumque nobis doloribus enim, et
-                        molestias delectus vitae odit? Deleniti consequatur voluptatem unde beatae ullam.</h5>
+                    <div v-if="tabs.draft" class="pt-3 px-3 space-y-2">
+                      contenu au brouillons
                     </div>
                   </div>
-                  <div class="inline-flex w-2/12 relative">
-                    <div class="absolute inline-flex space-x-2 right-0 ">
-                      <button
-                        class="-mt-0.5 flex justify-center items-center hover:bg-gray-100 h-6 w-6 rounded-md transition-all"
-                        title="Ajouter au favoris">
-                        <span class="text-sm material-icons-outlined">
-                          star_outline
-                        </span>
-                      </button>
-                      <h5 class="text-sm line-clamp-1">15 Juin</h5>
-                      <div class="h-2 w-2 rounded-full bg-red-600 text-white text-xs"></div>
-                    </div>
-                  </div>
-                </div>
-                <hr>
-                <div class="px-3 inline-flex py-2 hover:shadow">
-                  <div @click="proceedShowCommunicationOverview" class="hidden cursor-pointer border-b">
-                    <div class="inline-flex w-full relative">
-                      <div class="h-2 w-2 absolute rounded-full bg-red-600 text-white text-xs right-0"></div>
-                      <div class="mr-2 h-6 w-6 bg-gray-100 rounded-full">
-                        <img class="h-full w-full rounded-full object-cover"
-                          :src="'https://images.pexels.com/photos/12082493/pexels-photo-12082493.jpeg?cs=srgb&dl=pexels-elena-rubtsova-12082493.jpg&fm=jpg'"
-                          alt="Photo de profil" />
-                      </div>
-                      <h5 class="text-sm line-clamp-1 mt-0.5">Da'Silvera Jeremie</h5>
-                      <span class="text-sm text-blue-600 ml-1 mt-0.5 material-symbols-rounded">verified</span>
-                      <span class="text-sm ml-2 mt-0.5">- Il y'a 3h</span>
-                    </div>
-                    <h5 class="text-gray-500 text-sm line-clamp-2 -mt-1 ">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et voluptates deleniti molestias
-                      similique pariatur cumque corporis maxime error aperiam totam! Libero blanditiis dolorum
-                      iste repudiandae accusantium totam ea aliquid obcaecati!.
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio modi neque, iusto
-                      libero quidem pariatur iure fugit nulla, nisi velit odit maxime veritatis rem, error saepe.
-                      Aspernatur modi tenetur quia?
-                    </h5>
-                  </div>
-                  <div class="inline-flex w-10/12 cursor-pointer space-x-4">
-                    <div class="inline-flex h-5 mt-0.5">
-                      <input id="comments" name="comments" type="checkbox"
-                        class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                    </div>
-                    <div class="">
-                      <h5 class="text-sm line-clamp-1 font-bold">John Doe</h5>
-                    </div>
-                    <div @click="proceedShowCommunicationOverview" class="inline-flex w-full relative">
-                      <h5 class="text-sm line-clamp-1 font-medium">Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Quos vel aut, laboriosam dicta, repudiandae labore cumque nobis doloribus enim, et
-                        molestias delectus vitae odit? Deleniti consequatur voluptatem unde beatae ullam.</h5>
-                    </div>
-                  </div>
-                  <div class="inline-flex w-2/12 relative">
-                    <div class="absolute inline-flex space-x-2 right-0 ">
-                      <button
-                        class="-mt-0.5 flex justify-center items-center hover:bg-gray-100 h-6 w-6 rounded-md transition-all"
-                        title="Ajouter au favoris">
-                        <span class="text-sm material-icons-outlined">
-                          star_outline
-                        </span>
-                      </button>
-                      <h5 class="text-sm line-clamp-1">15 Juin</h5>
-                      <div class="h-2 w-2 rounded-full bg-red-600 text-white text-xs"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -699,11 +857,24 @@
 
 <script>
   import {
-    ref
+    ref,
+    onMounted
   } from 'vue'
+
+  //import search component
+  import Search from '@/components/utils/Search.vue'
+
+  import {
+    QuillEditor
+  } from '@vueup/vue-quill'
+  import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
   export default {
     name: "Agenda",
+    components: {
+      QuillEditor,
+      Search
+    },
 
     setup() {
       const showCommunicationForm = ref(false)
@@ -711,6 +882,52 @@
       const showSenderInformationsForm = ref(false)
       const showCountryInformationsForm = ref(false)
       const showCommunicationContentForm = ref(false)
+
+      
+
+
+      const tabs = ref({
+        upcoming: true,
+        not_read: false,
+        favorites: false,
+        draft: false,
+      })
+
+      let currentTab = ref(null)
+
+      const swithTabFromTrueToFalse = (element) => {
+        switch (element) {
+          case 'upcoming':
+            tabs.value.upcoming = true
+            tabs.value.not_read = false
+            tabs.value.favorites = false
+            tabs.value.draft = false
+            break;
+          case 'not_read':
+            tabs.value.upcoming = false
+            tabs.value.not_read = true
+            tabs.value.favorites = false
+            tabs.value.draft = false
+            break;
+          case 'favorites':
+            tabs.value.upcoming = false
+            tabs.value.not_read = false
+            tabs.value.favorites = true
+            tabs.value.draft = false
+            break;
+          default:
+            tabs.value.upcoming = false
+            tabs.value.not_read = false
+            tabs.value.favorites = false
+            tabs.value.draft = true
+            break;
+        }
+        currentTab.value = element
+      }
+
+      const swithBetweenTabs = (tabName) => {
+        swithTabFromTrueToFalse(tabName)
+      }
 
       const submitCommunicationForm = () => {
         showCommunicationForm.value = false
@@ -724,30 +941,46 @@
         showCommunicationOverview.value = true
       }
 
-      const communications = ref ({
-          list: {},
-          communicationFormBody: {
-              senderInformations: {
-                ministerOffice : "Ministère de l'Enseignement Supérieur et de la Recherche",
-                department: "Secrétariat Général",
-                subdepartment: "Direction des Bourses et Stages",
-                reference: "254/2022/MESR/SG/DBS"
-              },
-              countryInformations: {
-                republic: "Republique Togolaise",
-                motto: "Travail-Liberté-Patrie",
-                city: "Lomé",
-                date: "24 Juin 2022"
-              },
-              communicationContent: {
-                title: "Communiqué",
-                content: "Contenu de votre communiqué ...",
-                headName: "",
-                signature: "",
-                pad: "",
-              },
-          }
+      const communications = ref({
+        ministerOfficeState: false,
+        departmentState: false,
+        subdepartmentState: false,
+        referenceState: false,
+        republicState: false,
+        mottoState: false,
+        dateState: false,
+        contentState: false,
+        headNameState: false,
+        signatureState: false,
+        padState: false,
+        list: {},
+        communicationFormBody: {
+          senderInformations: {
+            ministerOffice: "Ministère de l'Enseignement Supérieur et de la Recherche",
+            department: "Secrétariat Général",
+            subdepartment: "Direction des Bourses et Stages",
+            reference: "254/2022/MESR/SG/DBS"
+          },
+          countryInformations: {
+            republic: "Republique Togolaise",
+            motto: "Travail-Liberté-Patrie",
+            city: "Lomé",
+            date: "24 Juin 2022"
+          },
+          communicationContent: {
+            content: "Contenu de votre communiqué ...",
+            headName: "",
+            signature: "",
+            pad: "",
+          },
+        }
       })
+
+
+      const sendStatement = () => {
+        //communications.value.communicationFormBody
+        console.log('statement content:', quill.getContents())
+      }
 
       const submitSenderInformations = () => {
         store.apiCallMethods.post('/link', data).then(
@@ -769,39 +1002,76 @@
           })
       }
 
-      const submitCommunicationContent = () => {
+      const submitStatement = () => {
         store.apiCallMethods.post('/link', data).then(
           (res) => {
             if (res) {
               console.log('response', res)
-              //communicationFormBody.communicationContent.value = res.data
             }
           })
       }
 
-      const getCommunications = () => {
+      const deleteStatement = (statementId) => {
+        store.apiCallMethods.delete('/link').then(
+          (res) => {
+            if (res) {
+              console.log('response', res)
+            }
+          })
+      }
+
+      const makeStatementImportant = (statementId) => {
+        store.apiCallMethods.post('/link', data).then(
+          (res) => {
+            if (res) {
+              console.log('response', res)
+            }
+          })
+      }
+
+      const getStatement = () => {
         store.apiCallMethods.get('/link').then(
           (res) => {
             if (res) {
               console.log('response', res)
-              //communicationFormBody.communicationContent.value = res.data
+              // treatement
             }
           })
       }
 
+      const getStatements = () => {
+        store.apiCallMethods.get('/link').then(
+          (res) => {
+            if (res) {
+              console.log('response', res)
+              communications.list.value = res.data
+              //all type of statements are in this data object (important, ...etc)
+            }
+          })
+      }
+
+      onMounted(() => {
+        swithBetweenTabs('upcoming')
+        //getStatements()
+
+      })
+
       return {
+        tabs,
+        currentTab,
+        swithBetweenTabs,
+        swithTabFromTrueToFalse,
+        getStatements,
+        getStatement,
+        makeStatementImportant,
+        deleteStatement,
         showCommunicationForm,
-        submitCommunicationForm,
+        submitStatement,
         showCommunicationOverview,
         proceedShowCommunicationOverview,
         goBackFromCommunicationOverview,
-        showSenderInformationsForm,
-        showCountryInformationsForm,
-        showCommunicationContentForm,
-        submitSenderInformations,
-        submitCountryInformations,
-        submitCommunicationContent,
-        communications
+        communications,
+        sendStatement,
       };
     },
   };

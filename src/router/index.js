@@ -62,7 +62,7 @@ const routes = [
     path: '/statistics',
     name: 'statistics',
     component: StatisticsView,
-  }
+  },
 ]
 
 const router = createRouter({

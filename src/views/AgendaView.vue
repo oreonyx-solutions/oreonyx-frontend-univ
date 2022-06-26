@@ -1,7 +1,7 @@
 <template>
     <div class="agenda">
          <div class="inline-flex w-full">
-            <sidebar class="w-1/5 2xl:w-2/12'" />
+            <sidebar class="w-1/5 2xl:w-2/12 2xl:bg-red-600'" />
             <agenda />
         </div>
     </div>

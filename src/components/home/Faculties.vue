@@ -195,11 +195,11 @@
                   détails</button>
                 <button @click="getFaculty(faculty.id)" title="Editer cette faculté"
                   class="group h-6 w-6 text-gray-400 hover:text-blue-600 rounded-md hover:bg-blue-100 flex justify-center items-center">
-                  <span class="text-sm material-symbols-outlined">edit</span>
+                  <span class="text-sm material-icons-outlined">edit</span>
                 </button>
                 <button title="Supprimer cette faculté"  @click="deleteFaculty(faculty)"
                   class="group h-6 w-6 text-gray-400 hover:text-blue-600 rounded-md hover:bg-blue-100 flex justify-center items-center">
-                  <span class="text-sm material-symbols-outlined">delete</span>
+                  <span class="text-sm material-icons-outlined">delete</span>
                 </button>
               </div>
               <div class="items-center inline-flex">
@@ -469,7 +469,7 @@
         store.apiCallMethods.get('faculty').then(
           (res) => {
             if (res) {
-              console.log('response', res.data)
+              console.log('response fac', res.data)
               state.value.faculties = res.data
             }
           })
