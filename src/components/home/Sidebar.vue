@@ -61,7 +61,7 @@
             </div>
           </router-link>
         </li>
-        <li title="Blog">
+        <li class="hidden" title="Blog">
           <router-link :to="{ name: 'blog' }">
             <div class="
                   hover:text-neutral-400
@@ -304,8 +304,8 @@
                   inline-flex
                   w-full
                 ">
-              <span style="font-size:23px;" class="mr-2 material-icons-outlined">face_retouching_natural</span>
-              <h5 class="text-base">Support client (Telegram)</h5>
+              <span class="text-base -mt-0.5 mr-2 material-icons-outlined">face_retouching_natural</span>
+              <h5 class="text-sm">Support (Telegram)</h5>
             </div>
           </router-link>
         </div>

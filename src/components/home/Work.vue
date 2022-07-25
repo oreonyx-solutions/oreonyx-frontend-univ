@@ -452,9 +452,7 @@
                 showUnitList.value = false
             }
                 
-            onMounted(() => {
-                swithBetweenTabs('general')
-            })
+           edie
 
             return {
                 swithTabFromTrueToFalse,

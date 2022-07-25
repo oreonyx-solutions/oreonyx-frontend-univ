@@ -154,7 +154,7 @@
                 <div class="items-center inline-flex space-x-2">
                   <button @click="showFacultyForm = false"
                     class="text-gray-500 hover:bg-gray-100 px-3 py-1 text-xs rounded-md">Annuler</button>
-                  <button @click="submitFacultyForm(add)"
+                  <button @click="submitFacultyForm('add')"
                     class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 text-xs rounded-md">Nouvelle
                     faculté</button>
                 </div>
@@ -262,7 +262,6 @@
       const submitFacultyForm = ( param ) => {
         if (param == 'add') {
           console.log('facultyFormData', facultyFormData);
-          return false;
           store.apiCallMethods.post('faculty', facultyFormData).then(
             (res) => {
               if (res) {
