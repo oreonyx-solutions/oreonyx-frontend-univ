@@ -44,7 +44,7 @@ export default {
 
       getToken(messaging, {
         vapidKey:
-          "BKYbxVB9SnRf52SztTRbRFunn2NARAwKQTjoMsQI7UzKiqS52Hc430PuJFgZpLx0QcAdWwgk6o0sLJALOZGwr-I",
+          "BGDpm6AQIMwGRnEIMQn8sRxHb4TJdsexMwDOJI3bpweaVzRdEDqo08GhmF93riWNw4nwPmzSWLMUSY-JYD2h_us",
       })
         .then((token) => {
           if (token) {

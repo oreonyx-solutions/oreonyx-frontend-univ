@@ -13,8 +13,8 @@ const state = reactive ({
         token: null,
         platform: null
     },
-    uploadUrl: 'http://104.155.100.137:4000/',
-    apiUrl: 'http://104.155.100.137:4000/api/',
+    uploadUrl: 'http://34.77.255.36:4000/',
+    apiUrl: 'http://34.77.255.36:4000/api/',
     config: {
        
     }
