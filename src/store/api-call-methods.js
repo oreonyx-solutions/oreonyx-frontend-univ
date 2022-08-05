@@ -4,6 +4,7 @@ import store from "."
 export default {
 
     post (path, data ) {
+        console.log("DATA:" + data)
         return axios.post( store.state.apiUrl + path, data, store.state.config ).then(
             res => {
                 console.log(res.data);
