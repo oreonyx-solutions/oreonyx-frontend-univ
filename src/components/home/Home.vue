@@ -1,10 +1,9 @@
 <template>
-
   <Work v-if="store.state.toggleWorkSpace" />
   <div v-if="!store.state.toggleWorkSpace" class="w-4/5 2xl:w-10/12 px-6 pb-6 h-full absolute right-0 top-0">
     <div class="h-full flex-grow inline-flex w-full">
       <div class="w-4/6 h-full bg-white mr-6 pr-6 py-6 border-r">
-        <div class="bg-blue-600 text-white p-4 rounded-xl inline-flex shadow-xl ">
+        <div class=" shadow-blue-500/50 bg-blue-600 text-white p-4 rounded-xl inline-flex shadow-lg">
           <div class="w-3/6 2xl:w-2/6 pr-6">
             <div class="inline-flex">
               <h1 class="text-2xl 2xl:text-4xl font-bold">{{ state.times.time.hours }}:{{ state.times.time.minutes }}

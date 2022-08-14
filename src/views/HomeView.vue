@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="inline-flex w-full">
-      <sidebar class="w-1/5 2xl:w-2/12 2xl:bg-green-600'" />
+      <sidebar class="w-1/5 2xl:w-2/12" />
       <home />
     </div>
   </div>

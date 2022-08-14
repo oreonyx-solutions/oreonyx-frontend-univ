@@ -1,5 +1,8 @@
 <template>
-  <div class="top-0 fixed sidebar h-full bg-white flex flex-col md:h-full border-r">
+
+  <div class="top-0 fixed sidebar h-full bg-indigo-50 flex flex-col md:h-full border-r">
+    <img  class="w-full absolute bottom-0 "
+  src="../../../public/assets/illustrations/background.6c3571e0.jpg" alt="Photo de profil">
     <div class="px-6 my-3 inline-flex">
       <img class="h-8" :src="'public/assets/logo.png'" alt="" />
       <div class="pt-1 inline-flex">
@@ -80,7 +83,7 @@
         </li>
       </ul>
 
-      <div class="bg-gray-100 rounded-2xl p-3 my-4">
+      <div class="bg-white rounded-2xl p-3 my-4">
         <div>
           <div title="Quelques chiffres" class="cursor-pointer inline-flex text-neutral-500  font-medium">
             <span class="mr-2 material-icons-outlined">
@@ -189,14 +192,14 @@
         </div>
       </div>
 
-      <div class="bg-gray-100 rounded-2xl p-3 my-4">
+      <div class="bg-white rounded-2xl p-3 my-4">
         <div>
           <div title="Espaces de travail" class="cursor-pointer flex items-start justify-between ">
             <div class="flex justify-start text-neutral-500  font-medium">
               <span class="mr-2 material-icons-outlined">
                 expand_more
               </span>
-              <h6>Matières</h6>
+              <h6>Workspaces</h6>
                <div class="text-white px-1.5 bg-gray-600 ml-2 rounded-full flex justify-center items-center">
               <h6 style="font-size:12px">10</h6>
             </div>
@@ -268,7 +271,7 @@
         </div>
       </div>
     </div>
-    <div class="">
+    <div class="z-10">
       <!-- <router-link :to="{ name: 'profile' }"> -->
       <div class="inline-flex hidden">
         <div class="h-8 w-8
@@ -295,8 +298,8 @@
         <div title="Aide">
           <router-link :to="{ name: 'blog' }">
             <div class="
-                  hover:text-neutral-300
-                  text-neutral-400
+                  hover:text-blue-700
+                  text-blue-600
                   py-1.5
                   rounded-md
                   text-sm
@@ -313,7 +316,7 @@
 
       <!-- </router-link> -->
       <hr>
-      <div class="w-full px-6 py-3">
+      <div class="w-full px-6 py-3 bg-white">
         <div class="inline-flex">
           <router-link :to="{ name: 'statistics' }">
             <div class="mr-2 h-12 w-12 rounded-full border border-gray-300 p-1 relative">

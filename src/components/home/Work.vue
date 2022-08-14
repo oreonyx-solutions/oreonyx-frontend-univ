@@ -1,15 +1,8 @@
 <template>
-    <div style="width:calc(100% - 256px);" class="fixed bg-gray-100 h-full right-0 top-0 z-10 inline-flex p-5">
-        <div class="absolute bottom-20 -left-7">
-            <div class="">
-                <button title="Cacher" @click="hideWorkSpace"
-                    class="h-10 w-10 flex justify-center items-center bg-white hover:border rounded-full">
-                    <span class="text-xl material-symbols-outlined">close</span>
-                </button>
-            </div>
-        </div>
-        <div class="mr-3 w-7/12 relative">
-            <div v-if="showMembersList" >
+    
+    <div class="w-4/5 2xl:w-10/12 fixed h-full right-0 top-0 z-10 inline-flex pl-5 pb-5">
+        <div class="mr-3 w-7/12 2xl:w-10/12 relative">
+            <div v-if="showMembersList">
                 <div class="bg-white opacity-95  h-full w-10/12 absolute z-10"></div>
                 <div class="h-full w-10/12 absolute z-20">
                     <div class="pl-6 pr-3 py-2 w-full">
@@ -92,7 +85,8 @@
             <div class="top-0 h-full flex flex-col md:h-full">
                 <div class="bg-white rounded-t-xl">
                     <div class="grid grid-cols-3 border-b px-6 py-2 relative">
-                        <div @click="showMembersList = true" title="Afficher tous les membres du groupe" class="cursor-pointer relative flex items-center">
+                        <div @click="showMembersList = true" title="Afficher tous les membres du groupe"
+                            class="cursor-pointer relative flex items-center">
                             <div class="flex -space-x-1 overflow-hidden">
                                 <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
                                     src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -115,12 +109,24 @@
                         <div class="flex justify-center items-center">
                             <div>
                                 <div v-if="showUnitList" class="absolute bg-white rounded-md shadow pt-2 pb-3">
-                                   <div @click="getSelectedTeachingUnit()" class="px-4 font-base text-sm hover:bg-gray-100 hover:text-gray-400 cursor-pointer">Math 100</div>
-                                   <div @click="getSelectedTeachingUnit()" class="px-4 font-base text-sm  hover:bg-gray-100 hover:text-gray-400 cursor-pointer">Math 150</div>
-                                   <div @click="getSelectedTeachingUnit()" class="px-4 font-base text-sm  hover:bg-gray-100 hover:text-gray-400 cursor-pointer">Math 200</div>
-                                    <div @click="getSelectedTeachingUnit()" class="px-4 font-base text-sm  hover:bg-gray-100 hover:text-gray-400 cursor-pointer">Math 100</div>
-                                   <div @click="getSelectedTeachingUnit()" class="px-4 font-base text-sm  hover:bg-gray-100 hover:text-gray-400 cursor-pointer">Math 150</div>
-                                   <div @click="getSelectedTeachingUnit()" class="px-4 font-base text-sm  hover:bg-gray-100 hover:text-gray-400 cursor-pointer">Math 200</div>
+                                    <div @click="getSelectedTeachingUnit()"
+                                        class="px-4 font-base text-sm hover:bg-gray-100 hover:text-gray-400 cursor-pointer">
+                                        Math 100</div>
+                                    <div @click="getSelectedTeachingUnit()"
+                                        class="px-4 font-base text-sm  hover:bg-gray-100 hover:text-gray-400 cursor-pointer">
+                                        Math 150</div>
+                                    <div @click="getSelectedTeachingUnit()"
+                                        class="px-4 font-base text-sm  hover:bg-gray-100 hover:text-gray-400 cursor-pointer">
+                                        Math 200</div>
+                                    <div @click="getSelectedTeachingUnit()"
+                                        class="px-4 font-base text-sm  hover:bg-gray-100 hover:text-gray-400 cursor-pointer">
+                                        Math 100</div>
+                                    <div @click="getSelectedTeachingUnit()"
+                                        class="px-4 font-base text-sm  hover:bg-gray-100 hover:text-gray-400 cursor-pointer">
+                                        Math 150</div>
+                                    <div @click="getSelectedTeachingUnit()"
+                                        class="px-4 font-base text-sm  hover:bg-gray-100 hover:text-gray-400 cursor-pointer">
+                                        Math 200</div>
                                 </div>
                                 <button title="Changer d'Unités d'enseignement" @click="showUnitList = true"
                                     class="text-gray-400 hover:text-gray-600 pl-3 hover:shadow pr-2 bg-white rounded-md inline-flex">
@@ -169,8 +175,9 @@
                     </div>
                 </div>
                 <div class="bg-white flex-grow rounded-b-xl mb-3 overflow-hidden">
-                    <div class="px-6 space-y-3 pt-6 pb-3 overflow-y-auto h-full bg-gradient-to-br from-yellow-100 via-green-300 to-yellow-100">
-                         
+                    <div
+                        class="px-6 space-y-3 pt-6 pb-3 overflow-y-auto h-full bg-gradient-to-br from-yellow-100 via-green-300 to-yellow-100">
+
                         <!-- start message-->
                         <div class="w-full inline-flex">
                             <div class="hidden w-6/12"></div>
@@ -261,10 +268,20 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-        <div class="w-5/12 bg-white p-4 rounded-xl flex flex-col md:h-full relative">
+        <div class="w-5/12 xl:2/12 bg-white pt-2 p-4 rounded-xl flex flex-col md:h-full relative">
+                        <div class="bg-blue-600 h-6 w-full rounded-t-lg">
+                <div class="flex items-start justify-between py-1 px-3 text-white text-xs">
+                    <div class="justify-start">
+                        <span>Lorem ipsum</span>
+                    </div>
+                    <div class="items-center inline-flex space-x-2">
+                        <span title="Reduire le workspace" class="cursor-pointer hover:text-gray-50"
+                            @click="hideWorkSpace">Reduire</span>
+                    </div>
+                </div>
+            </div>
             <div class="h-64 relative">
                 <button title="Editer l'Unité d'enseignement"
                     class="z-10 text-white rounded-full absolute h-14 w-14 hover:bg-sky-300 bg-gradient-to-b from-sky-300 to-sky-600 bottom-5 right-5 flex justify-center items-center">
@@ -272,7 +289,7 @@
                         edit
                     </span>
                 </button>
-                <img class="h-full w-full object-cover rounded-xl"
+                <img class="h-full w-full object-cover rounded-b-lg"
                     src="https://images.pexels.com/photos/11438396/pexels-photo-11438396.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                     alt="">
             </div>
@@ -334,14 +351,15 @@
                     <div v-if="tabs.files" class="pt-3 px-3 space-y-2">
                         <!-- file -->
                         <div class="inline-flex text-red-600 cursor-pointer">
-                            <div class="bg-red-100 rounded-xl h-10 w-10 flex justify-center items-center"> 
+                            <div class="bg-red-100 rounded-xl h-10 w-10 flex justify-center items-center">
                                 <span class=" material-symbols-outlined">description</span>
                             </div>
                             <div class="ml-2 relative">
                                 <h5 class="text-base line-clamp-1">Fascicule de mnemotechnique</h5>
                                 <h6 class="text-xs inline-flex -mt-1 absolute opacity-70">
                                     <span>pdf</span>
-                                    <span style="font-size:10px" class="material-symbols-rounded mx-2 mt-1">circle</span>
+                                    <span style="font-size:10px"
+                                        class="material-symbols-rounded mx-2 mt-1">circle</span>
                                     <span>13-02-2022</span>
                                 </h6>
                             </div>
@@ -349,14 +367,15 @@
                         <!-- file -->
                         <!-- file -->
                         <div class="inline-flex text-blue-600 cursor-pointer">
-                            <div class="bg-blue-100 rounded-xl h-10 w-10 flex justify-center items-center"> 
+                            <div class="bg-blue-100 rounded-xl h-10 w-10 flex justify-center items-center">
                                 <span class=" material-symbols-outlined">description</span>
                             </div>
                             <div class="ml-2 relative">
                                 <h5 class="text-base line-clamp-1">Fascicule de mnemotechnique</h5>
                                 <h6 class="text-xs inline-flex -mt-1 absolute opacity-70">
                                     <span>MS Word</span>
-                                    <span style="font-size:10px" class="material-symbols-rounded mx-2 mt-1">circle</span>
+                                    <span style="font-size:10px"
+                                        class="material-symbols-rounded mx-2 mt-1">circle</span>
                                     <span>13-02-2022</span>
                                 </h6>
                             </div>
@@ -366,15 +385,15 @@
                     <div v-if="tabs.links" class="pt-3 px-3 space-y-2">
                         <!-- links -->
                         <a target="_blank" href="https://google.com">
-                         <div class="inline-flex text-green-600 cursor-pointer">
-                             <div class="bg-green-100 rounded-xl h-10 w-10 flex justify-center items-center"> 
-                                <span class=" material-symbols-outlined">link</span>
-                             </div>
+                            <div class="inline-flex text-green-600 cursor-pointer">
+                                <div class="bg-green-100 rounded-xl h-10 w-10 flex justify-center items-center">
+                                    <span class=" material-symbols-outlined">link</span>
+                                </div>
 
-                            <div class="ml-2 relative">
-                                <h5 class="text-base mt-2">https://google.com</h5>
+                                <div class="ml-2 relative">
+                                    <h5 class="text-base mt-2">https://google.com</h5>
+                                </div>
                             </div>
-                        </div>
                         </a>
                         <!-- links -->
                     </div>
@@ -412,7 +431,7 @@
             const state = ref({
                 workSpaces: [],
                 currentWorkSpace: [],
-                currentTeachingUnit:{}
+                currentTeachingUnit: {}
             })
 
             let currentTab = ref(null)
@@ -451,8 +470,8 @@
                 //if res then update currentTeachingUnit
                 showUnitList.value = false
             }
-                
-  
+
+
 
             return {
                 swithTabFromTrueToFalse,

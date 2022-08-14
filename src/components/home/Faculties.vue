@@ -1,211 +1,378 @@
 <template>
-<div class="absolute right-5 z-10 top-1 text-xs">
-<span class="hidden" @click="showFacultyDetails = false">Fermer</span>
-</div>
-  <div class="w-4/5 2xl:w-10/12 px-6 py-8 h-full absolute right-0 top-0 bg-gray-50">
+  <div class="absolute right-5 z-10 top-1 text-xs">
+    <span class="hidden" @click="showFacultyDetails = false">Fermer</span>
+  </div>
+  <div class="w-4/5 2xl:w-10/12 px-6 py-6 h-full absolute right-0 top-0 bg-gray-50 overflow-hidden">
     <div class="h-full flex-grow inline-flex w-full relative">
       <Transition>
-      <div v-if="showFacultyDetails"
-        class="absolute bg-white border-t-0 border rounded-lg top-0 h-full w-full z-10">
-        <div class="bg-blue-600 h-6 w-full rounded-t-lg">
+        <div v-if="showFacultyDetails"
+          class="overflow-hidden absolute bg-white border-t-0 border rounded-lg top-0 h-full w-full z-10">
+          <div class="bg-indigo-600 h-6 w-full rounded-t-lg">
             <div class="flex items-start justify-between py-1 px-3 text-white text-xs">
-          <div class="justify-start">
-            <span>Details {{ state.currentFaculty.name }}</span>
+              <div class="justify-start">
+                <span>{{ state.currentFaculty.name }}</span> 
+                <span v-if="state.currentSpeciality && showSpecialityDetails == true">
+                  > {{ state.currentSpeciality.name }}({{ state.currentSpeciality.acronym }})</span> 
+                  <span v-if="state.currentMatter && showMatterDetails == true">
+                  > {{ state.currentMatter.name }}</span>
+                  <span v-if="state.currentTeachingUnit && showTeachingUnitDetails == true">
+                  > {{ state.currentTeachingUnit.name }}</span>
+              </div>
+              <div class="items-center inline-flex space-x-2">
+                <span title="Retour à la liste des facultés" class="cursor-pointer hover:text-gray-50"
+                  @click="showFacultyDetails = false">Fermer</span>
+              </div>
+            </div>
           </div>
-          <div class="items-center inline-flex space-x-2">
-              <span title="Retour à la liste des facultés" class="cursor-pointer hover:text-gray-50" @click="showFacultyDetails = false">Retour</span>  
-          </div>
-        </div>
-        </div>
-        <div class="inline-flex w-full mt-1 p-2 h-full">
-          <div class="w-4/12 xl:w-3/12 border-r flex flex-col">
-            <div class="flex-grow">
-              <div class="w-full pl-1 pr-4 rounded-md">
-                <div class="h-20 w-full mb-3 rounded-md relative">
-                  <img class="h-20 w-full object-cover rounded-t-md"
-                    src="https://images.pexels.com/photos/12203460/pexels-photo-12203460.jpeg?cs=srgb&dl=pexels-ekaterina-12203460.jpg&fm=jpg"
-                    alt="Image de la fac">
-                  <div class="h-14 w-14 p-1 bg-white rounded-xl absolute -bottom-5 left-4">
-                    <img class="h-auto object-scale-down" src="../../../public/assets/default_establishment_pp.png"
-                      alt="Photo de profil">
+          <div class="inline-flex w-full mt-1 p-2 h-full">
+            <div class="w-4/12 2xl:w-3/12 border-r flex flex-col">
+              <div class="flex-grow">
+                <div class="w-full pl-1 pr-4 rounded-md">
+                  <div class="h-20 w-full mb-3 rounded-md relative">
+                    <img class="h-20 w-full object-cover rounded-t-md"
+                      src="https://images.pexels.com/photos/12203460/pexels-photo-12203460.jpeg?cs=srgb&dl=pexels-ekaterina-12203460.jpg&fm=jpg"
+                      alt="Image de la fac">
+                    <div class="h-14 w-14 p-1 bg-white rounded-xl absolute -bottom-5 left-4">
+                      <img class="h-auto object-scale-down" src="../../../public/assets/default_establishment_pp.png"
+                        alt="Photo de profil">
+                    </div>
+                    <div class="-bottom-2 left-20 flex -space-x-1 overflow-hidden absolute">
+                      <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+                        src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="">
+                      <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="">
+                      <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+                        alt="">
+                      <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="">
+                    </div>
                   </div>
-                  <div class="-bottom-2 left-20 flex -space-x-1 overflow-hidden absolute">
-                    <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
-                      src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt="">
-                    <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
-                      src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt="">
-                    <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
-                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
-                      alt="">
-                    <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt="">
+                  <div class="px-4 pb-4">
+                    <div class="relative mt-4">
+                      <h2 class="text-gray-700 font-bold text-base leading-tight">
+                        {{ state.currentFaculty.name }} ({{ state.currentFaculty.acronym }})
+                      </h2>
+                    </div>
+                    <div class="mt-2">
+                      <h6 class="text-sm leading-tight text-gray-400">{{ state.currentFaculty.description }}</h6>
+                    </div>
                   </div>
-                </div>
-                <div class="px-4 pb-4">
-                  <div class="relative mt-4">
-                    <h2 class="text-gray-700 font-bold text-base leading-tight">
-                      {{ state.currentFaculty.name }} ({{ state.currentFaculty.acronym }})
-                    </h2>
-                  </div>
-                  <div class="mt-2">
-                    <h6 class="text-sm leading-tight text-gray-400">{{ state.currentFaculty.description }}</h6>
-                  </div>
-                </div>
+                  <hr class="my-3">
 
-                <div class="my-3">
-                  <div class="flex items-start justify-between bg-gray-50 py-2 px-2">
-                    <div class="flex justify-start">
-                      <h6 class="font-bold text-blue-600 ">Spécialités</h6>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-8/12 2xl:w-9/12 relative">
+               <Transition>
+                <div v-if="showSpecialityDetails"
+                  class="pt-2 pl-4 pr-3 h-full flex flex-col backdrop-blur-2xl bg-white/30  w-full absolute z-20">
+                  <div class="flex items-start justify-between w-full mb-2">
+                    <div class="flex justify-start w-1/2">
+                      <button @click="showSpecialityDetails = false" title="Retour"
+                        class="px-3 py-0.5 rounded-md inline-flex bg-white border text-sm justify-center mr-2">
+                        <span class="material-symbols-outlined">keyboard_return</span>
+                      </button>
+                      <input placeholder="Rechercher une matière..." name="q-matter" v-model="qMatter" type="search"
+                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
                     </div>
                     <div class="items-center inline-flex relative">
-                      <div v-if="showSpecialityForm" class="absolute w-64 bg-white px-3 py-2 rounded-md shadow-md -left-64 top-10">
-                        <div class="inline-flex">
-                          <img class="h-4 mr-2" :src="'public/assets/icons/four-leaf-clover.png'" alt="" />
-                          <h1 class="text-sm font-medium">Ajouter une spécialité</h1>
-                        </div>
-                        <hr class="my-2">
-                        <input type="hidden" v-model="specialityFormData.facultyId">
-                        <input placeholder="Nom de la spé" name="name" v-model="specialityFormData.name"
-                          class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
-                        <input placeholder="Acronyme..." name="name" v-model="specialityFormData.acronym"
-                          class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
-                        <textarea v-model="specialityFormData.description" style="resize: none;" row="5" placeholder="Description"
-                          name="name"
-                          class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
-                        <div class="mt-2 flex items-start justify-between">
-                          <div class="flex justify-start"></div>
-                          <div class="items-center inline-flex space-x-2">
-                            <button @click="showSpecialityForm = false"
-                              class="text-gray-500 hover:bg-gray-100 px-3 py-1 text-xs rounded-md">Annuler</button>
-                            <button @click="submitSpecialityForm('add')"
-                              class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 text-xs rounded-md">Nouvelle
-                              spécialité</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="-mt-1 h-7 w-7 bg-white shadow rounded-full flex justify-center items-center">
-                        <button title="Ajouter une spécialité" @click="showSpecialityForm = true"
-                          class="rounded-full text-xs text-blue-600 font-medium flex justify-center items-center">
-                          <span class="text-xl material-symbols-rounded">
-                            add_circle
-                          </span>
-                        </button>
-                      </div>
+                      <button 
+                        class="px-3 py-1 rounded-md inline-flex bg-white text-sm justify-center">
+                        <h6 title="Ce bouton ouvrira un modal qui affichera toutes les infos de l'entité" class="mt-0.5 text-xs">En savoir plus</h6>
+                      </button>
+                      <button title="Style d'affichage"
+                        class="px-3 py-1 rounded-md inline-flex bg-white border text-sm justify-center">
+                        <span class="text-sm material-symbols-outlined mr-2">grid_view</span>
+                        <h6 class="mt-0.5 text-xs">Grille</h6>
+                        <span class="text-sm material-symbols-outlined ml-2">expand_more</span>
+                      </button>
                     </div>
                   </div>
-                  <ul class="space-y-2 mt-3">
-                    <li title="La Geosciences" class="cursor-pointer inline-flex">
-                      <span class="material-symbols-outlined mr-2 text-blue-600 text-lg -mt-0.5">radio_button_checked</span>
+                  <hr>
+                  <div class="flex items-start justify-between py-2 ">
+                    <div class="flex justify-start pl-2">
                       <div>
-                        <span class="hover:text-blue-500 font-bold">Geosciences</span>
-                      <div class="text-xs leading-tight line-clamp-3 text-gray-500">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste eos non corporis reprehenderit nostrum eius, porro labore ratione.
-                      </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="ml-3 w-8/12 xl:w-9/12 ">
-            <div class="bg-white rounded-md px-">
-              <div class="flex items-start justify-between ">
-                <div class="flex justify-start">
-                  <div class="">
-                    <h2 class="text-xl font-bold">Geosciences</h2>
-                    <h6 class="-mt-1 text-sm text-gray-400">Liste des matières</h6>
-                  </div>
-                </div>
-                <div class="items-center inline-flex pr-3 relative">
-                  <div v-if="showMatterForm" class="absolute w-64 bg-white px-3 py-2 rounded-md shadow-md -left-64 top-10">
-                        <div class="inline-flex">
-                          <img class="h-4 mr-2" :src="'public/assets/icons/sparkles_2728.png'" alt="" />
-                          <h1 class="text-sm font-medium">Ajouter une matière</h1>
-                        </div>
-                        <hr class="my-2">
-                        <input type="hidden" v-model="matterFormData.specialityId">
-                        <input placeholder="Nom de la matière" name="name" v-model="matterFormData.name"
-                          class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
-                        <textarea v-model="matterFormData.description" style="resize: none;" row="5" placeholder="Description"
-                          name="name"
-                          class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
-                        <div class="mt-2 flex items-start justify-between">
-                          <div class="flex justify-start"></div>
-                          <div class="items-center inline-flex space-x-2">
-                            <button @click="showMatterForm = false"
-                              class="text-gray-500 hover:bg-gray-100 px-3 py-1 text-xs rounded-md">Annuler</button>
-                            <button @click="submitMatterForm('add')"
-                              class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 text-xs rounded-md">Nouvelle
-                              matière</button>
-                          </div>
-                        </div>
-                      </div>
-                  <div class="-mt-1 h-7 w-7 bg-white shadow rounded-full flex justify-center items-center">
-                    <button title="Ajouter une matière" @click="showMatterForm = true"
-                      class="rounded-full text-xs font-medium flex justify-center items-center">
-                      <span class="text-xl material-symbols-rounded">
-                        add_circle
-                      </span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <hr class="my-3">
-              <div class="space-y-3">
-                <div class="bg-gray-50 px-3 pt-3 pb-6 rounded-md">
-                  <div class="flex items-start justify-between ">
-                    <div class="flex justify-start">
-                      <div class="">
-                        <h2 class="text-ms font-bold">Pétrologie</h2>
-                        <h6 class="-mt-0.5 text-sm text-gray-400">Liste des Unités d'enseignements</h6>
+                        <h6 class="text-xs" style="font-family: 'JetBrains Mono', monospace">Liste des matières
+                          (<span v-if="true">0</span>{{ state.currentSpeciality.categories.length }})
+                        </h6>
                       </div>
                     </div>
-                    <div class="items-center inline-flex">
-                      <div class="-mt-1 h-7 w-7 bg-white shadow rounded-full flex justify-center items-center">
-                        <button title="Ajouter une UE"
+                    <div class="items-center inline-flex relative">
+                      <Transition>
+                        <div v-if="showMatterForm" style="width:400px;"
+                          class="z-10 h-auto bg-white absolute right-0 top-10 shadow-md rounded-md border border-t-0">
+                          <div class="rounded-t-md w-full h-8 py-1 bg-indigo-600 px-3 text-white">
+                            <div class="flex items-start justify-between ">
+                              <div class="flex justify-start">
+                                <span class="material-symbols-outlined text-xl -mt-0.5 ">
+                                  apps
+                                </span>
+                                <h6 class="text-sm ml-2 mt-0.5 font-medium">Ajouter une matière</h6>
+                              </div>
+                              <div class="items-center inline-flex relative">
+                                <button title="Fermer" class="cursor-pointer" @click="showMatterForm = false">
+                                  <span class="material-symbols-outlined">
+                                    close
+                                  </span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="p-3 w-full h-full space-y-1.5">
+                            <input type="hidden" v-model="matterFormData.facultyId">
+                            <input placeholder="Nom de la matière" name="name" v-model="matterFormData.name"
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                            <textarea v-model="matterFormData.description" style="resize: none;" rows="6"
+                              placeholder="Description" name="name"
+                              class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
+                            <button title="Ajouter une nouvelle matière" @click="submitMatterForm('add')"
+                              class="shadow-indigo-500/50 shadow-lg px-4 py-2 rounded-md inline-flex text-white bg-indigo-600 text-sm w-full justify-center"><span
+                                class="mt-0.5">Ajouter une matière</span>
+                            </button>
+                          </div>
+                        </div>
+                      </Transition>
+
+                      <div class="-mt-1 h-6 w-6 bg-white shadow rounded-full flex justify-center items-center">
+                        <button title="Ajouter une matière" @click="showMatterForm = true"
                           class="rounded-full text-xs font-medium flex justify-center items-center">
-                          <span class="text-xl material-symbols-rounded">
+                          <span class="text-lg material-symbols-rounded">
                             add_circle
                           </span>
                         </button>
                       </div>
                     </div>
                   </div>
-                  <hr class="my-3 border-t border-gray-200">
-                  <div class="grid grid-cols-3 xl:grid-cols-4 gap-2 mt">
-                    <div class="flex items-start">
-                      <div class="flex items-center h-5">
-                        <input type="checkbox" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                  <div class="flex-grow overflow-hidden overflow-y-auto relative">
+                    <div class="grid grid-cols-3 2xl:grid-cols-4 gap-1">
+                      <div v-for="matter in state.currentSpeciality.categories" :key="matter.id">
+                        <div class="border border-indigo-50 h-52 rounded-md flex justify-center items-center relative">
+                          <div @click="getMatter(matter.id)" title="Voir la matière"
+                            class="cursor-pointer h-40 w-40 text-white rounded-xl hover:bg-indigo-300 bg-gradient-to-b from-indigo-300 to-indigo-600 absolute flex justify-center items-center">
+                            <div
+                              class="h-20 w-20 border border-indigo-300 rounded-full flex justify-center items-center">
+                              <h5 class="text-sm">{{ matter.name }}</h5>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="ml-3 text-sm">
-                        <label class="font-medium text-gray-700">PETRO45</label>
-                        <p class="text-xs leading-tight text-gray-400">lorem ipsum</p>
-                        <p class="text-xs leading-tight text-gray-400">Credit: 4</p>
+
+                    </div>
+
+                  </div>
+                </div>
+              </Transition>
+
+              <Transition>
+                <div v-if="showMatterDetails"
+                  class="pt-2 pl-4 pr-3 h-full flex flex-col backdrop-blur-2xl bg-white/30  w-full absolute z-30">
+                  <div class="flex items-start justify-between w-full mb-2">
+                    <div class="flex justify-start w-1/2">
+                      <button @click="showMatterDetails = false" title="Retour à la liste des matières"
+                        class="px-3 py-0.5 rounded-md inline-flex bg-white border text-sm justify-center mr-2">
+                        <span class="material-symbols-outlined">keyboard_return</span>
+                      </button>
+                      <input placeholder="Rechercher une UE..." name="q-matter" v-model="qMatter" type="search"
+                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                    </div>
+                    <div class="items-center inline-flex relative">
+                      <button 
+                        class="px-3 py-1 rounded-md inline-flex bg-white text-sm justify-center">
+                        <h6 title="Ce bouton ouvrira un modal qui affichera toutes les infos de l'entité" class="mt-0.5 text-xs">En savoir plus</h6>
+                      </button>
+                      <button title="Style d'affichage"
+                        class="px-3 py-1 rounded-md inline-flex bg-white border text-sm justify-center">
+                        <span class="text-sm material-symbols-outlined mr-2">grid_view</span>
+                        <h6 class="mt-0.5 text-xs">Grille</h6>
+                        <span class="text-sm material-symbols-outlined ml-2">expand_more</span>
+                      </button>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="flex items-start justify-between py-2 ">
+                    <div class="flex justify-start pl-2">
+                      <div>
+                         <h6 class="text-xs" style="font-family: 'JetBrains Mono', monospace">Liste des Unités d'enseignements
+                          (<span v-if="true">0</span>{{ state.currentMatter.teachingUnits.length }})
+                        </h6>
                       </div>
                     </div>
-                    <div class="flex items-start">
-                      <div class="flex items-center h-5">
-                        <input type="checkbox" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                      </div>
-                      <div class="ml-3 text-sm">
-                        <label class="font-medium text-gray-700">PETRO55</label>
-                        <p class="text-xs leading-tight text-gray-400">lorem ipsum</p>
-                        <p class="text-xs leading-tight text-gray-400">Credit: 4</p>
+                    <div class="items-center inline-flex relative">
+                      <Transition>
+                        <div v-if="showTeachingUnitForm" style="width:400px;"
+                          class="z-10 h-auto bg-white absolute right-0 top-10 shadow-md rounded-md border border-t-0">
+                          <div class="rounded-t-md w-full h-8 py-1 bg-indigo-600 px-3 text-white">
+                            <div class="flex items-start justify-between ">
+                              <div class="flex justify-start">
+                                <span class="material-symbols-outlined text-xl -mt-0.5 ">
+                                  apps
+                                </span>
+                                <h6 class="text-sm ml-2 mt-0.5 font-medium">Ajouter une Unité d'Enseignement</h6>
+                              </div>
+                              <div class="items-center inline-flex relative">
+                                <button title="Fermer" class="cursor-pointer" @click="showTeachingUnitForm = false">
+                                  <span class="material-symbols-outlined">
+                                    close
+                                  </span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="p-3 w-full h-full space-y-1.5">
+                            <input placeholder="Nom de l'UE'" name="name" v-model="teachingUnitFormData.name"
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                            <input placeholder="Code de l'UE'" name="name" v-model="teachingUnitFormData.code"
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                              <input placeholder="Nombre de credits" name="name" v-model.number="teachingUnitFormData.credits"
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                            <textarea v-model="teachingUnitFormData.description" style="resize: none;" rows="6"
+                              placeholder="Description" name="name"
+                              class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
+                            <button title="Ajouter une Unité d'Enseignement" @click="submitTeachingUnitForm('add')"
+                              class="shadow-indigo-500/50 shadow-lg px-4 py-2 rounded-md inline-flex text-white bg-indigo-600 text-sm w-full justify-center"><span
+                                class="mt-0.5">Ajouter une UE</span>
+                            </button>
+                          </div>
+                        </div>
+                      </Transition>
+
+                      <div class="-mt-1 h-6 w-6 bg-white shadow rounded-full flex justify-center items-center">
+                        <button title="Ajouter une Unité d'Enseignement" @click="showTeachingUnitForm = true"
+                          class="rounded-full text-xs font-medium flex justify-center items-center">
+                          <span class="text-lg material-symbols-rounded">
+                            add_circle
+                          </span>
+                        </button>
                       </div>
                     </div>
-                    <div class="flex items-start">
-                      <div class="flex items-center h-5">
-                        <input type="checkbox" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+                  </div>
+                  <div class="flex-grow overflow-hidden overflow-y-auto relative">
+                    <div class="grid grid-cols-3 2xl:grid-cols-6 gap-1">
+                      <div v-for="eu in state.currentMatter.teachingUnits" :key="eu.id">
+                        <div class="border border-indigo-50 h-52 rounded-md flex justify-center items-center relative">
+                          <div @click="getMatter(eu.id)"
+                            class="cursor-pointer h-32 w-32 text-white rounded-xl hover:bg-indigo-300 bg-gradient-to-b from-indigo-300 to-indigo-600 absolute flex justify-center items-center">
+                            <div
+                              class="p-3 rounded-full">
+                              <span class="bg-white p-0.5 text-indigo-600 text-xs rounded-xl px-2">{{ eu.code }}</span>
+                              <h5 class="text-sm line-clamp-2">{{ eu.name }}</h5>
+                              <hr class="my-2 border border-t-indigo-500">
+                              <h5 class="text-sm">Credits: {{ eu.credits }}</h5>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="ml-3 text-sm">
-                        <label class="font-medium text-gray-700">PETRO75</label>
-                        <p class="text-xs leading-tight text-gray-400">lorem ipsum</p>
-                        <p class="text-xs leading-tight text-gray-400">Credit: 4</p>
+
+                    </div>
+
+                  </div>
+                </div>
+              </Transition>
+
+              <div class="pl-4 pr-3 bg-white h-full flex flex-col">
+                <div class="w-full">
+                  <div class="flex items-start justify-between w-full mb-2">
+                    <div class="flex justify-start w-1/2">
+                      <input placeholder="Rechercher une spécialité ..." name="q-speciality" v-model="qSpeciality"
+                        type="search"
+                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                    </div>
+                    <div class="items-center inline-flex relative">
+                      <button title="Style d'affichage"
+                        class="px-3 py-0.5 rounded-md inline-flex bg-white border text-sm justify-center">
+                        <span class="text-sm material-symbols-outlined mr-2">grid_view</span>
+                        <h6 class="mt-0.5 text-xs">Grille</h6>
+                        <span class="text-sm material-symbols-outlined ml-2">expand_more</span>
+                      </button>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+                <div>
+                  <div class="mb-2 mt-2">
+                    <div class="flex items-start justify-between py-2 ">
+                      <div class="flex justify-start pl-2">
+                        <div>
+                          <h6 class="text-xs" style="font-family: 'JetBrains Mono', monospace">Liste des spécialités
+                            (<span
+                              v-if="state.currentFaculty.specialities.length <= 9">0</span>{{ state.currentFaculty.specialities.length }})
+                          </h6>
+                        </div>
+                      </div>
+                      <div class="items-center inline-flex relative">
+                        <Transition>
+                          <div v-if="showSpecialityForm" style="width:400px;"
+                            class="z-10 h-auto bg-white absolute right-0 top-10 shadow-md rounded-md border border-t-0">
+                            <div class="rounded-t-md w-full h-8 py-1 bg-indigo-600 px-3 text-white">
+                              <div class="flex items-start justify-between ">
+                                <div class="flex justify-start">
+                                  <span class="material-symbols-outlined text-xl -mt-0.5 ">
+                                    apps
+                                  </span>
+                                  <h6 class="text-sm ml-2 mt-0.5 font-medium">Ajouter une spécialité</h6>
+                                </div>
+                                <div class="items-center inline-flex relative">
+                                  <button title="Fermer" class="cursor-pointer" @click="showSpecialityForm = false">
+                                    <span class="material-symbols-outlined">
+                                      close
+                                    </span>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="p-3 w-full h-full space-y-1.5">
+                              <input type="hidden" v-model="specialityFormData.facultyId">
+                              <input placeholder="Nom de la spé" name="name" v-model="specialityFormData.name"
+                                class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                              <input placeholder="Acronyme..." name="name" v-model="specialityFormData.acronym"
+                                class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                              <textarea v-model="specialityFormData.description" style="resize: none;" rows="6"
+                                placeholder="Description" name="name"
+                                class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
+                              <button title="Ajouter un nouveau membre" @click="submitSpecialityForm('add')"
+                                class="shadow-indigo-500/50 shadow-lg px-4 py-2 rounded-md inline-flex text-white bg-indigo-600 text-sm w-full justify-center"><span
+                                  class="mt-0.5">Ajouter une spécialité</span>
+                              </button>
+                            </div>
+                          </div>
+                        </Transition>
+
+                        <div class="-mt-1 h-6 w-6 bg-white shadow rounded-full flex justify-center items-center">
+                          <button title="Ajouter une spécialité" @click="showSpecialityForm = true"
+                            class="rounded-full text-xs font-medium flex justify-center items-center">
+                            <span class="text-lg material-symbols-rounded">
+                              add_circle
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div
+                    class="flex-grow grid grid-cols-3 2xl:grid-cols-4 gap-3 rounded-xl w-full h-full overflow-hidden overflow-y-auto">
+                    <div v-for="speciality in state.currentFaculty.specialities" :key="speciality.id">
+                      <div class="bg-indigo-50 h-52 rounded-md flex justify-center items-center relative">
+                        <!---<div class="h-full w-full absolute">
+                          <img class="rounded-xl z-10 w-full h-full object-cover transform"
+                            src="../../../public/assets/illustrations/v904-nunny-012-a.jpg" alt="">
+                        </div>-->
+                        <div @click="getSpeciality(speciality.id)"
+                          class="cursor-pointer h-40 w-40 text-white rounded-full hover:bg-indigo-300 bg-gradient-to-b from-indigo-300 to-indigo-600 absolute flex justify-center items-center">
+                          <div class="h-20 w-20 border border-indigo-300 rounded-xl flex justify-center items-center">
+                            <h5 class="text-xl">{{ speciality.acronym }}</h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mt-2">
+                        <h5 title="" class="line-clamp-1 font-bold ">{{ speciality.name }} ({{ speciality.acronym }})
+                        </h5>
+                        <h5 title="" class="text-xs line-clamp-2 text-gray-400">{{ speciality.description }}</h5>
                       </div>
                     </div>
                   </div>
@@ -214,7 +381,6 @@
             </div>
           </div>
         </div>
-      </div>
       </Transition>
       <div class="w-full h-full mr-6">
         <div class="flex items-start justify-between ">
@@ -222,36 +388,59 @@
             <div class="inline-flex">
               <img class="h-6 mr-2 mt-1" :src="'public/assets/icons/tent.png'" alt="" />
               <h1 class="text-2xl font-bold mb-2">Facultés</h1>
+              {{ facultyFormData.perfom }}
             </div>
           </div>
           <div class="items-center inline-flex relative">
-            <div v-if="showFacultyForm" class="absolute w-64 bg-white px-3 py-2 rounded-md shadow-md -left-64 top-10">
-              <div class="inline-flex">
-                <img class="h-4 mr-2" :src="'public/assets/icons/tent.png'" alt="" />
-                <h1 class="text-sm font-medium">Ajouter une faculté</h1>
-              </div>
-              <hr class="my-2">
-              <input placeholder="Nom de la fac" name="name" v-model="facultyFormData.name"
-                class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
-              <input placeholder="Acronyme..." name="name" v-model="facultyFormData.acronym"
-                class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
-              <textarea v-model="facultyFormData.description" style="resize: none;" row="5" placeholder="Description"
-                name="name"
-                class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
-              <div class="mt-2 flex items-start justify-between">
-                <div class="flex justify-start"></div>
-                <div class="items-center inline-flex space-x-2">
-                  <button @click="showFacultyForm = false"
-                    class="text-gray-500 hover:bg-gray-100 px-3 py-1 text-xs rounded-md">Annuler</button>
-                  <button @click="submitFacultyForm('add')"
-                    class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 text-xs rounded-md">Nouvelle
-                    faculté</button>
+            <Transition>
+              <div v-if="showFacultyForm" style="width:400px;"
+                class="z-10 h-auto bg-white absolute right-0 top-10 shadow-md rounded-md border border-t-0">
+                <div class="rounded-t-md w-full h-8 py-1 bg-indigo-600 px-3 text-white">
+                  <div class="flex items-start justify-between ">
+                    <div class="flex justify-start">
+                      <span class="material-symbols-outlined text-xl -mt-0.5 ">
+                        apps
+                      </span>
+                      <h6 v-if="facultyFormData.perform != 'edit'" class="text-sm ml-2 mt-0.5 font-medium">Ajouter une
+                        faculté</h6>
+                      <h6 v-if="facultyFormData.perform === 'edit'" class="text-sm ml-2 mt-0.5 font-medium">Editer une
+                        faculté</h6>
+                    </div>
+                    <div class="items-center inline-flex relative">
+                      <button class="Fermer" @click="showFacultyForm = false">
+                        <span class="material-symbols-outlined">
+                          close
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-3 w-full h-full space-y-1.5">
+                  <input type="hidden" v-model="specialityFormData.facultyId">
+                  <input placeholder="Nom de la fac" name="name" v-model="facultyFormData.name"
+                    class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                  <input placeholder="Acronyme..." name="name" v-model="facultyFormData.acronym"
+                    class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                  <textarea v-model="facultyFormData.description" style="resize: none;" rows="6"
+                    placeholder="Description" name="name"
+                    class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
+                  <button v-if="facultyFormData.perform != 'edit'" title="Ajouter un nouveau membre"
+                    @click="submitFacultyForm('add')"
+                    class="shadow-indigo-500/50 shadow-lg px-4 py-2 rounded-md inline-flex text-white bg-indigo-600 text-sm w-full justify-center"><span
+                      class="mt-0.5">Ajouter une faculté</span>
+                  </button>
+                  <button v-if="facultyFormData.perform === 'edit'" title="Ajouter un nouveau membre"
+                    @click="submitFacultyForm('edit')"
+                    class="shadow-indigo-500/50 shadow-lg px-4 py-2 rounded-md inline-flex text-white bg-indigo-600 text-sm w-full justify-center"><span
+                      class="mt-0.5">Editer cette faculté</span>
+                  </button>
                 </div>
               </div>
-            </div>
+            </Transition>
             <div class="h-7 w-7 bg-white shadow rounded-full flex justify-center items-center">
-              <button title="Ajouter une faculté" @click="showFacultyForm = true"
-                class="rounded-full text-xs text-blue-600 font-medium flex justify-center items-center">
+              <button title="Ajouter une faculté" @click="addNewFaculty()"
+                class="rounded-full text-xs text-indigo-600 font-medium flex justify-center items-center">
                 <span class="text-xl material-symbols-rounded">
                   add_circle
                 </span>
@@ -286,7 +475,7 @@
             </div>
             <div class="px-4 pb-4">
               <div class="relative mt-4">
-                <h2 class="text-gray-700 font-bold text-base leading-tight">
+                <h2 class="text-gray-700 font-bold text-base leading-tight line-clamp-1">
                   {{ faculty.name }} ({{ faculty.acronym }})
                 </h2>
               </div>
@@ -298,14 +487,14 @@
                 <div class="flex justify-start space-x-1">
                   <button @click="handleFacultyDetails(faculty.id, 'getData')"
                     title="Afficher les détails de cette faculté"
-                    class="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 text-xs rounded-md">Afficher les
-                    détails</button>
-                  <button @click="getFaculty(faculty.id)" title="Editer cette faculté"
-                    class="group h-6 w-6 text-gray-400 hover:text-blue-600 rounded-md hover:bg-blue-100 flex justify-center items-center">
+                    class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 text-xs rounded-md">En savoir
+                    plus</button>
+                  <button @click="getFaculty(faculty.id, 'edit')" title="Editer cette faculté"
+                    class="group h-6 w-6 text-gray-400 hover:text-indigo-600 rounded-md hover:bg-indigo-100 flex justify-center items-center">
                     <span class="text-sm material-icons-outlined">edit</span>
                   </button>
                   <button title="Supprimer cette faculté" @click="deleteFaculty(faculty)"
-                    class="group h-6 w-6 text-gray-400 hover:text-blue-600 rounded-md hover:bg-blue-100 flex justify-center items-center">
+                    class="group h-6 w-6 text-gray-400 hover:text-indigo-600 rounded-md hover:bg-indigo-100 flex justify-center items-center">
                     <span class="text-sm material-icons-outlined">delete</span>
                   </button>
                 </div>
@@ -335,7 +524,7 @@
   import {
     ref,
     onMounted,
-    computed, 
+    computed,
   } from 'vue'
   import store from '../../store'
 
@@ -344,47 +533,60 @@
 
     setup() {
       //matter mean "matière" in french
+      // showing/hidding elements
 
       const showFacultyDetails = ref(false)
+      const showSpecialityDetails = ref(false)
+      const showMatterDetails = ref(false)
       const showFacultyForm = ref(false)
       const showSpecialityForm = ref(false)
       const showMatterForm = ref(false)
       const showTeachingUnitForm = ref(false)
 
+      //state to store workflow data
+
       const state = ref({
-        currentFaculty:{},
+        currentFaculty: {},
         faculties: [],
         specialities: [],
-        currentSpeciality:{},
+        currentSpeciality: {},
         matters: [],
-        currentMatter:{},
-        teachingUnits: []
+        currentMatter: {},
+        teachingUnits: [],
+        currentTeachingUnits: {},
       })
 
-      /**/
+      //FormData to store each form data before processing
+
       const facultyFormData = ref({
+        id: "",
         name: "",
         acronym: "",
         description: ""
       })
 
       const specialityFormData = ref({
-        facultyId: computed(() => state.value.currentFaculty.id ),
+        facultyId: computed(() => state.value.currentFaculty.id),
         acronym: "",
-        description:""
+        description: ""
       })
 
       const matterFormData = ref({
-        specialityId: computed(() => state.value.currentSpeciality.id ),
+        specialityId: computed(() => state.value.currentSpeciality.id),
         name: "",
         description: ""
       })
 
       const teachingUnitFormData = ref({
-        //todo
+        categoryId: computed(() => state.value.currentMatter.id),
+        name: "",
+        code: "",
+        description:"",
+        credits: ""
       })
 
-      /**/
+      //Data (Creation, edition and Delete) request submitting functions
+      
       const submitFacultyForm = (param) => {
         if (param == 'add') {
           store.apiCallMethods.post('faculty', facultyFormData.value).then(
@@ -394,30 +596,39 @@
                 getFaculties()
               }
             })
-        } else {
-          //if is not add, is edit
-          store.apiCallMethods.patch('faculty', facultyFormData).then(
+        } else if (param == 'edit') {
+          store.apiCallMethods.patch('faculty', facultyFormData.value).then(
             (res) => {
               if (res) {
-                console.log('response', res.data)
+                showFacultyForm.value = false
+                getFaculties()
               }
             })
+        } else {
+          //if is not edit, is delete
+          store.apiCallMethods.delete('faculty', facultyFormData.value).then(
+            (res) => {
+              if (res) {
+                showFacultyForm.value = false
+                getFaculties()
+              }
+            }
+          )
         }
       }
 
       const submitSpecialityForm = (param) => {
         if (param == 'add') {
-          console.log('specialityFormData', specialityFormData);
           store.apiCallMethods.post('speciality', specialityFormData.value).then(
             (res) => {
               if (res) {
-                console.log('response', res.data)
                 showSpecialityForm.value = false
+                getFaculty(state.value.currentFaculty.id)
               }
             })
         } else {
           //if is not add, is edit
-          store.apiCallMethods.patch('speciality', specialityFormData).then(
+          store.apiCallMethods.patch('speciality', specialityFormData.value).then(
             (res) => {
               if (res) {
                 console.log('response', res.data)
@@ -428,13 +639,11 @@
 
       const submitMatterForm = (param) => {
         if (param == 'add') {
-          console.log('matterFormData', matterFormData);
-          return false;
-          store.apiCallMethods.post('matter', matterFormData).then(
+          store.apiCallMethods.post('category', matterFormData.value).then(
             (res) => {
               if (res) {
-                console.log('response', res.data)
                 showMatterForm.value = false
+                getSpeciality(state.value.currentSpeciality.id)
               }
             })
         } else {
@@ -450,18 +659,16 @@
 
       const submitTeachingUnitForm = (param) => {
         if (param == 'add') {
-          console.log('teachingUnitFormData', teachingUnitFormData);
-          return false;
-          store.apiCallMethods.post('teachingUnit', teachingUnitFormData).then(
+          store.apiCallMethods.post('teaching-unit', teachingUnitFormData.value).then(
             (res) => {
               if (res) {
-                console.log('response', res.data)
-                showSpecialityForm.value = false
+                showTeachingUnitForm.value = false
+                 getMatter(state.value.currentMatter.id)
               }
             })
         } else {
           //if is not add, is edit
-          store.apiCallMethods.patch('teachingUnit', teachingUnitFormData).then(
+          store.apiCallMethods.patch('teaching-unit', teachingUnitFormData.value).then(
             (res) => {
               if (res) {
                 console.log('response', res.data)
@@ -470,31 +677,40 @@
         }
       }
 
-      /**/
-      const getFaculty = (facultyId) => {
+      // Getting data functions
+
+      const getFaculty = (facultyId, reason) => {
         store.apiCallMethods.get('faculty/' + facultyId).then(
           (res) => {
             if (res) {
-              state.value.currentFaculty = res.data
+              if (reason && reason == "edit") {
+                facultyFormData.value = res.data
+                facultyFormData.value.id = facultyId
+                facultyFormData.value.perform = "edit"
+                showFacultyForm.value = true
+              } else {
+                state.value.currentFaculty = res.data
+              }
             }
           })
       }
 
       const getSpeciality = (specialityId) => {
-        store.apiCallMethods.patch('speciality/' + specialityId + '').then(
+        store.apiCallMethods.get('speciality/' + specialityId + '').then(
           (res) => {
             if (res) { //todo
               state.value.currentSpeciality = res.data
+              showSpecialityDetails.value = true
             }
           })
       }
 
       const getMatter = (matterId) => {
-        store.apiCallMethods.patch('matter/' + matterId + '').then(
+        store.apiCallMethods.get('category/' + matterId + '').then(
           (res) => {
             if (res) {
-              console.log('response', res.data)
-              //todo
+              state.value.currentMatter = res.data
+              showMatterDetails.value = true
             }
           })
       }
@@ -509,104 +725,22 @@
           })
       }
 
-      /**/
-      const deletedFacultyFormData = ref({
-        id: '',
-      })
-
-      const deletedSpecialityFormData = ref({
-        id: '',
-      })
-
-      const deletedMatterFormData = ref({
-        id: '',
-      })
-
-      const deletedTeachingUnitFormData = ref({
-        id: '',
-      })
-
-      /**/
-      const deleteFaculty = (param) => {
-        let isDeletedFaculty = confirm('Voulez-vous vraiment supprimer la devise (' + param.name + ') ?')
-        if (isDeletedFaculty) {
-          deletedCurrencyFormData.value.id = param.id
-          store.apiCallMethods.delete('faculty', deletedFacultyFormData).then(
-            (res) => {
-              if (res) {
-                console.log('deleted...')
-              } else {
-                console.log('error')
-              }
-            });
-        }
-      }
-
-      const deleteSpeciality = (param) => {
-        let isDeletedSpeciality = confirm('Voulez-vous vraiment supprimer la specialité (' + param.name + ') ?')
-        if (isDeletedFaculty) {
-          deletedSpecialityFormData.value.id = param.id
-          store.apiCallMethods.delete('Speciality', deletedSpecialityFormData).then(
-            (res) => {
-              if (res) {
-                console.log('deleted...')
-              } else {
-                console.log('error')
-              }
-            });
-        }
-      }
-
-      const deleteMatter = (param) => {
-        let isDeletedMatter = confirm('Voulez-vous vraiment supprimer la matière (' + param.name + ') ?')
-        if (isDeletedMatter) {
-          deletedMatterFormData.value.id = param.id
-          store.apiCallMethods.delete('matter', deletedMatterFormData).then(
-            (res) => {
-              if (res) {
-                console.log('deleted...')
-              } else {
-                console.log('error')
-              }
-            });
-        }
-      }
-
-      const deleteTeachingUnit = (param) => {
-        let isDeletedTeachingUnit = confirm('Voulez-vous vraiment supprimer l\'UE (' + param.name + ') ?')
-        if (isDeletedTeachingUnit) {
-          deletedTeachingUnitFormData.value.id = param.id
-          store.apiCallMethods.delete('teachingUnit', deletedTeachingUnitFormData).then(
-            (res) => {
-              if (res) {
-                console.log('deleted...')
-              } else {
-                console.log('error')
-              }
-            });
-        }
-      }
-
-      /**/
       const getFaculties = () => {
         store.apiCallMethods.get('faculty').then(
           (res) => {
             if (res) {
-              console.log('response fac', res.data)
               state.value.faculties = res.data
             }
           })
       }
 
-      const getSpecialitiesByFacultyId = () => {
-        /* todo
-        store.apiCallMethods.get('faculty').then(
+      const getSpecialitiesByFacultyId = (facultyId) => {
+        store.apiCallMethods.get('speciality/' + facultyId + '').then(
           (res) => {
             if (res) {
-              console.log('response', res.data)
               state.value.faculties = res.data
             }
-          })*/
+          })
       }
 
       const getMattersBySpecialityId = () => {
@@ -631,7 +765,74 @@
           })*/
       }
 
-      /**/
+      // Useful Methods
+
+      const addNewFaculty = () => {
+        facultyFormData.value.name = null
+        facultyFormData.value.acronym = null
+        facultyFormData.value.description = null
+        showFacultyForm.value = true
+      }
+
+      // Deleting data functions
+
+      const deleteFaculty = (param) => {
+        let isDeletedFaculty = confirm('Voulez-vous vraiment supprimer la faculté (' + param.name + ') ?')
+        if (isDeletedFaculty) {
+          deletedFacultyFormData.value.id = param.id
+          store.apiCallMethods.delete('faculty', deletedFacultyFormData.value).then(
+            (res) => {
+              if (res) {
+                getFaculties()
+              } else {
+                console.log('error')
+              }
+            });
+        }
+      }
+
+      const deleteSpeciality = (param) => {
+        let isDeletedSpeciality = confirm('Voulez-vous vraiment supprimer la specialité (' + param.name + ') ?')
+        if (isDeletedFaculty) {
+          deletedSpecialityFormData.value.id = param.id
+          store.apiCallMethods.delete('Speciality', deletedSpecialityFormData).then(
+            (res) => {
+              if (!res) {
+                console.log('error')
+              } 
+            });
+        }
+      }
+
+      const deleteMatter = (param) => {
+        let isDeletedMatter = confirm('Voulez-vous vraiment supprimer la matière (' + param.name + ') ?')
+        if (isDeletedMatter) {
+          deletedMatterFormData.value.id = param.id
+          store.apiCallMethods.delete('matter', deletedMatterFormData).then(
+            (res) => {
+              if (!res) {
+                console.log('error...')
+              } 
+            });
+        }
+      }
+
+      const deleteTeachingUnit = (param) => {
+        let isDeletedTeachingUnit = confirm('Voulez-vous vraiment supprimer l\'UE (' + param.name + ') ?')
+        if (isDeletedTeachingUnit) {
+          deletedTeachingUnitFormData.value.id = param.id
+          store.apiCallMethods.delete('teachingUnit', deletedTeachingUnitFormData).then(
+            (res) => {
+              if (!res) {
+                console.log('error')
+              }
+            });
+        }
+      }
+      
+
+      // Handling Data functions
+
       const handleFacultyDetails = (facultyId, reason) => {
         if (reason === 'getData') {
           getFaculty(facultyId)
@@ -646,13 +847,18 @@
       return {
         state,
         facultyFormData,
+        matterFormData,
         specialityFormData,
+        teachingUnitFormData,
         handleFacultyDetails,
         showFacultyDetails,
+        showSpecialityDetails,
+        showMatterDetails,
         showFacultyForm,
         showSpecialityForm,
         showMatterForm,
         showTeachingUnitForm,
+        addNewFaculty,
         submitFacultyForm,
         submitSpecialityForm,
         submitMatterForm,
