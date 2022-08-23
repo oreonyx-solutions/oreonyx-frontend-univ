@@ -60,54 +60,54 @@
             <h5 class="text-gray-400 text-base -mt-1">06 tâches à venir</h5>
           </div>
           <div class="items-center inline-flex space-x-2">
-             <button title="Programme d'aujourd'hui" @click="swithBetweenTabs('today')"
-                  :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'today', 'text-gray-400 hover:bg-gray-200' : currentTab != 'today'}"
-                  class="text-sm rounded-full px-4 pb-0.5 inline-flex">
-                  <span v-if="currentTab != 'today'" class="mr-1 text-base material-icons-outlined">
-                    today
-                  </span>
-                  <span v-if="currentTab == 'today'" class="mr-1 text-base material-icons-round">
-                    today
-                  </span>
-                  <h6 class="mt-0.5">Aujourd'hui</h6>
-                </button>
-                 <button title="Programme de la semaine" @click="swithBetweenTabs('week')"
-                  :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'week', 'text-gray-400 hover:bg-gray-200' : currentTab != 'week'}"
-                  class="text-sm rounded-full px-4 pb-0.5 inline-flex">
-                  <span v-if="currentTab != 'week'" class="mr-1 text-base material-icons-outlined">
-                    date_range
-                  </span>
-                  <span v-if="currentTab == 'week'" class="mr-1 text-base material-icons-round">
-                    date_range
-                  </span>
-                  <h6 class="mt-0.5">Semaine</h6>
-                </button>
-                 <button title="Programme du mois" @click="swithBetweenTabs('month')"
-                  :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'month', 'text-gray-400 hover:bg-gray-200' : currentTab != 'month'}"
-                  class="text-sm rounded-full px-4 pb-0.5 inline-flex">
-                  <span v-if="currentTab != 'month'" class="mr-1 text-base material-icons-outlined">
-                    calendar_month
-                  </span>
-                  <span v-if="currentTab == 'month'" class="mr-1 text-base material-icons-round">
-                    calendar_month
-                  </span>
-                  <h6 class="mt-0.5">Mois</h6>
-                </button>
+            <button title="Programme d'aujourd'hui" @click="swithBetweenTabs('today')"
+              :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'today', 'text-gray-400 hover:bg-gray-200' : currentTab != 'today'}"
+              class="text-sm rounded-full px-4 pb-0.5 inline-flex">
+              <span v-if="currentTab != 'today'" class="mr-1 text-base material-icons-outlined">
+                today
+              </span>
+              <span v-if="currentTab == 'today'" class="mr-1 text-base material-icons-round">
+                today
+              </span>
+              <h6 class="mt-0.5">Aujourd'hui</h6>
+            </button>
+            <button title="Programme de la semaine" @click="swithBetweenTabs('week')"
+              :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'week', 'text-gray-400 hover:bg-gray-200' : currentTab != 'week'}"
+              class="text-sm rounded-full px-4 pb-0.5 inline-flex">
+              <span v-if="currentTab != 'week'" class="mr-1 text-base material-icons-outlined">
+                date_range
+              </span>
+              <span v-if="currentTab == 'week'" class="mr-1 text-base material-icons-round">
+                date_range
+              </span>
+              <h6 class="mt-0.5">Semaine</h6>
+            </button>
+            <button title="Programme du mois" @click="swithBetweenTabs('month')"
+              :class="{' text-white bg-blue-600 hover:bg-blue-600' : currentTab == 'month', 'text-gray-400 hover:bg-gray-200' : currentTab != 'month'}"
+              class="text-sm rounded-full px-4 pb-0.5 inline-flex">
+              <span v-if="currentTab != 'month'" class="mr-1 text-base material-icons-outlined">
+                calendar_month
+              </span>
+              <span v-if="currentTab == 'month'" class="mr-1 text-base material-icons-round">
+                calendar_month
+              </span>
+              <h6 class="mt-0.5">Mois</h6>
+            </button>
           </div>
         </div>
         <div>
 
           <div class="tabs">
             <div v-if="tabs.today" class="p-3 hover:bg-gray-50 text-gray-400 rounded-lg ">
-              
+
               <todo />
             </div>
             <div v-if="tabs.week" class="pt-3 px-3 space-y-2">
-              
+
               <todo />
             </div>
             <div v-if="tabs.month" class="pt-3 px-3 space-y-2">
-              
+
               <todo />
             </div>
           </div>
@@ -118,20 +118,22 @@
           <div class="h-auto w-full relative">
             <img class="h-32 object-scale-down" src="../../../public/assets/default_establishment_pp.png"
               alt="Photo de profil">
-            
+
           </div>
           <hr class="my-2">
           <button title="Compte Business"
             :class="{ 'border-green-600 bg-green-600' : isSubscriptionEnd() == false, 'border-red-600 bg-red-600' : isSubscriptionEnd() == true }"
             class="z-10 inline-flex border text-white rounded-full px-3">
-            <span v-if="isSubscriptionEnd() == false" style="font-size:18px; margin-top:0.2rem" class="material-symbols-rounded">
+            <span v-if="isSubscriptionEnd() == false" style="font-size:18px; margin-top:0.2rem"
+              class="material-symbols-rounded">
               verified
             </span>
-             <span v-if="isSubscriptionEnd() == true" style="font-size:18px; margin-top:0.2rem" class="material-symbols-rounded">
+            <span v-if="isSubscriptionEnd() == true" style="font-size:18px; margin-top:0.2rem"
+              class="material-symbols-rounded">
               warning
             </span>
             <div v-if="isSubscriptionEnd() == false" class="ml-1 font-semibold">Standard</div>
-             <div v-if="isSubscriptionEnd() == true" class="ml-1 font-semibold">Abonnement terminé</div>
+            <div v-if="isSubscriptionEnd() == true" class="ml-1 font-semibold">Abonnement terminé</div>
           </button>
           <div class="relative mt-1">
             <h2 class="text-gray-700 font-bold text-base leading-tight">
@@ -166,9 +168,8 @@
             <div title="Addresse e-mail officiel, écrivez-nous!" class="text-gray-400 inline-flex w-full">
               <div class="text-md inline-flex">
                 <span class="text-md font-base">Pays:</span>
-                <span 
-                  class="ml-2 text-base text-gray-400 line-clamp-1">Togo</span>
-                    <img src="../../../public/assets/icons/flag-togo_1f1f9-1f1ec.png" alt="" class="h-6 ml-1" />
+                <span class="ml-2 text-base text-gray-400 line-clamp-1">Togo</span>
+                <img src="../../../public/assets/icons/flag-togo_1f1f9-1f1ec.png" alt="" class="h-6 ml-1" />
               </div>
             </div>
             <div title="Addresse e-mail officiel, écrivez-nous!" class="text-gray-400 inline-flex w-full">
@@ -186,7 +187,8 @@
               </div>
             </div>
             <div class="mt-3">
-              <a title="www.google.com" target="_blank" href="www.google.com" class="hover:bg-blue-600 hover:text-white text-base text-blue-600 bg-white rounded-full border border-blue-600 px-3 py-0.5 inline-flex">
+              <a title="www.google.com" target="_blank" href="www.google.com"
+                class="hover:bg-blue-600 hover:text-white text-base text-blue-600 bg-white rounded-full border border-blue-600 px-3 py-0.5 inline-flex">
                 <span class="material-symbols-outlined text-lg mr-2">language</span>
                 <span class="mt-0.5">Acceder au site web</span>
               </a>
@@ -194,10 +196,14 @@
             <div>
               <div class="grid grid-cols-2 gap-3 mt-6 mb-2">
                 <div class="bg-gray-100 h-28 rounded-md">
-                  <img class="object-cover h-full w-full rounded-md" src="https://images.pexels.com/photos/459203/pexels-photo-459203.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+                  <img class="object-cover h-full w-full rounded-md"
+                    src="https://images.pexels.com/photos/459203/pexels-photo-459203.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    alt="">
                 </div>
                 <div class="bg-gray-100 h-28 rounded-md">
-                  <img class="object-cover h-full w-full rounded-md" src="https://images.pexels.com/photos/2171277/pexels-photo-2171277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+                  <img class="object-cover h-full w-full rounded-md"
+                    src="https://images.pexels.com/photos/2171277/pexels-photo-2171277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    alt="">
                 </div>
               </div>
               <h6 class="text-gray-400 text-xs underline">Tout afficher</h6>
@@ -259,6 +265,7 @@
       Work,
     },
     setup() {
+      const showWelcomeMessage = ref(false)
 
       const state = reactive({
         times: {
@@ -307,12 +314,11 @@
         state.times.time.hours = hour
         state.times.time.minutes = minute
         state.times.time.seconds = second
-
         state.times.date = day + ' ' + month + ' ' + year
 
       }
 
-      //Autorefresh for time
+      //Autorefresh for home clock
       const autoRefresh = () => {
         setInterval(() => {
           currentDateTime();
@@ -360,23 +366,21 @@
 
       //destructurate in establishment component
       const isSubscriptionEnd = () => {
-          let isSubscriptionFinished = false
-          store.apiCallMethods.get("../infos-subscription").then(res => {
-            let currentDate = new Date()
-            let expireDate = new Date(res.data.expireDate)
-            currentDate > expireDate ?  isSubscriptionFinished = true :  isSubscriptionFinished = false
-          });
+        let isSubscriptionFinished = false
+        store.apiCallMethods.get("../infos-subscription").then(res => {
+          let currentDate = new Date()
+          let expireDate = new Date(res.data.expireDate)
+          currentDate > expireDate ? isSubscriptionFinished = true : isSubscriptionFinished = false
+        });
 
-          return isSubscriptionFinished
+        return isSubscriptionFinished
       }
 
-       const getAdminInfos = () => {
-          store.apiCallMethods.get("../api/user/1").then(res => {
-          console.log('HEY USER', res.data)
-          });
+      const getAdminInfos = () => {
+        store.apiCallMethods.get("../api/user/1").then(res => {});
       }
 
- const getStatements = () => {
+      const getStatements = () => {
         store.apiCallMethods.get('/link').then(
           (res) => {
             if (res) {
@@ -387,9 +391,19 @@
           })
       }
 
+      //function to verify if current url contain param "new-year"
+      const isNewYear = () => {
+        let url = window.location.href
+        let newYear = url.includes('new-year')
+        if (newYear) {
+          showWelcomeMessage.value = true
+        }
+      }
+
       onMounted(() => {
+        isNewYear()
         isSubscriptionEnd(),
-        getAdminInfos()
+          getAdminInfos()
         //getStatements()
       })
 
@@ -398,6 +412,7 @@
         state,
         tabs,
         currentTab,
+        showWelcomeMessage,
         swithBetweenTabs,
         swithTabFromTrueToFalse,
         isSubscriptionEnd,

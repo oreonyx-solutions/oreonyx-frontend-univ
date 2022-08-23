@@ -4,6 +4,7 @@
   </div>
   <div class="w-4/5 2xl:w-10/12 px-6 py-6 h-full absolute right-0 top-0 bg-gray-50 overflow-hidden">
     <div class="h-full flex-grow inline-flex w-full relative">
+
       <Transition>
         <div v-if="showFacultyDetails"
           class="overflow-hidden absolute bg-white border-t-0 border rounded-lg top-0 h-full w-full z-10">
@@ -16,7 +17,7 @@
                   <span v-if="state.currentMatter && showMatterDetails == true">
                   > {{ state.currentMatter.name }}</span>
                   <span v-if="state.currentTeachingUnit && showTeachingUnitDetails == true">
-                  > {{ state.currentTeachingUnit.name }}</span>
+                  > {{ state.currentTeachingUnit.code }}</span>
               </div>
               <div class="items-center inline-flex space-x-2">
                 <span title="Retour à la liste des facultés" class="cursor-pointer hover:text-gray-50"
@@ -251,21 +252,137 @@
                       </div>
                     </div>
                   </div>
+
                   <div class="flex-grow overflow-hidden overflow-y-auto relative">
-                    <div class="grid grid-cols-3 2xl:grid-cols-6 gap-1">
+                    <div class="grid grid-cols-3 2xl:grid-cols-4 gap-1">
                       <div v-for="eu in state.currentMatter.teachingUnits" :key="eu.id">
                         <div class="border border-indigo-50 h-52 rounded-md flex justify-center items-center relative">
-                          <div @click="getMatter(eu.id)"
-                            class="cursor-pointer h-32 w-32 text-white rounded-xl hover:bg-indigo-300 bg-gradient-to-b from-indigo-300 to-indigo-600 absolute flex justify-center items-center">
+                          <div @click="getTeachingUnitByCode(eu.code)"
+                            class="cursor-pointer h-40 w-40 text-white rounded-xl hover:bg-indigo-300 bg-gradient-to-b from-indigo-300 to-indigo-600 absolute flex justify-center items-center">
                             <div
                               class="p-3 rounded-full">
                               <span class="bg-white p-0.5 text-indigo-600 text-xs rounded-xl px-2">{{ eu.code }}</span>
                               <h5 class="text-sm line-clamp-2">{{ eu.name }}</h5>
                               <hr class="my-2 border border-t-indigo-500">
                               <h5 class="text-sm">Credits: {{ eu.credits }}</h5>
+                               <h5 class="text-sm">Groupes: {{ eu._count.groups }}</h5>
                             </div>
                           </div>
                         </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </Transition>
+
+               <Transition>
+                <div v-if="showTeachingUnitDetails"
+                  class="pt-2 pl-4 pr-3 h-full flex flex-col backdrop-blur-2xl bg-white/30  w-full absolute z-30">
+                  <div class="flex items-start justify-between w-full mb-2">
+                    <div class="flex justify-start w-1/2">
+                      <button @click="showTeachingUnitDetails = false" title="Retour à la liste des matières"
+                        class="px-3 py-0.5 rounded-md inline-flex bg-white border text-sm justify-center mr-2">
+                        <span class="material-symbols-outlined">keyboard_return</span>
+                      </button>
+                      <input placeholder="Rechercher un groupe..." name="q-Group" v-model="qGroup" type="search"
+                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                    </div>
+                    <div class="items-center inline-flex relative">
+                      <button title="Style d'affichage"
+                        class="px-3 py-1 rounded-md inline-flex bg-white border text-sm justify-center">
+                        <span class="text-sm material-symbols-outlined mr-2">grid_view</span>
+                        <h6 class="mt-0.5 text-xs">Grille</h6>
+                        <span class="text-sm material-symbols-outlined ml-2">expand_more</span>
+                      </button>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="flex items-start justify-between py-2">
+                    <div class="flex justify-start">
+                      <div>
+                         <h6 class="text-xs" style="font-family: 'JetBrains Mono', monospace">Liste des groupes
+                          (<span v-if="true">0</span>{{ state.currentTeachingUnit.groups.length }})
+                        </h6>
+                      </div>
+                    </div>
+                    <div class="items-center inline-flex relative">
+                      <Transition>
+                        <div v-if="showTeachingUnitForm" style="width:400px;"
+                          class="z-10 h-auto bg-white absolute right-0 top-10 shadow-md rounded-md border border-t-0">
+                          <div class="rounded-t-md w-full h-8 py-1 bg-indigo-600 px-3 text-white">
+                            <div class="flex items-start justify-between ">
+                              <div class="flex justify-start">
+                                <span class="material-symbols-outlined text-xl -mt-0.5 ">
+                                  apps
+                                </span>
+                                <h6 class="text-sm ml-2 mt-0.5 font-medium">Ajouter un groupe</h6>
+                              </div>
+                              <div class="items-center inline-flex relative">
+                                <button title="Fermer" class="cursor-pointer" @click="showTeachingUnitForm = false">
+                                  <span class="material-symbols-outlined">
+                                    close
+                                  </span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="p-3 w-full h-full space-y-1.5">
+                            <input placeholder="Nom de l'UE'" name="name" v-model="teachingUnitFormData.name"
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                            <input placeholder="Code de l'UE'" name="name" v-model="teachingUnitFormData.code"
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                              <input placeholder="Nombre de credits" name="name" v-model.number="teachingUnitFormData.credits"
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                            <textarea v-model="teachingUnitFormData.description" style="resize: none;" rows="6"
+                              placeholder="Description" name="name"
+                              class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
+                            <button title="Ajouter une Unité d'Enseignement" @click="submitTeachingUnitForm('add')"
+                              class="shadow-indigo-500/50 shadow-lg px-4 py-2 rounded-md inline-flex text-white bg-indigo-600 text-sm w-full justify-center"><span
+                                class="mt-0.5">Ajouter une UE</span>
+                            </button>
+                          </div>
+                        </div>
+                      </Transition>
+
+                      <div class="-mt-1 h-6 w-6 bg-white shadow rounded-full flex justify-center items-center">
+                        <button title="Ajouter une Unité d'Enseignement" @click="showTeachingUnitForm = true"
+                          class="rounded-full text-xs font-medium flex justify-center items-center">
+                          <span class="text-lg material-symbols-rounded">
+                            add_circle
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex-grow overflow-hidden overflow-y-auto relative">
+                    <div class="grid grid-cols-3 2xl:grid-cols-4 gap-1">
+                      <div v-for="group in state.currentTeachingUnit.groups" :key="group.id">
+                       <div  class="rounded-lg  border border-indigo-50 h-52 flex justify-center items-center relative">
+                        <div @click="getGroup(group.id)" 
+                            class="rounded-lg cursor-pointer h-40 w-40 text-white hover:bg-indigo-300 bg-gradient-to-b from-indigo-300 to-indigo-600 absolute flex justify-center items-center">
+                            <div
+                              class="p-3 rounded-full">
+                              <span class="bg-white p-0.5 text-indigo-600 text-xs rounded-xl px-2">Groupe 1</span>
+                              <hr class="my-2 border border-t-indigo-500">
+                              <div title="Membres" class="w-full flex justify-center">
+                                <div class="inline-flex">
+                                  <span class="material-symbols-outlined mr-1">group</span>
+                                  <h5 class="text-lg font-bold">150</h5>
+                              </div>
+                              </div>
+                              <hr class="my-2 border border-t-indigo-500">
+                              <div title="Superviseurs" class="w-full flex justify-center">
+                                <div class="inline-flex">
+                                  <span class="material-symbols-outlined mr-1">supervisor_account</span>
+                                  <h5 class="text-lg font-bold">02</h5>
+                              </div>
+                            </div>
+                            </div>
+                          </div>
+                          </div>
                       </div>
 
                     </div>
@@ -383,7 +500,7 @@
         </div>
       </Transition>
       <div class="w-full h-full mr-6">
-        <div class="flex items-start justify-between ">
+        <div class="flex items-start justify-between px-3 py-1 rounded-md">
           <div class="flex justify-start">
             <div class="inline-flex">
               <img class="h-6 mr-2 mt-1" :src="'public/assets/icons/tent.png'" alt="" />
@@ -473,29 +590,33 @@
                   alt="">
               </div>
             </div>
-            <div class="px-4 pb-4">
+            <div class="px-4 pb-3">
               <div class="relative mt-4">
                 <h2 class="text-gray-700 font-bold text-base leading-tight line-clamp-1">
                   {{ faculty.name }} ({{ faculty.acronym }})
                 </h2>
               </div>
-              <div class="mt-2">
+              <div class="mt-2 h-24">
                 <h6 class="text-sm leading-tight text-gray-400 line-clamp-5">{{ faculty.description }}</h6>
               </div>
-              <hr class="my-2">
+              <hr class="mb-2">
               <div class="mt-2 flex items-start justify-between">
-                <div class="flex justify-start space-x-1">
+                <div class="flex justify-start space-x-2">
                   <button @click="handleFacultyDetails(faculty.id, 'getData')"
                     title="Afficher les détails de cette faculté"
-                    class="text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 text-xs rounded-md">En savoir
+                    class="text-white bg-indigo-600 hover:bg-indigo-700 px-4 py-1 text-xs rounded-md">En savoir
                     plus</button>
-                  <button @click="getFaculty(faculty.id, 'edit')" title="Editer cette faculté"
-                    class="group h-6 w-6 text-gray-400 hover:text-indigo-600 rounded-md hover:bg-indigo-100 flex justify-center items-center">
-                    <span class="text-sm material-icons-outlined">edit</span>
-                  </button>
+                    <button @click="getFaculty(faculty.id, 'edit')" title="Editer cette faculté"
+                    class="hidden group text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 text-xs rounded-md">
+                      <span class="text-xs material-icons-outlined">edit</span> 
+                    Editer</button>
                   <button title="Supprimer cette faculté" @click="deleteFaculty(faculty)"
-                    class="group h-6 w-6 text-gray-400 hover:text-indigo-600 rounded-md hover:bg-indigo-100 flex justify-center items-center">
+                    class="hidden group h-6 w-6 text-gray-400 hover:text-indigo-600 rounded-md hover:bg-indigo-100 flex justify-center items-center">
                     <span class="text-sm material-icons-outlined">delete</span>
+                  </button>
+                  <button title="Options supplémentaires"
+                    class="h-8 w-8 text-indigo-300 hover:text-indigo-600 rounded-md hover:bg-indigo-100 bg-indigo-100 flex justify-center items-center">
+                    <span class="text-2xl material-icons-outlined">tune</span>
                   </button>
                 </div>
                 <div class="items-center inline-flex">
@@ -538,6 +659,7 @@
       const showFacultyDetails = ref(false)
       const showSpecialityDetails = ref(false)
       const showMatterDetails = ref(false)
+      const showTeachingUnitDetails = ref(false)
       const showFacultyForm = ref(false)
       const showSpecialityForm = ref(false)
       const showMatterForm = ref(false)
@@ -553,7 +675,7 @@
         matters: [],
         currentMatter: {},
         teachingUnits: [],
-        currentTeachingUnits: {},
+        currentTeachingUnit: {},
       })
 
       //FormData to store each form data before processing
@@ -715,12 +837,13 @@
           })
       }
 
-      const getTeachingUnit = (teachingUnitId) => {
-        store.apiCallMethods.patch('teachingUnit/' + teachingUnitId + '').then(
+      const getTeachingUnitByCode = (teachingUnitCode) => {
+        store.apiCallMethods.get('teaching-unit/' + teachingUnitCode + '').then(
           (res) => {
             if (res) {
-              console.log('response', res.data)
-              //todo
+              console.log('response is', res.data)
+              state.value.currentTeachingUnit = res.data
+              showTeachingUnitDetails.value = true
             }
           })
       }
@@ -854,6 +977,7 @@
         showFacultyDetails,
         showSpecialityDetails,
         showMatterDetails,
+        showTeachingUnitDetails ,
         showFacultyForm,
         showSpecialityForm,
         showMatterForm,
@@ -870,7 +994,7 @@
         getFaculty,
         getSpeciality,
         getMatter,
-        getTeachingUnit,
+        getTeachingUnitByCode,
         getFaculties,
         getSpecialitiesByFacultyId,
         getMattersBySpecialityId,

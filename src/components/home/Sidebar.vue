@@ -12,6 +12,22 @@
     </div>
     <div class="px-6 flex-grow relative">
       <ul class="list-none mt-2">
+         <li title="Tableau de bord">
+          <router-link :to="{ name: 'schoolyear' }">
+            <div class="
+                  hover:text-neutral-400
+                  text-neutral-500
+                  py-1.5
+                  rounded-md
+                  text-sm
+                  font-medium
+                  inline-flex
+                  w-full
+                ">
+              <h5 class="text-base">Config/SchoolYear (test link)</h5>
+            </div>
+          </router-link>
+        </li>
         <li title="Tableau de bord">
           <router-link :to="{ name: 'home' }">
             <div class="
@@ -312,6 +328,21 @@
             </div>
           </router-link>
         </div>
+         <button title="Déconnexion" @click="logout" class="
+              border border-red-600
+              text-red-500
+              hover:text-white hover:bg-red-500
+              bg-transparent
+              py-1
+              px-3
+              rounded-md
+              text-sm
+              font-medium
+              inline-flex
+            ">
+            Déconnexion
+          </button>
+      
       </div>
 
       <!-- </router-link> -->
