@@ -245,7 +245,7 @@
     </Transition>
 </div>
 </template>
-<style>
+<style scoped >
   /* transition styles */
   .v-enter-active,
   .v-leave-active {
@@ -357,10 +357,7 @@
       }
 
       const nextScholarshipPeriodRequest = () => {
-        showYearsForm.value = false
-        setTimeout(() => {
-            showPeriodsForm.value = true
-        }, 1200)
+       
       }
 
       const nextCongratulationScreen = () => {

@@ -1,7 +1,12 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory
+} from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ResetPasswordView from '../views/ResetPasswordView.vue'
+import VerifyAccountView from '../views/VerifyAccountView.vue'
+import ChooseSpecialitiesView from '../views/ChooseSpecialitiesView.vue'
 import HomeView from '../views/HomeView.vue'
 import AgendaView from '../views/AgendaView.vue'
 import BlogView from '../views/BlogView.vue'
@@ -13,8 +18,7 @@ import SubscriptionView from '../views/SubscriptionView.vue'
 import StatisticsView from '../views/StatisticsView.vue'
 import SchoolyearView from '../views/SchoolyearView.vue'
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'login',
     component: LoginView
@@ -30,6 +34,16 @@ const routes = [
     component: ResetPasswordView
   },
   {
+    path: '/verify-account',
+    name: 'verify-account',
+    component: VerifyAccountView
+  },
+  {
+    path: '/choose-specialities',
+    name: 'choose-specialities',
+    component: ChooseSpecialitiesView
+  },
+  {
     path: '/home',
     name: 'home',
     component: HomeView,
@@ -38,14 +52,12 @@ const routes = [
     path: '/agenda',
     name: 'agenda',
     component: AgendaView,
-  }
-  ,
+  },
   {
     path: '/blog',
     name: 'blog',
     component: BlogView,
-  }
-  ,
+  },
   {
     path: '/communications',
     name: 'communications',

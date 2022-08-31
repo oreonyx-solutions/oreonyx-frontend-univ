@@ -1,7 +1,9 @@
 <template>
-  <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-      <form @submit.prevent="submitForm" class="bg-white  p-8 pt-0 mt-8" action="#" method="POST">
+  <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative">
+    <img  class="w-full absolute -top-96 transform rotate-90"
+  src="../../../public/assets/illustrations/background.6c3571e062.jpg" alt="cover_picture">
+    <div class="max-w-md w-full space-y-8 absolute top-16">
+      <form @submit.prevent="submitForm" class="p-8 pt-0 mt-8" action="#" method="POST">
         <input type="hidden" name="remember" value="true" />
         <div class="inline-flex">
           <img class="h-16" :src="'public/assets/logo.png'" alt="Oreonyx">
@@ -57,7 +59,7 @@
 
       const state = ref({
         establishment: {
-          acronym: 'loading...'
+          acronym: 'chargement...'
         }
       })
       onMounted(() => {

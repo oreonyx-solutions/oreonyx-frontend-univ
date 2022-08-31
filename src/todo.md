@@ -10,3 +10,7 @@
 
   - After new year creation -> redirection to home, then show "new year" Welcome message and send notification to admin (later we will precize the content).
   - If school is an old account, send notification to all this school users (later we will precize the content).
+
+## Action buttons
+
+  - add loading animate-spin on all action buttons click
