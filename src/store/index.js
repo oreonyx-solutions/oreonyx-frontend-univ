@@ -2,10 +2,18 @@ import { reactive } from 'vue'
 import apiCallMethods from './api-call-methods'
 import authMethods from './auth-methods'
 import notificationMethods from './notification-methods' 
+import groupMethods from './group-methods'
 
 const state = reactive ({
     user: {},
     establishment: {},
+    events: [],
+    workspace: {
+        display: true,
+        group: "UE6 2017 - 2018 Semestre Harmatan workspace 1",
+        teachingUnitCode: 'UE6',
+        session: new Date('Wed Aug 31 2022 11:00:00 GMT+0000 (Coordinated Universal Time)'),
+    },
     isAuth: false,
     toggleWorkSpace:false,
     device: {
@@ -48,5 +56,6 @@ export default {
     methods,
     apiCallMethods,
     authMethods,
-    notificationMethods
+    notificationMethods,
+    groupMethods
 }
