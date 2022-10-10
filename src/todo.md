@@ -10,3 +10,14 @@
 
   - After new year creation -> redirection to home, then show "new year" Welcome message and send notification to admin (later we will precize the content).
   - If school is an old account, send notification to all this school users (later we will precize the content).
+
+
+
+<!-- Techincal -->
+-End /leave Live
+- handle page refresh
+- Mic control
+- Cam control
+- Share screen
+- Canvas
+- many-to-many

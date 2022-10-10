@@ -3,16 +3,29 @@ import apiCallMethods from './api-call-methods'
 import authMethods from './auth-methods'
 import notificationMethods from './notification-methods' 
 import groupMethods from './group-methods'
+import sessionMethods from './session-methods'
+import webrtcMethods from './webrtc-methods'
 
 const state = reactive ({
     user: {},
     establishment: {},
     events: [],
+    connection:null,
     workspace: {
         display: true,
-        group: "UE6 2017 - 2018 Semestre Harmatan workspace 1",
+        // user: {
+        //     id: this.user.id,
+        //     name: this.user.lastName+ ' ' + this.user.firstName,
+        //     avatar: this.user.avatar,
+        //     role: this.user.role
+        // },
+        group: {
+            id: "cl79war0u00014spgylvm91zg",
+            name: "UE6 2017 - 2018 Semestre Harmatan workspace 1"
+        },
         teachingUnitCode: 'UE6',
-        session: new Date('Wed Aug 31 2022 11:00:00 GMT+0000 (Coordinated Universal Time)'),
+        date: new Date('Wed Aug 31 2022 11:00:00 GMT+0000 (Coordinated Universal Time)'),
+        session: null
     },
     isAuth: false,
     toggleWorkSpace:false,
@@ -21,8 +34,8 @@ const state = reactive ({
         token: null,
         platform: null
     },
-    uploadUrl: 'http://34.77.255.36:4000/',
-    apiUrl: 'http://34.77.255.36:4000/api/',
+    uploadUrl: 'https://nx-server.work/oreonyx/univ/0/',
+    apiUrl: 'https://nx-server.work/oreonyx/univ/0/api/',
     config: {
        
     }
@@ -57,5 +70,7 @@ export default {
     apiCallMethods,
     authMethods,
     notificationMethods,
-    groupMethods
+    groupMethods,
+    sessionMethods,
+    webrtcMethods
 }

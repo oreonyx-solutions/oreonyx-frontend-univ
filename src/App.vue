@@ -1,6 +1,8 @@
 <template>
   <Work v-if="state.displayWorkspace" />
   <router-view v-else />
+  <!-- <router-view/> -->
+
 </template>
 
 <script>
