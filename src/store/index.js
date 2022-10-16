@@ -34,8 +34,8 @@ const state = reactive ({
         token: null,
         platform: null
     },
-    uploadUrl: 'https://nx-server.work/oreonyx/univ/0/',
-    apiUrl: 'https://nx-server.work/oreonyx/univ/0/api/',
+    uploadUrl: 'https://nx-server.work/univ-0/',
+    apiUrl: 'https://nx-server.work/univ-0/api/',
     config: {
        
     }
