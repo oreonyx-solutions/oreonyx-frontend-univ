@@ -5,7 +5,7 @@
   >
     <div class="h-16 flex justify-between">
       <div class="flex gap-5">
-        <button class="text-lg">&lt</button>
+        <button class="text-lg" @click="onExit">&lt</button>
         <div>
           <h2 class="text-center font-semibold">
             {{ store.state.workspace.group.name }}
@@ -71,7 +71,8 @@
                   ' w-2 h-2 rounded-full bg-green-700': true,
                   'bg-red-700': participant?.livedAt,
                 }"
-              ></div>white
+              ></div>
+              white
               <h1 class="text-xs">
                 {{ participant?.name }}
               </h1>
@@ -99,7 +100,7 @@
         </div>
         <div
           class="w-full h-[calc(100%_-_10rem)] bg-black rounded-3xl relative"
-        >white
+        >
           <div
             class="
               flex
@@ -150,7 +151,18 @@
         </div>
       </div>
       <!-- Side panel -->
-      <div class="bg-gray-200 w-[30rem] h-full flex flex-col justify-between px-2 pt-8 rounded-xl">
+      <div
+        class="
+          bg-gray-200
+          w-[30rem]
+          h-full
+          flex flex-col
+          justify-between
+          px-2
+          pt-8
+          rounded-xl
+        "
+      >
         <div class="w-full h-8 grid grid-cols-3 bg-gray-200">
           <button
             @click="state.tabIndex = 0"
@@ -183,7 +195,7 @@
             <span class="material-symbols-outlined text-sm"> group </span>
           </button>
         </div>
-        <div class="h-full overflow-y-auto ">
+        <div class="h-full overflow-y-auto">
           <div v-if="state.tabIndex == 1">Fichiers</div>
           <div v-else-if="state.tabIndex == 2">
             <!-- <h1>{{ store.state.workspace }}</h1> -->
@@ -223,7 +235,6 @@
             </div>
           </div>
         </div>
-       
       </div>
     </div>
     <div class="w-full h-24 flex bg-white text-gray-500 items-center">
@@ -239,22 +250,22 @@
         :isCamOff="state.isCamOff"
         :volume="state.volume"
       />
-      <div class=" w-[30rem] h-fit flex gap-2">
-          <textarea
-            rows="1"
-            name=""
-            class=" w-full border-none bg-gray-200 rounded-lg"
-            v-model="state.message"
-            placeholder="Taper le message..."
-          ></textarea>
-          <button
-            :disabled="!state.message"
-            @click="sendMessage"
-            class="bg-teal-600 text-white p-1 rounded-md"
-          >
-            Envoyer
-          </button>
-        </div>
+      <div class="w-[30rem] h-fit flex gap-2">
+        <textarea
+          rows="1"
+          name=""
+          class="w-full border-none bg-gray-200 rounded-lg"
+          v-model="state.message"
+          placeholder="Taper le message..."
+        ></textarea>
+        <button
+          :disabled="!state.message"
+          @click="sendMessage"
+          class="bg-teal-600 text-white p-1 rounded-md"
+        >
+          Envoyer
+        </button>
+      </div>
     </div>
   </div>
   <div v-else class="bg-black h-screen w-full flex items-center justify-center">
@@ -313,6 +324,9 @@ export default {
     });
     // const date = new Date()
     // console.log('format ======> ', date.toLocaleTimeString())
+    const onExit = () => {
+      store.state.workspace.display = false;
+    }
     const findSession = async () => {
       try {
         const session = await store.sessionMethods.findSession();
@@ -341,10 +355,11 @@ export default {
     const listenSession = () => {
       store.sessionMethods.listenSession((session) => {
         console.log(session);
-        state.value.session = session;
-        state.value.participant =
-          state.value.session.participants[store.state.user.id];
-        if (session && !state.value.joingned) findSession();
+        if (session) {
+          state.value.session = session;
+          state.value.participant = state.value.session.participants[store.state.user.id];
+          if (!state.value.joingned) findSession();
+        }
       });
     };
 
@@ -557,6 +572,7 @@ export default {
       toggleParticipantMedia,
       mediaTypes,
       courseTypes,
+      onExit
     };
   },
 };

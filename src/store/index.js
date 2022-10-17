@@ -12,7 +12,7 @@ const state = reactive ({
     events: [],
     connection:null,
     workspace: {
-        display: true,
+        display: false,
         // user: {
         //     id: this.user.id,
         //     name: this.user.lastName+ ' ' + this.user.firstName,
@@ -20,11 +20,11 @@ const state = reactive ({
         //     role: this.user.role
         // },
         group: {
-            id: "cl79war0u00014spgylvm91zg",
-            name: "UE6 2017 - 2018 Semestre Harmatan workspace 1"
+            id: "cl9cyculp00157elcxem36yk1",
+            name: "UE2 2019-2020 Semestre Harmatan workspace 1"
         },
-        teachingUnitCode: 'UE6',
-        date: new Date('Wed Aug 31 2022 11:00:00 GMT+0000 (Coordinated Universal Time)'),
+        teachingUnitCode: 'UE2',
+        date: new Date('Wed Oct 19 2022 11:00:00 GMT+0000 (Coordinated Universal Time)'),
         session: null
     },
     isAuth: false,
@@ -34,8 +34,10 @@ const state = reactive ({
         token: null,
         platform: null
     },
-    uploadUrl: 'https://nx-server.work/univ-0/',
-    apiUrl: 'https://nx-server.work/univ-0/api/',
+    // uploadUrl: 'https://nx-server.work/univ-0/',
+    // apiUrl: 'https://nx-server.work/univ-0/api/',
+    uploadUrl: 'http://localhost/univ-0/',
+    apiUrl: 'http://localhost/univ-0/api/',
     config: {
        
     }

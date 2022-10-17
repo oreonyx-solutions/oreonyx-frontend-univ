@@ -1,8 +1,8 @@
 <template>
-  <Work v-if="state.displayWorkspace" />
-  <router-view v-else />
+  <!-- <Work v-if="state.displayWorkspace" />
+  <router-view v-else /> -->
   <!-- <router-view/> -->
-
+  <Private />
 </template>
 
 <script>
@@ -14,10 +14,12 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 // import { onBackgroundMessage } from "firebase/messaging/sw";
 import router from "./router";
 import { onMounted, ref } from "@vue/runtime-core";
+import Private from "./layouts/Private.vue";
 
 export default {
   components: {
     Work,
+    Private,
   },
   setup() {
     store.apiCallMethods.get("../infos-establishment").then((res) => {
