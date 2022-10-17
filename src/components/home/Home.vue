@@ -1,59 +1,56 @@
 <template>
-  <Transition>
-    <div>
-      <Work v-if="store.state.toggleWorkSpace" />
-      <div v-if="!store.state.toggleWorkSpace" class="w-4/5 2xl:w-10/12 px-6 pb-6 h-full absolute right-0 top-0">
-        <div class="h-full flex-grow inline-flex w-full">
-          <div class="w-4/6 h-full bg-white mr-6 pr-6 py-6 border-r">
-            <div class=" shadow-blue-500/50 bg-blue-600 text-white p-4 rounded-xl inline-flex shadow-lg">
-              <div class="w-3/6 2xl:w-2/6 pr-6">
-                <div class="inline-flex">
-                  <h1 class="text-2xl 2xl:text-4xl font-bold">{{ state.times.time.hours }}:{{ state.times.time.minutes }}
-                  </h1>
-                </div>
-                <h1 class="text-xl font-bold">Bonjour, Jerome !</h1>
-                <h6 class="text-sm mt-2">
-                  Voici votre programme de la journée. Vous avez 01 cours en ligne et 03 cours en
-                  présentiel. Voir ci-desous les détails de votre journée.
-                </h6>
-              </div>
-              <div class="w-3/6  2xl:w-4/6">
-                <div class="grid grid-cols-3 gap-3">
-                  <div class="rounded-xl flex flex-col">
-                    <div class="flex-grow">
-                      <div class="h-32 w-full rounded-xl bg-blue-400">
-                        <img class="shadow-xl rounded-xl h-full w-full object-cover"
-                          src="../../../public/assets/illustrations/summer-illustrations-3.jpg" alt="Photo de profil">
-                      </div>
-                    </div>
-                    <div class="mt-1">
-                      <h5 class="text-sm font-bold py-1 leading-none">University connect</h5>
-                    </div>
-                  </div>
-                  <div class="rounded-xl flex flex-col">
-                    <div class="flex-grow">
-                      <div class="h-32 w-full rounded-xl bg-blue-400">
-                        <img class="shadow-xl rounded-xl h-full w-full object-cover"
-                          src="../../../public/assets/illustrations/summer-illustrations-6.jpg" alt="Photo de profil">
-                      </div>
-                    </div>
-                    <div class="mt-1">
-                      <h5 class="text-sm font-bold py-1 leading-none">University connect</h5>
-                    </div>
-                  </div>
-                  <div class="rounded-xl flex flex-col">
-                    <div class="flex-grow">
-                      <div class="h-32 w-full rounded-xl bg-blue-400">
-                        <img class="shadow-xl rounded-xl h-full w-full object-cover"
-                          src="../../../public/assets/illustrations/summer-illustrations-7.jpg" alt="Photo de profil">
-                      </div>
-                    </div>
-                    <div class="mt-1">
-                      <h5 class="text-sm font-bold py-1 leading-none">Programme partenaires</h5>
-                    </div>
+  <div class="w-4/5 2xl:w-10/12 px-6 pb-6 h-full absolute right-0 top-0">
+    <div class="h-full flex-grow inline-flex w-full">
+      <div class="w-4/6 h-full bg-white mr-6 pr-6 py-6 border-r">
+        <div class=" shadow-blue-500/50 bg-blue-600 text-white p-4 rounded-xl inline-flex shadow-lg">
+          <div class="w-3/6 2xl:w-2/6 pr-6">
+            <div class="inline-flex">
+              <h1 class="text-2xl 2xl:text-4xl font-bold">{{ state.times.time.hours }}:{{ state.times.time.minutes }}
+              </h1>
+            </div>
+            <h1 class="text-xl font-bold">Bonjour, Jerome !</h1>
+            <h6 class="text-sm mt-2">
+              Voici votre programme de la journée. Vous avez 01 cours en ligne et 03 cours en
+              présentiel. Voir ci-desous les détails de votre journée.
+            </h6>
+          </div>
+          <div class="w-3/6  2xl:w-4/6">
+            <div class="grid grid-cols-3 gap-3">
+              <div class="rounded-xl flex flex-col">
+                <div class="flex-grow">
+                  <div class="h-32 w-full rounded-xl bg-blue-400">
+                    <img class="shadow-xl rounded-xl h-full w-full object-cover"
+                      src="../../../public/assets/illustrations/summer-illustrations-3.jpg" alt="Photo de profil">
                   </div>
                 </div>
+                <div class="mt-1">
+                  <h5 class="text-sm font-bold py-1 leading-none">University connect</h5>
+                </div>
               </div>
+              <div class="rounded-xl flex flex-col">
+                <div class="flex-grow">
+                  <div class="h-32 w-full rounded-xl bg-blue-400">
+                    <img class="shadow-xl rounded-xl h-full w-full object-cover"
+                      src="../../../public/assets/illustrations/summer-illustrations-6.jpg" alt="Photo de profil">
+                  </div>
+                </div>
+                <div class="mt-1">
+                  <h5 class="text-sm font-bold py-1 leading-none">University connect</h5>
+                </div>
+              </div>
+              <div class="rounded-xl flex flex-col">
+                <div class="flex-grow">
+                  <div class="h-32 w-full rounded-xl bg-blue-400">
+                    <img class="shadow-xl rounded-xl h-full w-full object-cover"
+                      src="../../../public/assets/illustrations/summer-illustrations-7.jpg" alt="Photo de profil">
+                  </div>
+                </div>
+                <div class="mt-1">
+                  <h5 class="text-sm font-bold py-1 leading-none">Programme partenaires</h5>
+                </div>
+              </div>
+            </div>
+          </div>
 
             </div>
             <div class="mt-6 flex items-start justify-between my-3">
@@ -271,7 +268,6 @@
   } from 'vue'
 
   import Todo from '@/components/home/Todo.vue'
-  import Work from '@/components/home/Work.vue'
   import store from "../../store";
   import router from '../../router'
 
@@ -279,7 +275,6 @@
     name: "Blog",
     components: {
       Todo,
-      Work,
     },
     setup() {
       const showWelcomeMessage = ref(false)
