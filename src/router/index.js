@@ -2,11 +2,13 @@ import {
   createRouter,
   createWebHistory
 } from 'vue-router'
+
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ResetPasswordView from '../views/ResetPasswordView.vue'
 import VerifyAccountView from '../views/VerifyAccountView.vue'
 import ChooseSpecialitiesView from '../views/ChooseSpecialitiesView.vue'
+import ChooseOffersView from '../views/ChooseOffersView.vue'
 import HomeView from '../views/HomeView.vue'
 import AgendaView from '../views/AgendaView.vue'
 import BlogView from '../views/BlogView.vue'
@@ -14,9 +16,11 @@ import CommunicationsView from '../views/CommunicationsView.vue'
 import FacultiesView from '../views/FacultiesView.vue'
 import GroupsView from '../views/GroupsView.vue'
 import MembersView from '../views/MembersView.vue'
+import GroupView from '../views/GroupView.vue'
 import SubscriptionView from '../views/SubscriptionView.vue'
 import StatisticsView from '../views/StatisticsView.vue'
 import SchoolyearView from '../views/SchoolyearView.vue'
+import PayementView from '../views/PayementView.vue'
 
 const routes = [{
     path: '/',
@@ -37,6 +41,11 @@ const routes = [{
     path: '/verify-account',
     name: 'verify-account',
     component: VerifyAccountView
+  },
+  {
+    path: '/choose-offer',
+    name: 'choose-offer',
+    component: ChooseOffersView
   },
   {
     path: '/choose-specialities',
@@ -66,6 +75,7 @@ const routes = [{
   {
     path: '/faculties',
     name: 'faculties',
+    props: true,
     component: FacultiesView,
   },
   {
@@ -77,6 +87,12 @@ const routes = [{
     path: '/members',
     name: 'members',
     component: MembersView,
+  },
+  {
+    path: '/group/:id',
+    name: 'group',
+    props: true,
+    component: GroupView,
   },
   {
     path: '/subscription',
@@ -92,6 +108,11 @@ const routes = [{
     path: '/schoolyear',
     name: 'schoolyear',
     component: SchoolyearView,
+  },
+  {
+    path: '/payement',
+    name: 'payement',
+    component: PayementView,
   },
 ]
 

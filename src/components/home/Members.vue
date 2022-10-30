@@ -5,8 +5,7 @@
         <div class="flex items-start justify-between ">
           <div class="flex justify-start">
             <div class="inline-flex">
-              <img class="h-6 mr-2 mt-1" :src="'public/assets/icons/members.png'" alt="" />
-              <h1 class="text-2xl font-bold mb-2">Membres</h1>
+              <h1 class="text-lg font-bold mb-2">Membres</h1>
             </div>
           </div>
           <div class="items-center inline-flex relative">
@@ -95,8 +94,35 @@
             </div>
           </div>
         </div>
+
+        <div
+                                        class="mt-2 grid grid-cols-6 2xl:grid-cols-6 gap-3 rounded-xl w-full h-full overflow-hidden overflow-y-auto">
+                                        <div v-for="member in state.members" :key="member.id">
+                                            <div
+                                                class="bg-gray-50 h-20 rounded-md flex justify-center items-center relative overflow-hidden">
+                                                <div v-if="member.avatar != null"
+                                                    class="hidden h-40 w-40 rounded-full bg-gray-50 relative">
+                                                    <img class="rounded-full h-full w-fullh-full w-full object-top object-cover"
+                                                        src="" alt="">
+                                                </div>
+                                                <div v-if="member.avatar == null"
+                                                    class="h-16 w-16 text-white rounded-full hover:bg-indigo-300 bg-gradient-to-b from-indigo-300 to-indigo-600 absolute flex justify-center items-center">
+                                                    <h5 class="text-2xl">
+                                                        {{ member.initials }}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2">
+                                                <h5 title="" class="line-clamp-1 font-bold ">{{ member.firstName }}
+                                                    {{ member.lastName }}</h5>
+                                                <h6 style="font-family: 'JetBrains Mono', monospace"
+                                                    class="text-gray-400 text-sm leading-tight line-clamp-2">
+                                                    @{{ member.firstName }}{{ member.lastName }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
         <div 
-          class="mt-2 grid grid-cols-4 2xl:grid-cols-6 gap-3 rounded-xl w-full h-full overflow-hidden overflow-y-auto">
+          class="hidden mt-2 grid grid-cols-5 2xl:grid-cols-6 gap-3 rounded-xl w-full h-full overflow-hidden overflow-y-auto">
           <div class="hidden rounded-xl h-64 relative">
             <div
               class="rounded-xl absolute backdrop-blur-sm bg-white/30 w-full h-12 bottom-0 z-20 p-2 inline-flex space-x-2">
@@ -140,24 +166,20 @@
             </div>
           </div>
           <div v-for="member in state.members" :key="member.id">
-            <div class="bg-gray-50 h-52 rounded-md flex justify-center items-center relative overflow-hidden">
-              <div style="background-image: url('../../public/assets/illustrations/v904-nunny-012-a.jpg');" class="bg-cover h-full w-full relative">
-                
-              </div>
+            <div class="bg-gray-50 h-40 rounded-md flex justify-center items-center relative overflow-hidden">
               <div v-if="member.avatar != null" class="hidden h-40 w-40 rounded-full bg-gray-50 relative">
                 <img class="rounded-full h-full w-fullh-full w-full object-top object-cover"
-                  src="https://images.pexels.com/photos/7196350/pexels-photo-7196350.jpeg?cs=srgb&dl=pexels-dziana-hasanbekava-7196350.jpg&fm=jpg"
+                  src=""
                   alt="">  
               </div>
-              <div v-if="member.avatar == null" class="h-40 w-40 text-white rounded-full hover:bg-indigo-300 bg-gradient-to-b from-indigo-300 to-indigo-600 absolute flex justify-center items-center">
+              <div v-if="member.avatar == null" class="h-20 w-20 text-white rounded-full hover:bg-indigo-300 bg-gradient-to-b from-indigo-300 to-indigo-600 absolute flex justify-center items-center">
                 <h5 class="text-2xl">{{ member.initials }}</h5>  
               </div>
             </div>
             <div class="mt-2">
               <h5 title="" class="line-clamp-1 font-bold ">{{ member.firstName }} {{ member.lastName }}</h5>
               <h6 style="font-family: 'JetBrains Mono', monospace"
-                class="text-gray-400 text-lg leading-tight line-clamp-2">@{{ member.firstName }}{{ member.lastName }}</h6>
-              <h5 title="" class="line-clamp-1  text-green-600">Professeur *</h5>
+                class="text-gray-400 text-sm leading-tight line-clamp-2">@{{ member.firstName }}{{ member.lastName }}</h6>
             </div>
           </div>
         </div>

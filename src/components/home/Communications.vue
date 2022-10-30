@@ -401,7 +401,7 @@
       <!--  write communication  v-if="showCommunicationForm" -->
       <div class="relative h-full top-0 left-0 z-10 w-full">
         <div class="w-full absolute top-0 bg-blue-600 line-clamp text-white px-4 py-2">
-          <div class="flex items-start justify-between">
+          <div class="flex items-start justify---èween">
             <div class="flex justify-start">
               <div class="inline-flex space-x-1">
                 <button title="Ajouter en favoris"

@@ -12,22 +12,6 @@
     </div>
     <div class="px-6 flex-grow relative">
       <ul class="list-none mt-2">
-         <li title="Tableau de bord">
-          <router-link :to="{ name: 'schoolyear' }">
-            <div class="
-                  hover:text-neutral-400
-                  text-neutral-500
-                  py-1.5
-                  rounded-md
-                  text-sm
-                  font-medium
-                  inline-flex
-                  w-full
-                ">
-              <h5 class="text-base">Config/SchoolYear (test link)</h5>
-            </div>
-          </router-link>
-        </li>
         <li title="Tableau de bord">
           <router-link :to="{ name: 'home' }">
             <div class="

@@ -6,22 +6,30 @@
 </template>
 
 <script>
-import Work from "@/components/home/Work.vue";
-import store from "../store";
 
-export default {
-  components: {
-    Work,
-  },
-  setup() {
-    store.apiCallMethods.get("../infos-establishment").then((res) => {
-      console.log(res.data);
-      store.state.establishment = res.data;
-    });
+  import {
+    onMounted,
+  } from 'vue'
 
-    return {
-      store,
-    };
-  },
-};
+  import Work from "@/components/home/Work.vue";
+  import store from "../store";
+
+  export default {
+    components: {
+      Work,
+    },
+    setup() {
+      store.apiCallMethods.get("../infos-establishment").then((res) => {
+        console.log(res.data);
+        store.state.establishment = res.data;
+      });
+
+
+      onMounted(() => {})
+
+      return {
+        store,
+      };
+    },
+  };
 </script>

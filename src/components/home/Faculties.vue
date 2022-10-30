@@ -4,19 +4,18 @@
   </div>
   <div class="w-4/5 2xl:w-10/12 px-6 py-6 h-full absolute right-0 top-0 bg-gray-50 overflow-hidden">
     <div class="h-full flex-grow inline-flex w-full relative">
-
       <Transition>
         <div v-if="showFacultyDetails"
           class="overflow-hidden absolute bg-white border-t-0 border rounded-lg top-0 h-full w-full z-10">
           <div class="bg-indigo-600 h-6 w-full rounded-t-lg">
             <div class="flex items-start justify-between py-1 px-3 text-white text-xs">
               <div class="justify-start">
-                <span>{{ state.currentFaculty.name }}</span> 
+                <span>{{ state.currentFaculty.name }}</span>
                 <span v-if="state.currentSpeciality && showSpecialityDetails == true">
-                  > {{ state.currentSpeciality.name }}({{ state.currentSpeciality.acronym }})</span> 
-                  <span v-if="state.currentMatter && showMatterDetails == true">
+                  > {{ state.currentSpeciality.name }}({{ state.currentSpeciality.acronym }})</span>
+                <span v-if="state.currentMatter && showMatterDetails == true">
                   > {{ state.currentMatter.name }}</span>
-                  <span v-if="state.currentTeachingUnit && showTeachingUnitDetails == true">
+                <span v-if="state.currentTeachingUnit && showTeachingUnitDetails == true">
                   > {{ state.currentTeachingUnit.code }}</span>
               </div>
               <div class="items-center inline-flex space-x-2">
@@ -69,7 +68,7 @@
             </div>
 
             <div class="w-8/12 2xl:w-9/12 relative">
-               <Transition>
+              <Transition>
                 <div v-if="showSpecialityDetails"
                   class="pt-2 pl-4 pr-3 h-full flex flex-col backdrop-blur-2xl bg-white/30  w-full absolute z-20">
                   <div class="flex items-start justify-between w-full mb-2">
@@ -79,12 +78,12 @@
                         <span class="material-symbols-outlined">keyboard_return</span>
                       </button>
                       <input placeholder="Rechercher une matière..." name="q-matter" v-model="qMatter" type="search"
-                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                     </div>
                     <div class="items-center inline-flex relative">
-                      <button 
-                        class="px-3 py-1 rounded-md inline-flex bg-white text-sm justify-center">
-                        <h6 title="Ce bouton ouvrira un modal qui affichera toutes les infos de l'entité" class="mt-0.5 text-xs">En savoir plus</h6>
+                      <button class="px-3 py-1 rounded-md inline-flex bg-white text-sm justify-center">
+                        <h6 title="Ce bouton ouvrira un modal qui affichera toutes les infos de l'entité"
+                          class="mt-0.5 text-xs">En savoir plus</h6>
                       </button>
                       <button title="Style d'affichage"
                         class="px-3 py-1 rounded-md inline-flex bg-white border text-sm justify-center">
@@ -94,7 +93,7 @@
                       </button>
                     </div>
                   </div>
-                  <hr>
+                  <hr />
                   <div class="flex items-start justify-between py-2 ">
                     <div class="flex justify-start pl-2">
                       <div>
@@ -125,9 +124,9 @@
                             </div>
                           </div>
                           <div class="p-3 w-full h-full space-y-1.5">
-                            <input type="hidden" v-model="matterFormData.facultyId">
+                            <input type="hidden" v-model="matterFormData.facultyId" />
                             <input placeholder="Nom de la matière" name="name" v-model="matterFormData.name"
-                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                             <textarea v-model="matterFormData.description" style="resize: none;" rows="6"
                               placeholder="Description" name="name"
                               class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
@@ -178,13 +177,13 @@
                         class="px-3 py-0.5 rounded-md inline-flex bg-white border text-sm justify-center mr-2">
                         <span class="material-symbols-outlined">keyboard_return</span>
                       </button>
-                      <input placeholder="Rechercher une UE..." name="q-matter" v-model="qMatter" type="search"
-                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                      <input placeholder="Rechercher une UE..." name="q-UE" v-model="qUE" type="search"
+                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                     </div>
                     <div class="items-center inline-flex relative">
-                      <button 
-                        class="px-3 py-1 rounded-md inline-flex bg-white text-sm justify-center">
-                        <h6 title="Ce bouton ouvrira un modal qui affichera toutes les infos de l'entité" class="mt-0.5 text-xs">En savoir plus</h6>
+                      <button class="px-3 py-1 rounded-md inline-flex bg-white text-sm justify-center">
+                        <h6 title="Ce bouton ouvrira un modal qui affichera toutes les infos de l'entité"
+                          class="mt-0.5 text-xs">En savoir plus</h6>
                       </button>
                       <button title="Style d'affichage"
                         class="px-3 py-1 rounded-md inline-flex bg-white border text-sm justify-center">
@@ -194,11 +193,12 @@
                       </button>
                     </div>
                   </div>
-                  <hr>
+                  <hr />
                   <div class="flex items-start justify-between py-2 ">
                     <div class="flex justify-start pl-2">
                       <div>
-                         <h6 class="text-xs" style="font-family: 'JetBrains Mono', monospace">Liste des Unités d'enseignements
+                        <h6 class="text-xs" style="font-family: 'JetBrains Mono', monospace">Liste des Unités
+                          d'enseignements
                           (<span v-if="true">0</span>{{ state.currentMatter.teachingUnits.length }})
                         </h6>
                       </div>
@@ -226,11 +226,12 @@
                           </div>
                           <div class="p-3 w-full h-full space-y-1.5">
                             <input placeholder="Nom de l'UE'" name="name" v-model="teachingUnitFormData.name"
-                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                             <input placeholder="Code de l'UE'" name="name" v-model="teachingUnitFormData.code"
-                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
-                              <input placeholder="Nombre de credits" name="name" v-model.number="teachingUnitFormData.credits"
-                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
+                            <input placeholder="Nombre de credits" name="name"
+                              v-model.number="teachingUnitFormData.credits"
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                             <textarea v-model="teachingUnitFormData.description" style="resize: none;" rows="6"
                               placeholder="Description" name="name"
                               class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
@@ -259,13 +260,12 @@
                         <div class="border border-indigo-50 h-52 rounded-md flex justify-center items-center relative">
                           <div @click="getTeachingUnitByCode(eu.code)"
                             class="cursor-pointer h-40 w-40 text-white rounded-xl hover:bg-indigo-300 bg-gradient-to-b from-indigo-300 to-indigo-600 absolute flex justify-center items-center">
-                            <div
-                              class="p-3 rounded-full">
+                            <div class="p-3 rounded-full">
                               <span class="bg-white p-0.5 text-indigo-600 text-xs rounded-xl px-2">{{ eu.code }}</span>
                               <h5 class="text-sm line-clamp-2">{{ eu.name }}</h5>
                               <hr class="my-2 border border-t-indigo-500">
                               <h5 class="text-sm">Credits: {{ eu.credits }}</h5>
-                               <h5 class="text-sm">Groupes: {{ eu._count.groups }}</h5>
+                              <h5 class="text-sm">Groupes: {{ eu._count.groups }}</h5>
                             </div>
                           </div>
                         </div>
@@ -277,7 +277,7 @@
                 </div>
               </Transition>
 
-               <Transition>
+              <Transition>
                 <div v-if="showTeachingUnitDetails"
                   class="pt-2 pl-4 pr-3 h-full flex flex-col backdrop-blur-2xl bg-white/30  w-full absolute z-30">
                   <div class="flex items-start justify-between w-full mb-2">
@@ -287,7 +287,7 @@
                         <span class="material-symbols-outlined">keyboard_return</span>
                       </button>
                       <input placeholder="Rechercher un groupe..." name="q-Group" v-model="qGroup" type="search"
-                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                     </div>
                     <div class="items-center inline-flex relative">
                       <button title="Style d'affichage"
@@ -298,11 +298,11 @@
                       </button>
                     </div>
                   </div>
-                  <hr>
+                  <hr />
                   <div class="flex items-start justify-between py-2">
                     <div class="flex justify-start">
                       <div>
-                         <h6 class="text-xs" style="font-family: 'JetBrains Mono', monospace">Liste des groupes
+                        <h6 class="text-xs" style="font-family: 'JetBrains Mono', monospace">Liste des groupes
                           (<span v-if="true">0</span>{{ state.currentTeachingUnit.groups.length }})
                         </h6>
                       </div>
@@ -330,11 +330,12 @@
                           </div>
                           <div class="p-3 w-full h-full space-y-1.5">
                             <input placeholder="Nom de l'UE'" name="name" v-model="teachingUnitFormData.name"
-                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                             <input placeholder="Code de l'UE'" name="name" v-model="teachingUnitFormData.code"
-                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
-                              <input placeholder="Nombre de credits" name="name" v-model.number="teachingUnitFormData.credits"
-                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
+                            <input placeholder="Nombre de credits" name="name"
+                              v-model.number="teachingUnitFormData.credits"
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                             <textarea v-model="teachingUnitFormData.description" style="resize: none;" rows="6"
                               placeholder="Description" name="name"
                               class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
@@ -356,38 +357,117 @@
                       </div>
                     </div>
                   </div>
+<!-- @click="getGroup(group.id)"-->
 
                   <div class="flex-grow overflow-hidden overflow-y-auto relative">
                     <div class="grid grid-cols-3 2xl:grid-cols-4 gap-1">
                       <div v-for="group in state.currentTeachingUnit.groups" :key="group.id">
-                       <div  class="rounded-lg  border border-indigo-50 h-52 flex justify-center items-center relative">
-                        <div @click="getGroup(group.id)" 
-                            class="rounded-lg cursor-pointer h-40 w-40 text-white hover:bg-indigo-300 bg-gradient-to-b from-indigo-300 to-indigo-600 absolute flex justify-center items-center">
+                        <div class="rounded-lg  border border-indigo-50 h-52 flex justify-center items-center relative">
+                          <router-link :to="{ name: 'group', params: { id: group.id }}">
                             <div
-                              class="p-3 rounded-full">
-                              <span class="bg-white p-0.5 text-indigo-600 text-xs rounded-xl px-2">Groupe 1</span>
-                              <hr class="my-2 border border-t-indigo-500">
-                              <div title="Membres" class="w-full flex justify-center">
-                                <div class="inline-flex">
-                                  <span class="material-symbols-outlined mr-1">group</span>
-                                  <h5 class="text-lg font-bold">150</h5>
-                              </div>
-                              </div>
-                              <hr class="my-2 border border-t-indigo-500">
-                              <div title="Superviseurs" class="w-full flex justify-center">
-                                <div class="inline-flex">
-                                  <span class="material-symbols-outlined mr-1">supervisor_account</span>
-                                  <h5 class="text-lg font-bold">02</h5>
+                              class="rounded-lg cursor-pointer h-40 w-40 text-white hover:bg-indigo-300 bg-gradient-to-b from-indigo-300 to-indigo-600 absolute flex justify-center items-center">
+                              <div class="p-3 rounded-full">
+                                <span class="bg-white p-0.5 text-indigo-600 text-xs rounded-xl px-2">Groupe 1</span>
+                                <hr class="my-2 border border-t-indigo-500">
+                                <div title="Membres" class="w-full flex justify-center">
+                                  <div class="inline-flex">
+                                    <span class="material-symbols-outlined mr-1">group</span>
+                                    <h5 class="text-lg font-bold">150</h5>
+                                  </div>
+                                </div>
+                                <hr class="my-2 border border-t-indigo-500">
+                                <div title="Superviseurs" class="w-full flex justify-center">
+                                  <div class="inline-flex">
+                                    <span class="material-symbols-outlined mr-1">supervisor_account</span>
+                                    <h5 class="text-lg font-bold">02</h5>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                            </div>
-                          </div>
-                          </div>
+                         </router-link>
+                        </div>
                       </div>
 
                     </div>
 
                   </div>
+                </div>
+              </Transition>
+
+              <Transition>
+                <div v-if="showGroupDetails"
+                  class="pt-2 pl-4 pr-3 h-full flex flex-col backdrop-blur-2xl bg-white/30  w-full absolute z-30">
+                  <div class="flex items-start justify-between w-full mb-2">
+                    <div class="flex justify-start w-1/2">
+                      <button @click="showGroupDetails = false" title="Retour à la liste des matières"
+                        class="px-3 py-0.5 rounded-md inline-flex bg-white border text-sm justify-center mr-2">
+                        <span class="material-symbols-outlined">keyboard_return</span>
+                      </button>
+                      <input placeholder="Rechercher un participant ..." name="q-Group" v-model="qGroup" type="search"
+                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
+                    </div>
+                    <div class="items-center inline-flex relative">
+                      <button title="Style d'affichage"
+                        class="px-3 py-1 rounded-md inline-flex bg-white border text-sm justify-center">
+                        <span class="text-sm material-symbols-outlined mr-2">grid_view</span>
+                        <h6 class="mt-0.5 text-xs">Grille</h6>
+                        <span class="text-sm material-symbols-outlined ml-2">expand_more</span>
+                      </button>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="flex items-start justify-between py-2">
+                    <div class="flex justify-start">
+                      <div>
+                        <h6 class="text-xs" style="font-family: 'JetBrains Mono', monospace">Groupe {{ state.group.name }}</h6>
+                      </div>
+                    </div>
+                    <div class="items-center inline-flex relative">
+                      <Transition>
+                        <div v-if="showAddProfessorToGroupForm" style="width:400px;"
+                          class="z-10 h-auto bg-white absolute right-0 top-10 shadow-md rounded-md border border-t-0">
+                          <div class="rounded-t-md w-full h-8 py-1 bg-indigo-600 px-3 text-white">
+                            <div class="flex items-start justify-between ">
+                              <div class="flex justify-start">
+                                <span class="material-symbols-outlined text-xl -mt-0.5 ">
+                                  apps
+                                </span>
+                                <h6 class="text-sm ml-2 mt-0.5 font-medium">Assigner un professeur</h6>
+                              </div>
+                              <div class="items-center inline-flex relative">
+                                <button title="Fermer" class="cursor-pointer"
+                                  @click="showAddProfessorToGroupForm = false">
+                                  <span class="material-symbols-outlined">
+                                    close
+                                  </span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="p-3 w-full h-full space-y-1.5">
+                            <input placeholder="Nom de l'UE'" name="name" v-model="groupFormData.professor"
+                              class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
+                            <button title="Ajouter une Unité d'Enseignement"
+                              @click="submitAddProfessorToGroupForm('add')"
+                              class="shadow-indigo-500/50 shadow-lg px-4 py-2 rounded-md inline-flex text-white bg-indigo-600 text-sm w-full justify-center"><span
+                                class="mt-0.5">Assigner se professeur</span>
+                            </button>
+                          </div>
+                        </div>
+                      </Transition>
+
+                      <div class="-mt-1 h-6 w-6 bg-white shadow rounded-full flex justify-center items-center">
+                        <button title="Ajouter une Unité d'Enseignement" @click="showTeachingUnitForm = true"
+                          class="rounded-full text-xs font-medium flex justify-center items-center">
+                          <span class="text-lg material-symbols-rounded">
+                            add_circle
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  
                 </div>
               </Transition>
 
@@ -397,7 +477,7 @@
                     <div class="flex justify-start w-1/2">
                       <input placeholder="Rechercher une spécialité ..." name="q-speciality" v-model="qSpeciality"
                         type="search"
-                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                        class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                     </div>
                     <div class="items-center inline-flex relative">
                       <button title="Style d'affichage"
@@ -408,7 +488,7 @@
                       </button>
                     </div>
                   </div>
-                  <hr>
+                  <hr />
                 </div>
                 <div>
                   <div class="mb-2 mt-2">
@@ -443,11 +523,11 @@
                               </div>
                             </div>
                             <div class="p-3 w-full h-full space-y-1.5">
-                              <input type="hidden" v-model="specialityFormData.facultyId">
+                              <input type="hidden" v-model="specialityFormData.facultyId" />
                               <input placeholder="Nom de la spé" name="name" v-model="specialityFormData.name"
-                                class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                                class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                               <input placeholder="Acronyme..." name="name" v-model="specialityFormData.acronym"
-                                class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                                class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                               <textarea v-model="specialityFormData.description" style="resize: none;" rows="6"
                                 placeholder="Description" name="name"
                                 class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
@@ -534,11 +614,11 @@
                 </div>
 
                 <div class="p-3 w-full h-full space-y-1.5">
-                  <input type="hidden" v-model="specialityFormData.facultyId">
+                  <input type="hidden" v-model="specialityFormData.facultyId" />
                   <input placeholder="Nom de la fac" name="name" v-model="facultyFormData.name"
-                    class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                    class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                   <input placeholder="Acronyme..." name="name" v-model="facultyFormData.acronym"
-                    class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
+                    class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs" />
                   <textarea v-model="facultyFormData.description" style="resize: none;" rows="6"
                     placeholder="Description" name="name"
                     class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs"></textarea>
@@ -606,9 +686,9 @@
                     title="Afficher les détails de cette faculté"
                     class="text-white bg-indigo-600 hover:bg-indigo-700 px-4 py-1 text-xs rounded-md">En savoir
                     plus</button>
-                    <button @click="getFaculty(faculty.id, 'edit')" title="Editer cette faculté"
+                  <button @click="getFaculty(faculty.id, 'edit')" title="Editer cette faculté"
                     class="hidden group text-white bg-indigo-600 hover:bg-indigo-700 px-3 py-1 text-xs rounded-md">
-                      <span class="text-xs material-icons-outlined">edit</span> 
+                    <span class="text-xs material-icons-outlined">edit</span>
                     Editer</button>
                   <button title="Supprimer cette faculté" @click="deleteFaculty(faculty)"
                     class="hidden group h-6 w-6 text-gray-400 hover:text-indigo-600 rounded-md hover:bg-indigo-100 flex justify-center items-center">
@@ -664,6 +744,8 @@
       const showSpecialityForm = ref(false)
       const showMatterForm = ref(false)
       const showTeachingUnitForm = ref(false)
+      const showGroupDetails = ref(false)
+      const showAddProfessorToGroupForm = ref(false)
 
       //state to store workflow data
 
@@ -703,12 +785,17 @@
         categoryId: computed(() => state.value.currentMatter.id),
         name: "",
         code: "",
-        description:"",
+        description: "",
         credits: ""
       })
 
+      const groupFormData = ref({
+        professor: "",
+      })
+
+
       //Data (Creation, edition and Delete) request submitting functions
-      
+
       const submitFacultyForm = (param) => {
         if (param == 'add') {
           store.apiCallMethods.post('faculty', facultyFormData.value).then(
@@ -785,7 +872,7 @@
             (res) => {
               if (res) {
                 showTeachingUnitForm.value = false
-                 getMatter(state.value.currentMatter.id)
+                getMatter(state.value.currentMatter.id)
               }
             })
         } else {
@@ -798,6 +885,29 @@
             })
         }
       }
+
+      const submitAddProfessorToGroupForm = (param) => {
+        console.log(param);
+        return false;
+        if (param == 'add') {
+          store.apiCallMethods.post('teaching-unit', teachingUnitFormData.value).then(
+            (res) => {
+              if (res) {
+                showTeachingUnitForm.value = false
+                getMatter(state.value.currentMatter.id)
+              }
+            })
+        } else {
+          //if is not add, is edit
+          store.apiCallMethods.patch('teaching-unit', teachingUnitFormData.value).then(
+            (res) => {
+              if (res) {
+                console.log('response', res.data)
+              }
+            })
+        }
+      }
+
 
       // Getting data functions
 
@@ -888,6 +998,8 @@
           })*/
       }
 
+      
+
       // Useful Methods
 
       const addNewFaculty = () => {
@@ -922,7 +1034,7 @@
             (res) => {
               if (!res) {
                 console.log('error')
-              } 
+              }
             });
         }
       }
@@ -935,7 +1047,7 @@
             (res) => {
               if (!res) {
                 console.log('error...')
-              } 
+              }
             });
         }
       }
@@ -952,7 +1064,7 @@
             });
         }
       }
-      
+
 
       // Handling Data functions
 
@@ -963,6 +1075,7 @@
         showFacultyDetails.value = !showFacultyDetails.value
       }
 
+     
       onMounted(() => {
         getFaculties()
       })
@@ -973,20 +1086,24 @@
         matterFormData,
         specialityFormData,
         teachingUnitFormData,
+        groupFormData,
         handleFacultyDetails,
         showFacultyDetails,
         showSpecialityDetails,
         showMatterDetails,
-        showTeachingUnitDetails ,
+        showTeachingUnitDetails,
+        showGroupDetails,
         showFacultyForm,
         showSpecialityForm,
         showMatterForm,
         showTeachingUnitForm,
+        showAddProfessorToGroupForm,
         addNewFaculty,
         submitFacultyForm,
         submitSpecialityForm,
         submitMatterForm,
         submitTeachingUnitForm,
+        submitAddProfessorToGroupForm,
         deleteFaculty,
         deleteSpeciality,
         deleteMatter,

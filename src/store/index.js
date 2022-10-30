@@ -10,6 +10,8 @@ const state = reactive ({
     user: {},
     establishment: {},
     events: [],
+    payement_payload:{},
+    offers_cart:{},
     connection:null,
     workspace: {
         display: false,
@@ -34,10 +36,13 @@ const state = reactive ({
         token: null,
         platform: null
     },
-    // uploadUrl: 'https://nx-server.work/univ-0/',
-    // apiUrl: 'https://nx-server.work/univ-0/api/',
-    uploadUrl: 'http://localhost/univ-0/',
-    apiUrl: 'http://localhost/univ-0/api/',
+    
+    uploadUrl: 'https://nx-server.work/univ-0/',
+    apiUrl: 'https://nx-server.work/univ-0/api/',
+    
+    //uploadUrl: 'http://localhost/univ-0/',
+    //apiUrl: 'http://localhost/univ-0/api/',
+
     config: {
        
     }
