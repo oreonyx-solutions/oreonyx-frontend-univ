@@ -9,6 +9,7 @@ import webrtcMethods from './webrtc-methods'
 const state = reactive ({
     user: {},
     establishment: {},
+    schoolYear: {},
     events: [],
     payement_payload:{},
     offers_cart:{},

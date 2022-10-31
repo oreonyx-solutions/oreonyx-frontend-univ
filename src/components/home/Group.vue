@@ -200,7 +200,7 @@
                 store.apiCallMethods.get('user/').then(
                     (res) => {
                         if (res) {
-                            state.teachers.push(res.data.find(el => el.roleName === "teacher"))
+                            state.teachers = res.data.filter(el => el.roleName === "teacher")
                             console.log('teachers', state.teachers)
                         }
                     })

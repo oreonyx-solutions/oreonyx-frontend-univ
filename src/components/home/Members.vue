@@ -55,7 +55,7 @@
                       class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
                       <option disabled value="">Role</option>
                       <option value="admin">Admin</option>
-                      <option value="moderator">Moderateur</option>
+                      <option value="teacher">Professeur</option>
                     </select>
                     <input name="birthDay" type="date" id="birthDay" v-model="membersFormData.birthDate"
                       class="block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-xs">
@@ -231,7 +231,8 @@
 
       /**/
       const membersFormData = ref({
-        faculties: computed(() => state.value.userFaculties),
+        faculties: [{ "id": 1}],
+        // computed(() => state.value.userFaculties),
         specialities: [],
         lastName: "",
         firstName: "",

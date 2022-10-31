@@ -1,5 +1,6 @@
 <template>
-  <div class="
+  <div
+    class="
       min-h-full
       flex
       items-center
@@ -8,9 +9,15 @@
       px-4
       sm:px-6
       lg:px-8
-    ">
+    "
+  >
     <div class="max-w-md w-full space-y-8">
-      <form @submit.prevent="submitForm" class="bg-white p-8 pt-0 mt-8" action="#" method="POST">
+      <form
+        @submit.prevent="submitForm"
+        class="bg-white p-8 pt-0 mt-8"
+        action="#"
+        method="POST"
+      >
         <input type="hidden" name="remember" value="true" />
         <div class="inline-flex">
           <img class="h-16" :src="'public/assets/logo.png'" alt="Oreonyx" />
@@ -24,7 +31,12 @@
         <h1 class="my-6 font-black text-4xl text-gray-800">Se connecter</h1>
         <div>
           <div class="mt-2 relative rounded-md shadow-sm">
-            <input type="text" name="email" id="email" v-model="email" class="
+            <input
+              type="text"
+              name="email"
+              id="email"
+              v-model="email"
+              class="
                 border border-gray-300
                 block
                 w-full
@@ -36,12 +48,20 @@
                 @error('email')
                 ring-red-500
                 @enderror
-              " placeholder="Email" autofocus />
+              "
+              placeholder="Email"
+              autofocus
+            />
           </div>
         </div>
         <div>
           <div class="mt-2 relative rounded-md shadow-sm">
-            <input type="password" name="password" id="password" v-model="password" class="
+            <input
+              type="password"
+              name="password"
+              id="password"
+              v-model="password"
+              class="
                 border border-gray-300
                 block
                 w-full
@@ -53,11 +73,15 @@
                 @error('email')
                 ring-red-500
                 @enderror
-              " placeholder="● ● ● ● ● ● ● ●" />
+              "
+              placeholder="● ● ● ● ● ● ● ●"
+            />
           </div>
         </div>
         <div class="mt-5">
-          <button type="submit" class="
+          <button
+            type="submit"
+            class="
               group
               relative
               w-full
@@ -76,13 +100,16 @@
               focus:ring-2
               focus:ring-offset-2
               focus:ring-indigo-500
-            ">
+            "
+          >
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-              <span class="
+              <span
+                class="
                   text-indigo-500
                   group-hover:text-indigo-400
                   material-symbols-outlined
-                ">
+                "
+              >
                 lock
               </span>
             </span>
@@ -94,11 +121,13 @@
             <a href="#"></a>
           </div>
           <router-link :to="{ name: 'reset-password' }">
-            <h6 class="
+            <h6
+              class="
                 font-medium
                 text-md text-indigo-600
                 hover:text-indigo-500 hover:underline
-              ">
+              "
+            >
               Mot de passe oublié?
             </h6>
           </router-link>
@@ -107,164 +136,200 @@
           </router-link>
         </div>
       </form>
-
     </div>
   </div>
 </template>
 <style scoped>
-  /* transition styles */
-  .v-enter-active,
-  .v-leave-active {
-    transition: transform 1s ease, opacity 1s ease;
-  }
+/* transition styles */
+.v-enter-active,
+.v-leave-active {
+  transition: transform 1s ease, opacity 1s ease;
+}
 
-  .v-enter-from,
-  .v-leave-to {
-    transform: translateX(-100px);
-    opacity: 0;
-  }
+.v-enter-from,
+.v-leave-to {
+  transform: translateX(-100px);
+  opacity: 0;
+}
 </style>
 <script>
-  import {
-    ref,
-    reactive,
-    toRefs,
-    inject,
-    onMounted
-  } from "vue";
-  import router from "../router";
-  import store from "../store";
+import { ref, reactive, toRefs, inject, onMounted } from "vue";
+import router from "../router";
+import store from "../store";
 
-  export default {
-    name: "Login",
-    setup() {
-      const state = ref({
-        establishment: {
-          acronym: "loading...",
-        },
-      });
+export default {
+  name: "Login",
+  setup() {
+    const state = ref({
+      establishment: {
+        acronym: "loading...",
+      },
+    });
 
-      onMounted(() => {
-        window.setTimeout(
-          () => (state.value.establishment = store.state.establishment),
-          1000
-        );
-      });
+    onMounted(() => {
+      window.setTimeout(
+        () => (state.value.establishment = store.state.establishment),
+        1000
+      );
+    });
 
-      // const store = inject('store')
+    // const store = inject('store')
 
-      const formData = reactive({
-        email: "",
-        password: "",
-        device: null,
-      });
+    const formData = reactive({
+      email: "",
+      password: "",
+      device: null,
+    });
 
-      const submitForm = () => {
+    const submitForm = () => {
+      const device = store.state.device;
+      formData.device = device;
 
-        const device = store.state.device;
-        formData.device = device;
+      store.apiCallMethods.post("auth/login", formData).then((res) => {
+        if (res) {
+          const user = res.data;
 
-        store.apiCallMethods.post("auth/login", formData).then((res) => {
-          if (res) {
-            const user = res.data;
+          store.methods.storeUser(user);
 
-            store.methods.storeUser(user);
+          // set request header token temporally
+          store.authMethods.setRequestHeaders(res.token);
+          store.authMethods.saveSessionCredentials({
+            token: res.token,
+            user: store.state.user,
+          });
 
-            // set request header token temporally
-            store.authMethods.setRequestHeaders(res.token);
-            store.authMethods.saveSessionCredentials({
-              token: res.token,
-              user: store.state.user,
-            });
+          store.state.isAuth = true;
+          console.log(store.state.user.roleName);
 
-            store.state.isAuth = true;
-            console.log(store.state.user.roleName);
-
-            //resquest from api to get schoolYear
-            getSchoolYear()
-          };
-        });
-      }
-
-      const getSchoolYear = () => {
-        store.apiCallMethods.get("school-year").then((res) => {
-          if (store.state.user.roleName === "admin") {
-            if (!res) {
-              return router.push({
-                name: "schoolYear",
+          //resquest from api to get schoolYear
+          getSchoolYear();
+          const formDataEvents = (groups) => {
+            const colors = ["red", "blue", "green", "yellow"];
+            groups.forEach((item, i) => {
+              const roleName = item.roleName;
+              const group = item.group;
+              // item.group.days.forEach((day) => {
+              //   events.push({
+              //     title: group.teachingUnit.code,
+              //     date: day.date,
+              //   });
+              // });
+              // console.log(group);
+              // const program = group.programs[0];
+              //
+              group.programs.forEach((program, j) => {
+                const days = program.days;
+                const color = colors[j];
+                days.forEach((day) => {
+                  // console.log(day),
+                  store.state.events.push({
+                    daysOfWeek: [day.dayIndex],
+                    startTime: day.endTime,
+                    endTime: day.time,
+                    startRecur: program.startDate,
+                    endRecur: program.endDate,
+                    groupId: group.id,
+                    title: group.teachingUnit.code,
+                    color,
+                    extendedProps: { groupName: group.name },
+                  });
+                });
               });
-            }
+            });
+          };
+          store.apiCallMethods.get("auth/group").then((res) => {
+            console.log(res);
+            formDataEvents(res.data);
+          });
+        }
+      });
+    };
 
+    const getSchoolYear = () => {
+      store.apiCallMethods.get("school-year").then((res) => {
+        store.state.schoolYear = res.data;
+        if (store.state.user.roleName === "admin") {
+          if (!res) {
             return router.push({
-              name: "home",
+              name: "schoolYear",
             });
           }
 
-          const activeSub = store.state.user.subscriptions.find(sub => sub.active)
-          console.log(activeSub);
+          return router.push({
+            name: "home",
+          });
+        }
 
-          if (!activeSub) {
-            //verify is student is verified
-            if (store.state.user.verifiedAt) {
-              //verify if student got speciality
-              return verifyStudentSpecialities()
-            }
+        if (store.state.user.roleName === "teacher")
+          return router.push({ name: "home" });
 
-            showBasicInformations.value = false
+        const activeSub = store.state.user.subscriptions.find(
+          (sub) => sub.active
+        );
+        console.log(activeSub);
 
-            setTimeout(() => {
-              router.push({
-                name: 'verify-account',
-              })
-            }, 1200)
-
-            return
+        if (!activeSub) {
+          //verify is student is verified
+          if (store.state.user.verifiedAt) {
+            //verify if student got speciality
+            return verifyStudentSpecialities();
           }
 
-          router.push({
-            name: 'home',
-          })
+          showBasicInformations.value = false;
+
+          setTimeout(() => {
+            router.push({
+              name: "verify-account",
+            });
+          }, 1200);
+
+          return;
+        }
+
+        router.push({
+          name: "home",
         });
+      });
+    };
+
+    const verifyStudentSpecialities = () => {
+      if (!store.state.user.specialities.length === 0) {
+        return verifyStudentOffer();
       }
 
-      const verifyStudentSpecialities = () => {
-        if (!store.state.user.specialities.length === 0) {
-          return verifyStudentOffer()
-        }
+      setTimeout(() => {
+        router.push({
+          name: "choose-specialities",
+        });
+      }, 1200);
 
-        setTimeout(() => {
-          router.push({
-            name: 'choose-specialities',
-          })
-        }, 1200)
+      return;
+    };
 
-        return
+    const verifyStudentOffer = () => {
+      if (!store.state.user.groups.length === 0) {
+        return (showBasicInformations.value = false);
       }
 
-      const verifyStudentOffer = () => {
-        if (!store.state.user.groups.length === 0) {
-          return showBasicInformations.value = false;
-        }
+      setTimeout(() => {
+        router.push({
+          name: "choose-offer",
+        });
+      }, 1200);
 
-        setTimeout(() => {
-          router.push({
-            name: 'choose-offer',
-          })
-        }, 1200)
+      return;
+    };
 
-        return
-      }
-
-      return {
-        ...toRefs(formData),
-        submitForm,
-        verifyStudentSpecialities,
-        verifyStudentOffer,
-        store,
-        state,
-      };
-    }
-  };
+    return {
+      ...toRefs(formData),
+      submitForm,
+      verifyStudentSpecialities,
+      verifyStudentOffer,
+      store,
+      state,
+    };
+  },
+};
 </script>
 
 <style>
