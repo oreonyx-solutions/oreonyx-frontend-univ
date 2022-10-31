@@ -47,6 +47,9 @@ export default {
         router.push("home");
         console.log(user);
         // store.groupMethods.getGroups();
+        store.apiCallMethods.get("school-year").then((res) => {
+          store.state.schoolYear = res.data.find(item => item.isCurrent);
+        });
         const formDataEvents = (groups) => {
           const colors = ["red", "blue", "green", "yellow"];
           groups.forEach((item, i) => {
@@ -59,20 +62,24 @@ export default {
             //   });
             // });
             // console.log(group);
-            const program = group.programs[0];
-            const days = program.days;
-            const color = colors[i];
-            days.forEach((day) => {
-              // console.log(day),
-              store.state.events.push({
-                daysOfWeek: [day.dayIndex],
-                startTime: day.endTime,
-                endTime: day.time,
-                startRecur: program.startDate,
-                endRecur: program.endDate,
-                groupId: group.teachingUnit.code,
-                title: group.teachingUnit.code,
-                color,
+            // const program = group.programs[0];
+            //
+            group.programs.forEach((program, j) => {
+              const days = program.days;
+              const color = colors[j];
+              days.forEach((day) => {
+                // console.log(day),
+                store.state.events.push({
+                  daysOfWeek: [day.dayIndex],
+                  startTime: day.endTime,
+                  endTime: day.time,
+                  startRecur: program.startDate,
+                  endRecur: program.endDate,
+                  groupId: group.id,
+                  title: group.teachingUnit.code,
+                  color,
+                  extendedProps: { groupName: group.name}
+                });
               });
             });
           });

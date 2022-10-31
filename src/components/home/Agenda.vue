@@ -19,11 +19,22 @@ export default {
   },
   setup() {
     const handleDateClick = (info) => {
-    
-      const teachingUnitCode = info.event.groupId;
-     const session = info.event.start;
-      console.log( teachingUnitCode, session);
-      store.state.workspace.display = true;
+      // console.log(info);
+    //   const teachingUnitCode = info.event.groupId;
+    //  const session = info.event.start;
+    //   console.log( teachingUnitCode, session);
+      const workspace = { 
+        display: true,
+        group: {
+          id: info.event.groupId,
+          name: info.event.extendedProps.groupName,
+        },
+        teachingUnitCode: info.event.title,
+        date: new Date(info.event.start),
+        session: null
+      }
+      console.log(workspace);
+      store.state.workspace = workspace;
 
     };
 
@@ -74,7 +85,7 @@ export default {
             endTime: day.time,
             startRecur: program.startDate,
             endRecur: program.endDate,
-            groupId: group.teachingUnit.code,
+            groupId: group.id,
             title: group.teachingUnit.code,
             color,
           });

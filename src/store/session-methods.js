@@ -17,7 +17,7 @@ export default {
         const participants = {};
         participants[store.state.user.id] = participant
         const db = getDatabase(firebaseApp());
-        const url = `db0/groups/${groupId}/sessions/${ new Date(date).getTime()}`
+        const url = `db0/${store.state.schoolYear.id}/groups/${groupId}/sessions/${ new Date(date).getTime()}`
          return await set(ref(db, url), { 
             // messages: [], 
             // canvasData: [], 
@@ -31,7 +31,7 @@ export default {
         const groupId = store.state.workspace.group.id
         const date = store.state.workspace.date
         const db = getDatabase(firebaseApp());
-        const url = `db0/groups/${groupId}/sessions/${ new Date(date).getTime()}`
+        const url = `db0/${store.state.schoolYear.id}/groups/${groupId}/sessions/${ new Date(date).getTime()}`
         const q = query(ref(db, url))
         onValue(q,(res) => {
             // console.log(res.val())
@@ -43,7 +43,7 @@ export default {
         const groupId = store.state.workspace.group.id
         const date = store.state.workspace.date
         const db = getDatabase(firebaseApp());
-        const url = `db0/groups/${groupId}/sessions/${ new Date(date).getTime()}`
+        const url = `db0/${store.state.schoolYear.id}/groups/${groupId}/sessions/${ new Date(date).getTime()}`
        return (await get(query(ref(db, url)))).val()
     },
     async joinSession() {
@@ -51,7 +51,7 @@ export default {
         const date = store.state.workspace.date
         const db = getDatabase(firebaseApp());
         console.log(store.state.user.id)
-        const url = `db0/groups/${groupId}/sessions/${ new Date(date).getTime()}/participants/${store.state.user.id}`;
+        const url = `db0/${store.state.schoolYear.id}/groups/${groupId}/sessions/${ new Date(date).getTime()}/participants/${store.state.user.id}`;
         
         const isAlreadyJoined =  (await get(query(ref(db, url)))).exists()
         console.log('isAlreadyJoined', isAlreadyJoined)
@@ -70,14 +70,14 @@ export default {
         const groupId = store.state.workspace.group.id
         const date = store.state.workspace.date
         const db = getDatabase(firebaseApp());
-        const url = `db0/groups/${groupId}/sessions/${ new Date(date).getTime()}/participants/${store.state.user.id}`;
+        const url = `db0/${store.state.schoolYear.id}/groups/${groupId}/sessions/${ new Date(date).getTime()}/participants/${store.state.user.id}`;
         update(ref(db,url), { leftAt: serverTimestamp() })
     },
     addMessage(text) {
         const groupId = store.state.workspace.group.id
         const date = store.state.workspace.date
         const db = getDatabase(firebaseApp())
-        const url = `db0/groups/${groupId}/sessions/${ new Date(date).getTime()}/messages`
+        const url = `db0/${store.state.schoolYear.id}/groups/${groupId}/sessions/${ new Date(date).getTime()}/messages`
         console.log(store.state.user)
         push(ref(db,url), {
             text,
@@ -91,7 +91,7 @@ export default {
       const groupId = store.state.workspace.group.id
       const date = store.state.workspace.date
       const db = getDatabase(firebaseApp());
-      const url = `db0/groups/${groupId}/sessions/${ new Date(date).getTime()}`
+      const url = `db0/${store.state.schoolYear.id}/groups/${groupId}/sessions/${ new Date(date).getTime()}`
       await update(ref(db, url+'/participants/'+store.state.user.id), { 
       streamStartedBy,
       streamingStartedAt: serverTimestamp(),
@@ -106,7 +106,7 @@ export default {
         const groupId = store.state.workspace.group.id
         const date = store.state.workspace.date
         const db = getDatabase(firebaseApp());
-        const url = `db0/groups/${groupId}/sessions/${ new Date(date).getTime()}`
+        const url = `db0/${store.state.schoolYear.id}/groups/${groupId}/sessions/${ new Date(date).getTime()}`
          return await update(ref(db, url+'/participants/'+store.state.user.id), { 
           streamEndedBy,
           streamingEndedAt: serverTimestamp(),
